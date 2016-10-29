@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace before_start
+namespace Crazy
 {
     public partial class Quit_ask : Form
     {
@@ -26,11 +26,6 @@ namespace before_start
         private void quitButton_Yes_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void ASK_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

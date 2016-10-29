@@ -37,7 +37,7 @@ namespace Crazy
                         {
                             this.Visible = false;
                             Application.OpenForms["Form2"].Close();
-                            Game_Room frm = new Game_Room();
+                            before_game frm = new before_game();
                             frm.Owner = this;
                             frm.Show();
                         }
@@ -54,7 +54,7 @@ namespace Crazy
                     {
                         this.Visible = false;
                         Application.OpenForms["Form2"].Close();
-                        Game_Room frm = new Game_Room();
+                        before_game frm = new before_game();
                         frm.Owner = this;
                         frm.Show();
                     }

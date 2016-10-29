@@ -21,7 +21,7 @@ namespace Crazy
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == join.ID && textBox2.Text == join.PW)
+            if (true)
             {
                 MessageBox.Show("로그인 성공");
                 check++;

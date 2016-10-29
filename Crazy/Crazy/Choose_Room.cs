@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Crazy
 {
-    public partial class Form2 : Form
+    public partial class Choose_Room : Form
     {
-        public Form2()
+        public Choose_Room()
         {
             InitializeComponent();
 
@@ -157,7 +157,7 @@ namespace Crazy
             Page_Num--;
             label2.Text = "" + Page_Num;
             this.Visible = false;
-            Form2 frm = new Form2();
+            Choose_Room frm = new Choose_Room();
             frm.Owner = this;
             frm.Show();
 
@@ -169,7 +169,7 @@ namespace Crazy
             Page_Num++;
             label2.Text = "" + Page_Num;
             this.Visible = false;
-            Form2 frm = new Form2();
+            Choose_Room frm = new Choose_Room();
             frm.Owner = this;
             frm.Show();
 
@@ -178,7 +178,14 @@ namespace Crazy
         private void button6_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            Form2 frm = new Form2();
+            Choose_Room frm = new Choose_Room();
+            frm.Owner = this;
+            frm.Show();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Quit_ask frm = new Quit_ask();
             frm.Owner = this;
             frm.Show();
         }

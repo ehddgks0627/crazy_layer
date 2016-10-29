@@ -47,6 +47,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="before_game.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="before_game.Designer.cs">
+      <DependentUpon>before_game.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Choose_Room.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Choose_Room.Designer.cs">
+      <DependentUpon>Choose_Room.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ingame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ingame.Designer.cs">
+      <DependentUpon>ingame.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +75,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Quit_ask.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quit_ask.Designer.cs">
+      <DependentUpon>Quit_ask.cs</DependentUpon>
     </Compile>
     <Compile Include="Search_Room.cs">
       <SubType>Form</SubType>
@@ -76,25 +100,6 @@
     <Compile Include="start.Designer.cs">
       <DependentUpon>start.cs</DependentUpon>
     </Compile>
-    <Compile Include="Choose_Room.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include=".Designer.cs">
-      <DependentUpon>Choose_Room.cs</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Game_Room.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Game_Room.Designer.cs">
-      <DependentUpon>Game_Room.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InGame.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InGame.Designer.cs">
-      <DependentUpon>InGame.cs</DependentUpon>
-    </Compile>
     <Compile Include="join.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,8 +114,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="before_game.resx">
+      <DependentUpon>before_game.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Choose_Room.resx">
+      <DependentUpon>Choose_Room.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ingame.resx">
+      <DependentUpon>ingame.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Quit_ask.resx">
+      <DependentUpon>Quit_ask.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Search_Room.resx">
       <DependentUpon>Search_Room.cs</DependentUpon>
@@ -120,15 +137,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="start.resx">
       <DependentUpon>start.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Choose_Room.resx">
-      <DependentUpon>Choose_Room.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Game_Room.resx">
-      <DependentUpon>Game_Room.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InGame.resx">
-      <DependentUpon>InGame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="join.resx">
       <DependentUpon>join.cs</DependentUpon>
@@ -162,6 +170,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\no.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\selected_bazzi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\selected_dao.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\selected_diz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\selected_uni.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

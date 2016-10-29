@@ -50,7 +50,7 @@ namespace Crazy
             else
             {
                 this.Visible = false;
-                Form2 frm = new Form2();
+                Choose_Room frm = new Choose_Room();
                 frm.Owner = this;
                 frm.Show();
             }
