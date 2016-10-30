@@ -45,15 +45,14 @@ namespace Crazy
             }
             return resResult;
         }
+
         public start()
         {
 
             InitializeComponent();
            
             if (Login.check == 0)
-            {
                 label1.Text = "로그인 해주세요";
-            }
 
             else
             {
@@ -65,9 +64,7 @@ namespace Crazy
                 Logout_Button.Text = "Logout";
                 Controls.Add(Logout_Button);
                 Logout_Button.Click += Logout_Button_Click;
-
             }
-
         }
 
 
@@ -75,9 +72,7 @@ namespace Crazy
         {
 
             if (Login.check == 0)
-            {
                 MessageBox.Show("로그인 해주세요");
-            }
 
             else
             {
@@ -86,7 +81,6 @@ namespace Crazy
                 frm.Owner = this;
                 frm.Show();
             }
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -95,7 +89,6 @@ namespace Crazy
             Register frm = new Register();
             frm.Owner = this;
             frm.Show(); 
-            
         }
 
         private void Logout_Button_Click(object sender, EventArgs e)
@@ -107,7 +100,6 @@ namespace Crazy
             start frm = new start();
             frm.Owner = this;
             frm.Show();
-
         }
 
         private void button3_Click(object sender, EventArgs e)

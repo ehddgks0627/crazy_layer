@@ -16,6 +16,8 @@ namespace Crazy
     {
         public Login()
         {
+            ID_BOX.Text = "";
+            PW_BOX.Text = "";
             InitializeComponent();
         }
         public static string post_query(params string[] postDatas) // 첫 인자는 무조건 URL주소
@@ -81,6 +83,11 @@ namespace Crazy
             start frm = new start();
             frm.Owner = this;
             frm.Show();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
