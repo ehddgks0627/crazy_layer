@@ -214,8 +214,8 @@ namespace Crazy
         {
             this.Visible = false;
             start frm = new start(); // 새 폼 생성¬
-            frm.Owner = this; // 새 폼의 오너를 현재 폼으로
             frm.Show();
+            this.Close();
         }
     }
 }

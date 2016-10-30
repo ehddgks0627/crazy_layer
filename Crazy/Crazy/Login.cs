@@ -60,9 +60,9 @@ namespace Crazy
             string[] respons = respon.Split('-');
             key = Convert.ToInt32(respons[0]);
             nickname = respons[1];
+            MessageBox.Show(respons[0]);
             if (respon[0] != '0') 
             {
-                
                 MessageBox.Show("로그인 성공");
                 check++;
                 this.Visible = false;
