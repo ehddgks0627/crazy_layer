@@ -100,11 +100,11 @@
     <Compile Include="start.Designer.cs">
       <DependentUpon>start.cs</DependentUpon>
     </Compile>
-    <Compile Include="join.cs">
+    <Compile Include="Register.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="join.Designer.cs">
-      <DependentUpon>join.cs</DependentUpon>
+    <Compile Include="Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
     </Compile>
     <Compile Include="Make_Room.cs">
       <SubType>Form</SubType>
@@ -138,8 +138,8 @@
     <EmbeddedResource Include="start.resx">
       <DependentUpon>start.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="join.resx">
-      <DependentUpon>join.cs</DependentUpon>
+    <EmbeddedResource Include="Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Make_Room.resx">
       <DependentUpon>Make_Room.cs</DependentUpon>

@@ -16,7 +16,7 @@ namespace Crazy
         {
             InitializeComponent();
 
-            label1.Text = join.Nickname;
+            label1.Text = Register.Nickname;
             label2.Text = "" + Page_Num;
 
             int Page_Check_Num = (Make_Room.Check_Num / 4) + 1;
@@ -45,7 +45,9 @@ namespace Crazy
 
 
             Label[] Label_Num = new Label[32];
+            Label[] Label_People = new Label[32];
             PictureBox[] PictureBox_Num = new PictureBox[32];
+
 
             for (int i = 0; i < Make_Room.Check_Num; i++)
             {
@@ -54,34 +56,41 @@ namespace Crazy
                 PictureBox_Num[i].Size = new Size(253, 163);
                 Label_Num[i] = new Label();
                 Label_Num[i].Size = new Size(278, 54);
+                Label_People[i] = new Label();
+                PictureBox_Num[i].Click += new System.EventHandler(this.PictureBox_Num);
 
                 if (i % 4 == 0)
                 {
                     PictureBox_Num[i].Location = new Point(633, 268);
                     Label_Num[i].Location = new Point(912, 268);
+                    Label_People[i].Location = new Point(966, 406);
                 }
 
                 else if (i % 4 == 1)
                 {
                     PictureBox_Num[i].Location = new Point(1224, 268);
                     Label_Num[i].Location = new Point(1496, 268);
+                    Label_People[i].Location = new Point(1557, 406);
                 }
 
                 else if (i % 4 == 2)
                 {
                     PictureBox_Num[i].Location = new Point(633, 502);
                     Label_Num[i].Location = new Point(912, 502);
+                    Label_People[i].Location = new Point(966, 643);
                 }
                 else if (i % 4 == 3)
                 {
                     PictureBox_Num[i].Location = new Point(1224, 502);
                     Label_Num[i].Location = new Point(1496, 502);
+                    Label_People[i].Location = new Point(1557, 643);
                 }
 
 
 
 
                 Label_Num[i].Text = Make_Room.Room_name[i] + " / " + Make_Room.Room_Number[i];
+                Label_People[i].Text = Make_Room.Room_Now_People[i] + " / " + Make_Room.Room_Size[i];
 
                 if (Make_Room.Check_Room[i] == -1)
                 {
@@ -101,6 +110,7 @@ namespace Crazy
             {
                 Controls.Add(PictureBox_Num[(Page_Num - 1) * 4 + i]);
                 Controls.Add(Label_Num[(Page_Num - 1) * 4 + i]);
+                Controls.Add(Label_People[(Page_Num - 1) * 4 + i]);
             }
 
 
@@ -110,9 +120,9 @@ namespace Crazy
 
         private void textBox1_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (textBox1.Text.Length != 0 && e.KeyCode == Keys.Enter)
             {
-                Chatting_Box.Items.Add(join.Nickname + " : " + textBox1.Text);
+                Chatting_Box.Items.Add(Register.Nickname + " : " + textBox1.Text);
                 textBox1.Text = "";
                 Chatting_Box.SelectedIndex = Chatting_Box.Items.Count - 1;
             }
@@ -183,10 +193,28 @@ namespace Crazy
             frm.Show();
         }
 
+        private void PictureBox_Num(object sender, EventArgs e)
+        {
+            Console.WriteLine("{0}", sender);
+            this.Visible = false;
+            before_game frm = new before_game();
+            frm.Owner = this;
+            frm.Show();
+        }
+
+        private void Quit_Button_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Quit_ask frm = new Quit_ask(); // 새 폼 생성¬
+            frm.Owner = this; // 새 폼의 오너를 현재 폼으로
+            frm.Show();
+        }
+
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            Quit_ask frm = new Quit_ask();
-            frm.Owner = this;
+            this.Visible = false;
+            start frm = new start(); // 새 폼 생성¬
+            frm.Owner = this; // 새 폼의 오너를 현재 폼으로
             frm.Show();
         }
     }

@@ -70,6 +70,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(290, 108);
+            this.ControlBox = false;
             this.Controls.Add(this.quitButton_No);
             this.Controls.Add(this.quitButton_Yes);
             this.Controls.Add(this.ASK);

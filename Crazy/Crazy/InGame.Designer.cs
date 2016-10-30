@@ -50,6 +50,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(799, 601);
+            this.ControlBox = false;
             this.Controls.Add(this.gmae_out);
             this.Name = "ingame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

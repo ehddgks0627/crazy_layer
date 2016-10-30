@@ -26,7 +26,7 @@ namespace Crazy
             else
             {
 
-                label1.Text = join.Nickname + "님 반갑습니다.";
+                label1.Text = Register.Nickname + "님 반갑습니다.";
                 Button Logout_Button = new Button();
                 Logout_Button.Location = new Point(30, 30);
                 Logout_Button.Size = new Size(70, 70);
@@ -60,7 +60,7 @@ namespace Crazy
         private void button2_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            join frm = new join();
+            Register frm = new Register();
             frm.Owner = this;
             frm.Show(); 
             

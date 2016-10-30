@@ -108,5 +108,13 @@ namespace Crazy
             selected_char.Image = Properties.Resources.selected_uni;
             selected_char.Refresh();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            Choose_Room frm = new Choose_Room(); // 새 폼 생성¬
+            frm.Owner = this; // 새 폼의 오너를 현재 폼으로
+            frm.Show();
+        }
     }
 }

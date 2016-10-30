@@ -16,16 +16,19 @@ namespace Crazy
         {
             InitializeComponent();
 
-            
-                Check_Room[Check_Num] = 1;
-                Room_Number[Check_Num] = (Check_Num + 1);
+
+            Check_Room[Check_Num] = 1;
+            Room_Number[Check_Num] = (Check_Num + 1);
+            Room_Now_People[Check_Num] = 1;
 
         }
 
         public static string[] Room_name = new string[32];
         public static string[] Room_PW = new string[32];
-        public static int[] Check_Room = new int[32];
-        public static int[] Room_Number = new int[32];
+        public static int[] Room_Size = new int[32];     //방 최대 인원수
+        public static int[] Room_Now_People = new int[32]; // 방 인원 체크
+        public static int[] Check_Room = new int[32]; // 비밀방인지 공개방인지 체크
+        public static int[] Room_Number = new int[32]; // 방번호 
         public static int Check_Num = 0;
 
 
@@ -33,6 +36,7 @@ namespace Crazy
         {
             Room_name[Check_Num] = textBox1.Text;
             Room_PW[Check_Num] = textBox2.Text;
+
 
             if (Room_name[Check_Num].Length == 0)
             {
@@ -43,12 +47,21 @@ namespace Crazy
             {
                 if (Room_PW[Check_Num].Length > 3)
                 {
-                    Check_Num++;
-                    this.Visible = false;
-                    Application.OpenForms["Form2"].Close();
-                    before_game frm = new before_game();
-                    frm.Owner = this;
-                    frm.Show();
+                    if (comboBox1.Text != "")
+                    {
+                        Room_Size[Check_Num] = Convert.ToInt32(comboBox1.Text);
+                        Check_Num++;
+                        this.Visible = false;
+                        Application.OpenForms["Form2"].Close();
+                        before_game frm = new before_game();
+                        frm.Owner = this;
+                        frm.Show();
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("인원수를 선택해주세요");
+                    }
                 }
 
                 else
@@ -58,17 +71,27 @@ namespace Crazy
 
             }
 
-            else if(Check_Room[Check_Num] == 1)
+            else if (Check_Room[Check_Num] == 1)
             {
-                Check_Num++;
-                this.Visible = false;
-                Application.OpenForms["Form2"].Close();
-                before_game frm = new before_game();
-                frm.Owner = this;
-                frm.Show();
+                if (comboBox1.Text != "")
+                {
+                    Room_Size[Check_Num] = Convert.ToInt32(comboBox1.Text);
+                    Check_Num++;
+                    this.Visible = false;
+                    Application.OpenForms["Choose_Room"].Close();
+                   before_game frm = new before_game();
+                    frm.Owner = this;
+                    frm.Show();
+                }
+
+                else
+                {
+                    MessageBox.Show("인원수를 선택해주세요");
+                }
+
             }
-            
-            
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)
