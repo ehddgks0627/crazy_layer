@@ -71,18 +71,16 @@ namespace Crazy
                 frm.Show();
             }
             else
-            {
                 MessageBox.Show("아이디 / 패스워드가 잘못 되었습니다.");
-            }
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Visible = false;
             start frm = new start();
-            frm.Owner = this;
+            frm.Owner = this.Owner;
             frm.Show();
+   
         }
 
         private void Login_Load(object sender, EventArgs e)

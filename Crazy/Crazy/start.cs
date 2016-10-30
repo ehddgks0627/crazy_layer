@@ -67,7 +67,6 @@ namespace Crazy
             }
         }
 
-
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -110,5 +109,4 @@ namespace Crazy
             frm.Show();
         }
     }
-
 }
