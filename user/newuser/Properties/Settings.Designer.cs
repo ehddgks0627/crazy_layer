@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BTP.Properties
+namespace newuser.Properties
 {
 
 
