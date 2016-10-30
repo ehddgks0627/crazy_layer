@@ -58,11 +58,10 @@ namespace Crazy
         {
             string respon = post_query("http://layer7.kr/login.php", "id=" + ID_BOX.Text, "pw=" + PW_BOX.Text);
             string[] respons = respon.Split('-');
-            key = Convert.ToInt32(respons[0]);
-            nickname = respons[1];
-            MessageBox.Show(respons[0]);
-            if (respon[0] != '0') 
+            if (respon[0] != '0')
             {
+                key = Convert.ToInt32(respons[0]);
+                nickname = respons[1];
                 MessageBox.Show("로그인 성공");
                 check++;
                 this.Visible = false;
