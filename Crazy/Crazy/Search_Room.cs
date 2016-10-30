@@ -15,7 +15,6 @@ namespace Crazy
         public Search_Room()
         {
             InitializeComponent();
-            
         }
 
         int Check_Pw = 1;
@@ -26,47 +25,40 @@ namespace Crazy
             Input_Num = Convert.ToInt32(textBox1.Text);
             Input_Num = int.Parse(textBox1.Text);
 
-            for (int i = 0; i < Make_Room.Check_Num; i++)
+
+            if (1 /* 서버에서 받아온 넘버 */ == Input_Num)
             {
-                if (Make_Room.Room_Number[i] == Input_Num)
+                if (Make_Room.Check_Room == -1)
                 {
-                    if (Make_Room.Check_Room[i] == -1)
-                    {
 
-                        if (Make_Room.Room_PW[i] == textBox2.Text)
-                        {
-                            this.Visible = false;
-                            Application.OpenForms["Form2"].Close();
-                            Game_Room frm = new Game_Room();
-                            frm.Owner = this;
-                            frm.Show();
-                        }
-
-                        else
-                        {
-                            MessageBox.Show("암호가 틀립니다.");
-                        }
-
-                    }
-
-
-                    else if (Make_Room.Check_Room[i] == 1)
+                    if (Make_Room.Room_PW == textBox2.Text)
                     {
                         this.Visible = false;
                         Application.OpenForms["Form2"].Close();
-                        Game_Room frm = new Game_Room();
+                        before_game frm = new before_game();
                         frm.Owner = this;
                         frm.Show();
                     }
 
+                    else
+                        MessageBox.Show("암호가 틀립니다.");
+
                 }
 
-                else
+
+                else if (Make_Room.Check_Room == 1)
                 {
-                    MessageBox.Show("없는 방입니다.");
+                    this.Visible = false;
+                    Application.OpenForms["Form2"].Close();
+                    before_game frm = new before_game();
+                    frm.Owner = this;
+                    frm.Show();
                 }
 
             }
+
+            else
+                MessageBox.Show("없는 방입니다.");
 
         }
 
@@ -76,28 +68,20 @@ namespace Crazy
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-            Check_Pw *= -1 ;
+        { 
+            Check_Pw *= -1;
             if (Check_Pw == -1)
-            {
                 textBox2.ReadOnly = false;
-            }
-            else
-            {
-                textBox2.ReadOnly = true;
-            }
 
+            else
+                textBox2.ReadOnly = true;
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
 
             if (!(Char.IsDigit(e.KeyChar)) && e.KeyChar != 8)
-            {
                 e.Handled = true;
-            }
         }
-
     }
 }

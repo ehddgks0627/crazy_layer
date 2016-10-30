@@ -1,6 +1,6 @@
 ﻿namespace Crazy
 {
-    partial class InGame
+    partial class ingame
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ingame));
+            this.gmae_out = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.gmae_out)).BeginInit();
             this.SuspendLayout();
             // 
-            // InGame
+            // gmae_out
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.gmae_out.Image = ((System.Drawing.Image)(resources.GetObject("gmae_out.Image")));
+            this.gmae_out.Location = new System.Drawing.Point(647, 560);
+            this.gmae_out.Name = "gmae_out";
+            this.gmae_out.Size = new System.Drawing.Size(140, 32);
+            this.gmae_out.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.gmae_out.TabIndex = 0;
+            this.gmae_out.TabStop = false;
+            this.gmae_out.Click += new System.EventHandler(this.gmae_out_Click);
+            // 
+            // ingame
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1543, 890);
-            this.Name = "InGame";
-            this.Text = "Form4";
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(799, 601);
+            this.ControlBox = false;
+            this.Controls.Add(this.gmae_out);
+            this.Name = "ingame";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "ingame";
+            ((System.ComponentModel.ISupportInitialize)(this.gmae_out)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.PictureBox gmae_out;
     }
 }

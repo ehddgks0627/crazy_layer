@@ -1,4 +1,4 @@
-﻿namespace before_start
+﻿namespace Crazy
 {
     partial class Quit_ask
     {
@@ -43,7 +43,6 @@
             this.ASK.Size = new System.Drawing.Size(211, 19);
             this.ASK.TabIndex = 0;
             this.ASK.Text = "게임을 종료하시겠습니까?";
-            this.ASK.Click += new System.EventHandler(this.ASK_Click);
             // 
             // quitButton_Yes
             // 
@@ -71,6 +70,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(290, 108);
+            this.ControlBox = false;
             this.Controls.Add(this.quitButton_No);
             this.Controls.Add(this.quitButton_Yes);
             this.Controls.Add(this.ASK);
