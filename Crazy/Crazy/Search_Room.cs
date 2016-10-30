@@ -28,7 +28,10 @@ namespace Crazy
             if (r_id.Text == "")
                 MessageBox.Show("방 번호를 입력해주세요");
             else
-                MessageBox.Show(start.post_query("http://layer7.kr/room.php", "type=join", "id=" + r_id.Text, "pw=" + r_pw.Text));
+                if(r_pw.Text == "")
+                    MessageBox.Show(start.post_query("http://layer7.kr/room.php", "type=join", "id=" + r_id.Text, "pw="));
+                else
+                    MessageBox.Show(start.post_query("http://layer7.kr/room.php", "type=join", "id=" + r_id.Text, "pw=" + r_pw.Text));
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -74,7 +74,6 @@ namespace Crazy
             Room_name[Check_Num] = textBox1.Text;
             Room_PW[Check_Num] = textBox2.Text;
 
-
             if (Room_name[Check_Num].Length == 0)
             {
                 MessageBox.Show("방제목을 입력해주세요.");
