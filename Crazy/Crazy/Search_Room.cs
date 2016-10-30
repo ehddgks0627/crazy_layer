@@ -15,7 +15,6 @@ namespace Crazy
         public Search_Room()
         {
             InitializeComponent();
-
         }
 
         int Check_Pw = 1;
@@ -42,9 +41,7 @@ namespace Crazy
                     }
 
                     else
-                    {
                         MessageBox.Show("암호가 틀립니다.");
-                    }
 
                 }
 
@@ -61,11 +58,7 @@ namespace Crazy
             }
 
             else
-            {
                 MessageBox.Show("없는 방입니다.");
-            }
-
-
 
         }
 
@@ -75,28 +68,20 @@ namespace Crazy
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
+        { 
             Check_Pw *= -1;
             if (Check_Pw == -1)
-            {
                 textBox2.ReadOnly = false;
-            }
-            else
-            {
-                textBox2.ReadOnly = true;
-            }
 
+            else
+                textBox2.ReadOnly = true;
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
 
             if (!(Char.IsDigit(e.KeyChar)) && e.KeyChar != 8)
-            {
                 e.Handled = true;
-            }
         }
-
     }
 }
