@@ -20,6 +20,7 @@ namespace Crazy
             ID_BOX.Text = "";
             PW_BOX.Text = "";
         }
+
         public static string post_query(params string[] postDatas) // 첫 인자는 무조건 URL주소
         {
             HttpWebRequest wReq;
@@ -51,23 +52,19 @@ namespace Crazy
             }
             return resResult;
         }
-        public static int check = 0;
-        public static int key;
-        public static string nickname;
+
         private void button1_Click(object sender, EventArgs e)
         {
             string respon = post_query("http://layer7.kr/login.php", "id=" + ID_BOX.Text, "pw=" + PW_BOX.Text);
             string[] respons = respon.Split('-');
+
             if (respon[0] != '0')
             {
-                key = Convert.ToInt32(respons[0]);
-                nickname = respons[1];
                 MessageBox.Show("로그인 성공");
-                check++;
                 this.Visible = false;
-                start frm = new start();
-                frm.Owner = this.Owner;
-                frm.Show();
+                var handle = this.Owner as start;
+                handle.set_var(Convert.ToInt32(respons[0]), respons[1].Substring(0, respons[1].Length - 1), true);
+                this.Owner.Visible = true;
                 this.Close();
             }
             else

@@ -12,6 +12,13 @@ namespace Crazy
 {
     public partial class Choose_Room : Form
     {
+        int key;
+
+        public void set_key(int k)
+        {
+            key = k;
+            MessageBox.Show(k.ToString());
+        }
         public Choose_Room()
         {
             InitializeComponent();
@@ -21,27 +28,17 @@ namespace Crazy
 
             int Page_Check_Num = (Make_Room.Check_Num / 4) + 1;
             if (Page_Check_Num != 1 && Make_Room.Check_Num % 4 == 0)
-            {
                 Page_Check_Num--;
-            }
 
 
             if (Page_Num == 1)
-            {
                 button4.Enabled = false;
-            }
             else
-            {
                 button4.Enabled = true;
-            }
             if (Page_Num == Page_Check_Num)
-            {
                 button5.Enabled = false;
-            }
             else
-            {
                 button5.Enabled = true;
-            }
 
 
             Label[] Label_Num = new Label[32];
@@ -86,23 +83,14 @@ namespace Crazy
                     Label_People[i].Location = new Point(1557, 643);
                 }
 
-
-
-
                 Label_Num[i].Text = Make_Room.Room_name[i] + " / " + Make_Room.Room_Number[i];
                 Label_People[i].Text = Make_Room.Room_Now_People[i] + " / " + Make_Room.Room_Size[i];
 
                 if (Make_Room.Check_Room[i] == -1)
-                {
                     PictureBox_Num[i].BackgroundImage = Properties.Resources.yes;
-                }
 
                 else
-                {
                     PictureBox_Num[i].BackgroundImage = Properties.Resources.no;
-                }
-
-
 
             }
 
@@ -139,6 +127,7 @@ namespace Crazy
         {
             Make_Room frm = new Make_Room();
             frm.Show();
+            frm.set_key(key);
         }
 
         private void button3_Click(object sender, EventArgs e)

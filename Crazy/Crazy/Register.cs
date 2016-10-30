@@ -81,11 +81,7 @@ namespace Crazy
                 if (post_query("http://layer7.kr/register.php", "id=" + textBox1.Text, "pw=" + textBox2.Text, "nickname=" + textBox4.Text).Equals("1@"))
                 {
                     MessageBox.Show("회원가입 성공");
-                    this.Visible = false;
-                    start frm = new start();
-                    frm.Owner = this.Owner;
-                    frm.Show();
-                    Key++;
+                    this.Owner.Visible = true;
                     this.Close();
                 }
                 else

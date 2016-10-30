@@ -14,10 +14,15 @@ namespace Crazy
 {
     public partial class Make_Room : Form
     {
+        int key;
+
+        public void set_key(int k)
+        {
+            key = k;
+        }
         public Make_Room()
         {
             InitializeComponent();
-
 
             Check_Room[Check_Num] = 1;
             Room_Number[Check_Num] = (Check_Num + 1);
@@ -91,16 +96,11 @@ namespace Crazy
                     }
 
                     else
-                    {
                         MessageBox.Show("인원수를 선택해주세요");
-                    }
                 }
 
                 else
-                {
                     MessageBox.Show("비밀번호 4글자 이상을 입력해주세요.");
-                }
-
             }
 
             else if (Check_Room[Check_Num] == 1)
@@ -111,23 +111,18 @@ namespace Crazy
                     Check_Num++;
                     this.Visible = false;
                     Application.OpenForms["Choose_Room"].Close();
-                    if(Room_PW[0].Equals(""))
-                        post_query("http://layer7.kr/room.php", "type=create", "max="+Room_Size[1], "owner_key="+Login.key);
+                    if (Room_PW[0].Equals(""))
+                        post_query("http://layer7.kr/room.php", "type=create", "max=" + Room_Size[1], "owner_key=" + key);
                     else
-                        post_query("http://layer7.kr/room.php", "type=create", "max=" + Room_Size[1], "owner_key=" + Login.key, "pw="+Room_PW[0]);
+                        post_query("http://layer7.kr/room.php", "type=create", "max=" + Room_Size[1], "owner_key=" + key, "pw=" + Room_PW[0]);
                     before_game frm = new before_game();
                     frm.Owner = this;
                     frm.Show();
                 }
 
                 else
-                {
                     MessageBox.Show("인원수를 선택해주세요");
-                }
-
             }
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -138,18 +133,12 @@ namespace Crazy
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-
             Check_Room[Check_Num] *= -1;
             if (Check_Room[Check_Num] == -1)
-            {
                 textBox2.ReadOnly = false;
-            }
 
             else
-            {
                 textBox2.ReadOnly = true;
-            }
-
         }
 
     }

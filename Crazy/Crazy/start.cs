@@ -14,6 +14,10 @@ namespace Crazy
 {
     public partial class start : Form
     {
+        string Nickname = "";
+        bool login_check = false;
+        int key = 0;
+
         public static string post_query(params string[] postDatas) // 첫 인자는 무조건 URL주소
         {
             HttpWebRequest wReq;
@@ -46,18 +50,17 @@ namespace Crazy
             return resResult;
         }
 
-        public start()
+        public void set_var(int k = 0, string nick = "", bool logged = false)
         {
-
-            InitializeComponent();
-           
-            if (Login.check == 0)
+            Nickname = nick;
+            key = k;
+            login_check = logged;
+            if (login_check == false)
                 label1.Text = "로그인 해주세요";
 
             else
             {
-
-                label1.Text = Register.Nickname + "님 반갑습니다.";
+                label1.Text = Nickname + "님 반갑습니다.";
                 Button Logout_Button = new Button();
                 Logout_Button.Location = new Point(30, 30);
                 Logout_Button.Size = new Size(70, 70);
@@ -67,10 +70,16 @@ namespace Crazy
             }
         }
 
+        public start()
+        {
+            InitializeComponent();
+            set_var();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (Login.check == 0)
+            if (login_check == false)
                 MessageBox.Show("로그인 해주세요");
 
             else
@@ -78,6 +87,7 @@ namespace Crazy
                 this.Visible = false;
                 Choose_Room frm = new Choose_Room();
                 frm.Show(); // pass master owner to Choose_Room
+                frm.set_key(key);
                 this.Close();
             }
         }
@@ -87,18 +97,13 @@ namespace Crazy
             this.Visible = false;
             Register frm = new Register();
             frm.Owner = this;
-            frm.Show(); 
+            frm.Show();
         }
 
         private void Logout_Button_Click(object sender, EventArgs e)
         {
             MessageBox.Show("로그아웃 성공");
-            Login.check = 0;
-
-            this.Visible = false;
-            start frm = new start();
-            frm.Owner = this;
-            frm.Show();
+            set_var();
         }
 
         private void button3_Click(object sender, EventArgs e)
