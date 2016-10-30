@@ -29,9 +29,11 @@ namespace newuser
 
         private int i_x;//내좌표
         private int i_y;
+        private int level;
+        private int speed;
 
         private int i_max_bubble;//버블길이
-        private int i_cur_bubble;//버블좌표? xy?
+        private int i_cur_bubble;//버블갯수
 
         public static bool b_KEY_UP;//키
         public static bool b_KEY_DOWN;
@@ -113,7 +115,8 @@ namespace newuser
                         }
                         i_x++;
                     }
-                    Delay(var.i_delay * 100);//??
+                    int i_delay=0;
+                    Delay(i_delay * 100);//??
                 }
             }
             catch { }
