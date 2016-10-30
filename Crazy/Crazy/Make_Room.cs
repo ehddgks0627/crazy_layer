@@ -15,11 +15,8 @@ namespace Crazy
         public Make_Room()
         {
             InitializeComponent();
-
-
             Check_Room = 1;
             Room_Now_People = 1;
-
         }
 
         public static string Room_name;
@@ -28,7 +25,6 @@ namespace Crazy
         public static int Room_Now_People; // 방 인원 체크
         public static int Check_Room; // 비밀방인지 공개방인지 체크
 
-
         private void button1_Click(object sender, EventArgs e)
         {
             Room_name = textBox1.Text;
@@ -36,9 +32,7 @@ namespace Crazy
 
 
             if (Room_name.Length == 0)
-            {
                 MessageBox.Show("방제목을 입력해주세요.");
-            }
 
             else if (Check_Room == -1)
             {
@@ -53,18 +47,11 @@ namespace Crazy
                         frm.Owner = this;
                         frm.Show();
                     }
-
                     else
-                    {
                         MessageBox.Show("인원수를 선택해주세요");
-                    }
                 }
-
                 else
-                {
                     MessageBox.Show("비밀번호 4글자 이상을 입력해주세요.");
-                }
-
             }
 
             else if (Check_Room == 1)
@@ -78,15 +65,9 @@ namespace Crazy
                     frm.Owner = this;
                     frm.Show();
                 }
-
                 else
-                {
                     MessageBox.Show("인원수를 선택해주세요");
-                }
-
             }
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -97,18 +78,12 @@ namespace Crazy
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-
             Check_Room *= -1;
+
             if (Check_Room == -1)
-            {
                 textBox2.ReadOnly = false;
-            }
-
-            else
-            {
+              else
                 textBox2.ReadOnly = true;
-            }
-
         }
 
     }
