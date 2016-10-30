@@ -78,7 +78,6 @@ namespace Crazy
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             if (login_check == false)
                 MessageBox.Show("로그인 해주세요");
 

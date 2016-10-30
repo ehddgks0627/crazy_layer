@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.r_id = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.r_pw = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.enter = new System.Windows.Forms.Button();
             this.exit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // r_id
             // 
-            this.textBox1.Location = new System.Drawing.Point(303, 90);
-            this.textBox1.MaxLength = 4;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(71, 26);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.r_id.Location = new System.Drawing.Point(303, 90);
+            this.r_id.MaxLength = 4;
+            this.r_id.Name = "r_id";
+            this.r_id.Size = new System.Drawing.Size(71, 26);
+            this.r_id.TabIndex = 0;
+            this.r_id.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // label1
             // 
@@ -54,15 +54,15 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "방번호";
             // 
-            // textBox2
+            // r_pw
             // 
-            this.textBox2.Location = new System.Drawing.Point(303, 207);
-            this.textBox2.MaxLength = 20;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(71, 26);
-            this.textBox2.TabIndex = 2;
+            this.r_pw.Location = new System.Drawing.Point(303, 207);
+            this.r_pw.MaxLength = 20;
+            this.r_pw.Name = "r_pw";
+            this.r_pw.PasswordChar = '*';
+            this.r_pw.ReadOnly = true;
+            this.r_pw.Size = new System.Drawing.Size(71, 26);
+            this.r_pw.TabIndex = 2;
             // 
             // checkBox1
             // 
@@ -104,9 +104,9 @@
             this.Controls.Add(this.exit);
             this.Controls.Add(this.enter);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.r_pw);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.r_id);
             this.Name = "Search_Room";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search_Room";
@@ -118,9 +118,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox r_id;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox r_pw;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button enter;
         private System.Windows.Forms.Button exit;

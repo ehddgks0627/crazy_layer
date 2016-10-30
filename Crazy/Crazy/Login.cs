@@ -21,41 +21,9 @@ namespace Crazy
             PW_BOX.Text = "";
         }
 
-        public static string post_query(params string[] postDatas) // 첫 인자는 무조건 URL주소
-        {
-            HttpWebRequest wReq;
-            HttpWebResponse wRes;
-            var resResult = "";
-            var uri = new Uri(postDatas[0]); // string 을 Uri 로 형변환
-
-            wReq = (HttpWebRequest)WebRequest.Create(uri); // WebRequest 객체 형성 및 HttpWebRequest 로 형변환
-            wReq.Method = "POST"; // 전송 방법 "GET" or "POST"
-            wReq.ServicePoint.Expect100Continue = false;
-            wReq.ContentType = "application/x-www-form-urlencoded";
-            String postData = "";
-            for (int i = 1; i < postDatas.Length; i++)
-            {
-                if (i != 1)
-                    postData += "&";
-                postData += postDatas[i];
-            }
-            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
-
-            Stream dataStream = wReq.GetRequestStream();
-            dataStream.Write(byteArray, 0, byteArray.Length);
-            dataStream.Close();
-            using (wRes = (HttpWebResponse)wReq.GetResponse())
-            {
-                Stream respPostStream = wRes.GetResponseStream();
-                StreamReader readerPost = new StreamReader(respPostStream, Encoding.GetEncoding("UTF-8"), true);
-                resResult = readerPost.ReadToEnd();
-            }
-            return resResult;
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            string respon = post_query("http://layer7.kr/login.php", "id=" + ID_BOX.Text, "pw=" + PW_BOX.Text);
+            string respon = start.post_query("http://layer7.kr/login.php", "id=" + ID_BOX.Text, "pw=" + PW_BOX.Text);
             string[] respons = respon.Split('-');
 
             if (respon[0] != '0')

@@ -24,7 +24,6 @@ namespace Crazy
             if (Page_Check_Num != 1 && Make_Room.Check_Num % 4 == 0)
                 Page_Check_Num--;
 
-
             if (Page_Num == 1)
                 button4.Enabled = false;
             else
@@ -109,7 +108,7 @@ namespace Crazy
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Search_Room frm = new Search_Room();
+            Search_Room frm = new Search_Room(key);
             frm.Owner = this;
             frm.Show();
         }
@@ -182,7 +181,7 @@ namespace Crazy
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            start frm = new start(); // 새 폼 생성¬
+            start frm = new start(); // 새 폼 생성
             frm.Show();
             this.Close();
         }

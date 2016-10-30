@@ -13,47 +13,22 @@ namespace Crazy
     public partial class Search_Room : Form
     {
         int check_pw = 1;
+        int key;
 
-        public Search_Room()
+        public Search_Room(int k)
         {
             InitializeComponent();
+            key = k;
+            r_id.Text = "";
+            r_pw.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int room_id;
-            room_id = Convert.ToInt32(textBox1.Text);
-            room_id = int.Parse(textBox1.Text);
-
-            for (int i = 0; i < Make_Room.Check_Num; i++)
-            {
-                if (Make_Room.Room_Number[i] == room_id)
-                {
-                    if (Make_Room.Check_Room[i] == -1)
-                    {
-                        if (Make_Room.Room_PW[i] == textBox2.Text)
-                        {
-                            this.Visible = false;
-                            Application.OpenForms["Form2"].Close();
-                            before_game frm = new before_game();
-                            frm.Owner = this;
-                            frm.Show();
-                        }
-                        else
-                            MessageBox.Show("암호가 틀립니다.");
-                    }
-                    else if (Make_Room.Check_Room[i] == 1)
-                    {
-                        this.Visible = false;
-                        Application.OpenForms["Form2"].Close();
-                        before_game frm = new before_game();
-                        frm.Owner = this;
-                        frm.Show();
-                    }
-                }
-                else
-                    MessageBox.Show("없는 방입니다.");
-            }
+            if (r_id.Text == "")
+                MessageBox.Show("방 번호를 입력해주세요");
+            else
+                MessageBox.Show(start.post_query("http://layer7.kr/room.php", "type=join", "id=" + r_id.Text, "pw=" + r_pw.Text));
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -67,9 +42,9 @@ namespace Crazy
         {
             check_pw *= -1;
             if (check_pw == -1)
-                textBox2.ReadOnly = false;
+                r_pw.ReadOnly = false;
             else
-                textBox2.ReadOnly = true;
+                r_pw.ReadOnly = true;
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
