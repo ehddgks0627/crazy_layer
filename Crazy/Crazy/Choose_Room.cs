@@ -19,9 +19,9 @@ namespace Crazy
             label1.Text = Register.Nickname;
             label2.Text = "" + Page_Num;
 
-            int Page_Check_Num = (1 /*방현재 최대 수*/  / 4) + 1;
+            int Page_Check_Num = (20 /*방현재 최대 수 서버에서받아옴*/  / 4) + 1;
 
-            if (Page_Check_Num != 1 && 1 /*방현재 최대 수*/ % 4 == 0)
+            if (Page_Check_Num != 1 && 20 /*방현재 최대 수 서버에서 받아몸*/ % 4 == 0)
                 Page_Check_Num--;
 
             if (Page_Num == 1) 
@@ -34,13 +34,11 @@ namespace Crazy
             else
                 button5.Enabled = true;
 
-
             Label Label_Num = new Label();
             Label Label_People = new Label();
             PictureBox PictureBox_Num = new PictureBox();
 
-
-            for (int i = 0; i < 1 /* 만들어진 방 총 갯수*/; i++)
+            for (int i = 0; i < 20 /* 만들어진 방 총 갯수 서버에서 받아옴*/; i++)
             {
                 PictureBox_Num = new PictureBox();
                 PictureBox_Num.Size = new Size(253, 163);
@@ -75,7 +73,7 @@ namespace Crazy
                 }
 
                 Label_Num.Text = Make_Room.Room_name + " / " + ""/*방 번호 서버에서 받아올꺼*/;
-                Label_People.Text = ""/*현재 방 인원*/ + " / " + Make_Room.Room_Size;
+                Label_People.Text = ""/*현재 방 인원 서버에서 받음*/ + " / " + Make_Room.Room_Size;
 
                 if (Make_Room.Check_Room == -1)
                     PictureBox_Num.BackgroundImage = Properties.Resources.yes;
@@ -86,7 +84,7 @@ namespace Crazy
             for (int i = 0; i < 4; i++)
             {
                 Controls.Add(PictureBox_Num);
-                Controls.Add(Label_Num);
+                Controls.Add(Label_Num);             //페이지에 따른 방 목록을 등록
                 Controls.Add(Label_People);
             }
         }
