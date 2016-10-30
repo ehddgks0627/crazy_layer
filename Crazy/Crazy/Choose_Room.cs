@@ -13,16 +13,10 @@ namespace Crazy
     public partial class Choose_Room : Form
     {
         int key;
-
-        public void set_key(int k)
-        {
-            key = k;
-            MessageBox.Show(k.ToString());
-        }
-        public Choose_Room()
+        public Choose_Room(int k = 0)
         {
             InitializeComponent();
-
+            key = k;
             label1.Text = Register.Nickname;
             label2.Text = "" + Page_Num;
 
@@ -91,7 +85,6 @@ namespace Crazy
 
                 else
                     PictureBox_Num[i].BackgroundImage = Properties.Resources.no;
-
             }
 
             for (int i = 0; i < 4; i++)
@@ -100,8 +93,6 @@ namespace Crazy
                 Controls.Add(Label_Num[(Page_Num - 1) * 4 + i]);
                 Controls.Add(Label_People[(Page_Num - 1) * 4 + i]);
             }
-
-
         }
 
         public static int Check_chatting = 0;
@@ -118,8 +109,8 @@ namespace Crazy
 
         private void button1_Click(object sender, EventArgs e)
         {
-
             Search_Room frm = new Search_Room();
+            frm.Owner = this;
             frm.Show();
         }
 
@@ -145,21 +136,18 @@ namespace Crazy
                 textBox1.Text = "";
                 Check_chatting = 1;
             }
-
         }
 
         public static int Page_Num = 1;
 
         private void button4_Click(object sender, EventArgs e)
         {
-
             Page_Num--;
             label2.Text = "" + Page_Num;
             this.Visible = false;
             Choose_Room frm = new Choose_Room();
             frm.Owner = this;
             frm.Show();
-
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -174,14 +162,6 @@ namespace Crazy
 
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-            Choose_Room frm = new Choose_Room();
-            frm.Owner = this;
-            frm.Show();
-        }
-
         private void PictureBox_Num(object sender, EventArgs e)
         {
             Console.WriteLine("{0}", sender);
@@ -194,7 +174,7 @@ namespace Crazy
         private void Quit_Button_Click(object sender, EventArgs e)
         {
             this.Visible = false;
-            Quit_ask frm = new Quit_ask(); // 새 폼 생성¬
+            Quit_ask frm = new Quit_ask(); // 새 폼 생성
             frm.Owner = this; // 새 폼의 오너를 현재 폼으로
             frm.Show();
         }
