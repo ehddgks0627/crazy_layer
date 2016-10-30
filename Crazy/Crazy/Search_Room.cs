@@ -12,22 +12,22 @@ namespace Crazy
 {
     public partial class Search_Room : Form
     {
+        int check_pw = 1;
+
         public Search_Room()
         {
             InitializeComponent();
         }
 
-        int Check_Pw = 1;
-
         private void button1_Click(object sender, EventArgs e)
         {
-            int Input_Num;
-            Input_Num = Convert.ToInt32(textBox1.Text);
-            Input_Num = int.Parse(textBox1.Text);
+            int room_id;
+            room_id = Convert.ToInt32(textBox1.Text);
+            room_id = int.Parse(textBox1.Text);
 
             for (int i = 0; i < Make_Room.Check_Num; i++)
             {
-                if (Make_Room.Room_Number[i] == Input_Num)
+                if (Make_Room.Room_Number[i] == room_id)
                 {
                     if (Make_Room.Check_Room[i] == -1)
                     {
@@ -65,8 +65,8 @@ namespace Crazy
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            Check_Pw *= -1;
-            if (Check_Pw == -1)
+            check_pw *= -1;
+            if (check_pw == -1)
                 textBox2.ReadOnly = false;
             else
                 textBox2.ReadOnly = true;
