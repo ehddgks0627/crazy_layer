@@ -16,9 +16,9 @@ namespace Crazy
     {
         public Login()
         {
+            InitializeComponent();
             ID_BOX.Text = "";
             PW_BOX.Text = "";
-            InitializeComponent();
         }
         public static string post_query(params string[] postDatas) // 첫 인자는 무조건 URL주소
         {
@@ -67,8 +67,9 @@ namespace Crazy
                 check++;
                 this.Visible = false;
                 start frm = new start();
-                frm.Owner = this;
+                frm.Owner = this.Owner;
                 frm.Show();
+                this.Close();
             }
             else
                 MessageBox.Show("아이디 / 패스워드가 잘못 되었습니다.");
@@ -80,12 +81,7 @@ namespace Crazy
             start frm = new start();
             frm.Owner = this.Owner;
             frm.Show();
-   
-        }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
     }
 }
