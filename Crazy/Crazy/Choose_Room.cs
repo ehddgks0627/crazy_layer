@@ -172,7 +172,6 @@ namespace Crazy
 
         private void Quit_Button_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
             Quit_ask frm = new Quit_ask(); // 새 폼 생성
             frm.Owner = this; // 새 폼의 오너를 현재 폼으로
             frm.Show();
