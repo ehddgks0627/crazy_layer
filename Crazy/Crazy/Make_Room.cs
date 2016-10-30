@@ -55,34 +55,32 @@ namespace Crazy
             }
             return resResult;
         }
-        public static string[] Room_name = new string[32];
-        public static string[] Room_PW = new string[32];
-        public static int[] Room_Size = new int[32];     //방 최대 인원수
-        public static int[] Room_Now_People = new int[32]; // 방 인원 체크
-        public static int[] Check_Room = new int[32]; // 비밀방인지 공개방인지 체크
-        public static int[] Room_Number = new int[32]; // 방번호 
-        public static int Check_Num = 0;
+        public static string Room_name;
+        public static string Room_PW;
+        public static int Room_Size;     //방 최대 인원수
+        public static int Room_Now_People; // 방 인원 체크
+        public static int Check_Room; // 비밀방인지 공개방인지 체크
+        public static int Room_Number; // 방번호 
 
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Room_name[Check_Num] = textBox1.Text;
-            Room_PW[Check_Num] = textBox2.Text;
+            Room_name = textBox1.Text;
+            Room_PW = textBox2.Text;
 
 
-            if (Room_name[Check_Num].Length == 0)
+            if (Room_name.Length == 0)
             {
                 MessageBox.Show("방제목을 입력해주세요.");
             }
 
-            else if (Check_Room[Check_Num] == -1)
+            else if (Check_Room == -1)
             {
-                if (Room_PW[Check_Num].Length > 3)
+                if (Room_PW.Length > 3)
                 {
                     if (comboBox1.Text != "")
                     {
-                        Room_Size[Check_Num] = Convert.ToInt32(comboBox1.Text);
-                        Check_Num++;
+                        Room_Size = Convert.ToInt32(comboBox1.Text);
                         this.Visible = false;
                         Application.OpenForms["Form2"].Close();
                         before_game frm = new before_game();
@@ -103,18 +101,17 @@ namespace Crazy
 
             }
 
-            else if (Check_Room[Check_Num] == 1)
+            else if (Check_Room== 1)
             {
                 if (comboBox1.Text != "")
                 {
-                    Room_Size[Check_Num] = Convert.ToInt32(comboBox1.Text);
-                    Check_Num++;
+                    Room_Size = Convert.ToInt32(comboBox1.Text);
                     this.Visible = false;
                     Application.OpenForms["Choose_Room"].Close();
                     if(Room_PW[0].Equals(""))
-                        post_query("http://layer7.kr/room.php", "type=create", "max="+Room_Size[1], "owner_key="+Login.key);
+                        post_query("http://layer7.kr/room.php", "type=create", "max="+Room_Size, "owner_key="+Login.key);
                     else
-                        post_query("http://layer7.kr/room.php", "type=create", "max=" + Room_Size[1], "owner_key=" + Login.key, "pw="+Room_PW[0]);
+                        post_query("http://layer7.kr/room.php", "type=create", "max=" + Room_Size, "owner_key=" + Login.key, "pw="+Room_PW);
                     before_game frm = new before_game();
                     frm.Owner = this;
                     frm.Show();
