@@ -77,8 +77,8 @@ namespace Crazy
             {
                 this.Visible = false;
                 Choose_Room frm = new Choose_Room();
-                frm.Owner = this;
-                frm.Show();
+                frm.Show(); // pass master owner to Choose_Room
+                this.Close();
             }
         }
 
