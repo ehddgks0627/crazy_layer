@@ -28,20 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.thisone = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.thisone)).BeginInit();
             this.SuspendLayout();
+            // 
+            // thisone
+            // 
+            this.thisone.Image = global::newuser.Properties.Resources.pika;
+            this.thisone.Location = new System.Drawing.Point(0, 0);
+            this.thisone.Name = "thisone";
+            this.thisone.Size = new System.Drawing.Size(51, 50);
+            this.thisone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.thisone.TabIndex = 0;
+            this.thisone.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(456, 353);
+            this.Controls.Add(this.thisone);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.thisone)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.PictureBox thisone;
     }
 }
 
