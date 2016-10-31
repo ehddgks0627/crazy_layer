@@ -52,8 +52,7 @@
             // game_exit
             // 
             this.game_exit.Image = ((System.Drawing.Image)(resources.GetObject("game_exit.Image")));
-            this.game_exit.Location = new System.Drawing.Point(1393, 1144);
-            this.game_exit.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.game_exit.Location = new System.Drawing.Point(750, 572);
             this.game_exit.Name = "game_exit";
             this.game_exit.Size = new System.Drawing.Size(31, 24);
             this.game_exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -64,8 +63,7 @@
             // social_open
             // 
             this.social_open.Image = ((System.Drawing.Image)(resources.GetObject("social_open.Image")));
-            this.social_open.Location = new System.Drawing.Point(1313, 1144);
-            this.social_open.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.social_open.Location = new System.Drawing.Point(707, 572);
             this.social_open.Name = "social_open";
             this.social_open.Size = new System.Drawing.Size(31, 24);
             this.social_open.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -76,8 +74,7 @@
             // game_start
             // 
             this.game_start.Image = ((System.Drawing.Image)(resources.GetObject("game_start.Image")));
-            this.game_start.Location = new System.Drawing.Point(953, 990);
-            this.game_start.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.game_start.Location = new System.Drawing.Point(513, 495);
             this.game_start.Name = "game_start";
             this.game_start.Size = new System.Drawing.Size(191, 55);
             this.game_start.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -88,8 +85,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(189, 1144);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(102, 572);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(31, 24);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -100,8 +96,7 @@
             // select_dao
             // 
             this.select_dao.Image = ((System.Drawing.Image)(resources.GetObject("select_dao.Image")));
-            this.select_dao.Location = new System.Drawing.Point(910, 320);
-            this.select_dao.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.select_dao.Location = new System.Drawing.Point(490, 160);
             this.select_dao.Name = "select_dao";
             this.select_dao.Size = new System.Drawing.Size(65, 43);
             this.select_dao.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -112,8 +107,7 @@
             // selct_dizny
             // 
             this.selct_dizny.Image = ((System.Drawing.Image)(resources.GetObject("selct_dizny.Image")));
-            this.selct_dizny.Location = new System.Drawing.Point(1042, 320);
-            this.selct_dizny.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.selct_dizny.Location = new System.Drawing.Point(561, 160);
             this.selct_dizny.Name = "selct_dizny";
             this.selct_dizny.Size = new System.Drawing.Size(65, 43);
             this.selct_dizny.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -124,8 +118,7 @@
             // select_uni
             // 
             this.select_uni.Image = ((System.Drawing.Image)(resources.GetObject("select_uni.Image")));
-            this.select_uni.Location = new System.Drawing.Point(1174, 320);
-            this.select_uni.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.select_uni.Location = new System.Drawing.Point(632, 160);
             this.select_uni.Name = "select_uni";
             this.select_uni.Size = new System.Drawing.Size(65, 43);
             this.select_uni.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -136,8 +129,7 @@
             // select_bazzi
             // 
             this.select_bazzi.Image = ((System.Drawing.Image)(resources.GetObject("select_bazzi.Image")));
-            this.select_bazzi.Location = new System.Drawing.Point(1306, 320);
-            this.select_bazzi.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.select_bazzi.Location = new System.Drawing.Point(703, 160);
             this.select_bazzi.Name = "select_bazzi";
             this.select_bazzi.Size = new System.Drawing.Size(65, 43);
             this.select_bazzi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -147,8 +139,7 @@
             // 
             // selected_char
             // 
-            this.selected_char.Location = new System.Drawing.Point(910, 84);
-            this.selected_char.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.selected_char.Location = new System.Drawing.Point(490, 42);
             this.selected_char.Name = "selected_char";
             this.selected_char.Size = new System.Drawing.Size(283, 88);
             this.selected_char.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -157,12 +148,12 @@
             // 
             // before_game
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1478, 1202);
+            this.ClientSize = new System.Drawing.Size(804, 601);
             this.ControlBox = false;
             this.Controls.Add(this.selected_char);
             this.Controls.Add(this.select_bazzi);
@@ -173,7 +164,6 @@
             this.Controls.Add(this.game_start);
             this.Controls.Add(this.social_open);
             this.Controls.Add(this.game_exit);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "before_game";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
