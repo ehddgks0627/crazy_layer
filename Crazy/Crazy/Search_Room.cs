@@ -23,6 +23,9 @@ namespace Crazy
             r_pw.Text = "";
         }
 
+        public static string Room_List = (start.post_query("http://layer7.kr/room.php", "type=list"));
+        public static string[] Room = Room_List.Split(';');
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (r_id.Text == "")
@@ -32,6 +35,10 @@ namespace Crazy
                 MessageBox.Show(start.post_query("http://layer7.kr/room.php", "type=join", "id=" + r_id.Text, "key=" + key));
             else
                 MessageBox.Show(start.post_query("http://layer7.kr/room.php", "type=join", "id=" + r_id.Text, "key=" + key, "pw=" + r_pw.Text));
+
+            Console.WriteLine("{0}",Room_List);
+            Console.WriteLine("{0}",Room[Convert.ToInt16(r_id.Text) - 1]);
+           
         }
 
         private void button2_Click(object sender, EventArgs e)
