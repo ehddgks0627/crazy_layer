@@ -78,7 +78,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(222, 473);
+            this.button1.Location = new System.Drawing.Point(235, 473);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(136, 127);
             this.button1.TabIndex = 4;
@@ -108,10 +108,11 @@
             "6",
             "7",
             "8"});
-            this.room_max.Location = new System.Drawing.Point(523, 340);
+            this.room_max.Location = new System.Drawing.Point(536, 340);
             this.room_max.Name = "room_max";
             this.room_max.Size = new System.Drawing.Size(85, 28);
             this.room_max.TabIndex = 6;
+            this.room_max.SelectedIndexChanged += new System.EventHandler(this.room_max_SelectedIndexChanged);
             // 
             // label2
             // 
