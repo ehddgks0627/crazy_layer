@@ -112,7 +112,6 @@
             this.room_max.Name = "room_max";
             this.room_max.Size = new System.Drawing.Size(85, 28);
             this.room_max.TabIndex = 6;
-            this.room_max.SelectedIndexChanged += new System.EventHandler(this.room_max_SelectedIndexChanged);
             // 
             // label2
             // 

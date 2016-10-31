@@ -87,10 +87,5 @@ namespace Crazy
             else
                 room_pwd.ReadOnly = true;
         }
-
-        private void room_max_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
