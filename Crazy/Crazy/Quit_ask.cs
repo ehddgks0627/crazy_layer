@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,3 +32,36 @@ namespace Crazy
         }
     }
 }
+=======
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Crazy
+{
+    public partial class Quit_ask : Form
+    {
+        public Quit_ask()
+        {
+            InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+        }
+
+        private void quitButton_No_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void quitButton_Yes_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+    }
+}
+>>>>>>> origin/error_fix
