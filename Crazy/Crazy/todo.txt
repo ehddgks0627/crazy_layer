@@ -6,6 +6,7 @@
 6. 방 들어간 후 페이지 넘어가기
 7. 로그인 성공하면 버튼 비활성화
 8. 폼 크기
+9.test
 
             label1.Text = Register.Nickname;
             label2.Text = "" + Page_Num;
