@@ -12,74 +12,46 @@ namespace Crazy
 {
     public partial class Search_Room : Form
     {
-        public Search_Room()
+        int check_pw = 1;
+        int key;
+
+        public Search_Room(int k)
         {
             InitializeComponent();
+            key = k;
+            r_id.Text = "";
+            r_pw.Text = "";
         }
-
-        int Check_Pw = 1;
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int Input_Num;
-            Input_Num = Convert.ToInt32(textBox1.Text);
-            Input_Num = int.Parse(textBox1.Text);
-
-
-            if (1 /* 서버에서 받아온 넘버 */ == Input_Num)
-            {
-                if (Make_Room.Check_Room == -1)
-                {
-
-                    if (Make_Room.Room_PW == textBox2.Text)
-                    {
-                        this.Visible = false;
-                        Application.OpenForms["Form2"].Close();
-                        before_game frm = new before_game();
-                        frm.Owner = this;
-                        frm.Show();
-                    }
-
-                    else
-                        MessageBox.Show("암호가 틀립니다.");
-
-                }
-
-
-                else if (Make_Room.Check_Room == 1)
-                {
-                    this.Visible = false;
-                    Application.OpenForms["Form2"].Close();
-                    before_game frm = new before_game();
-                    frm.Owner = this;
-                    frm.Show();
-                }
-
-            }
-
+            if (r_id.Text == "")
+                MessageBox.Show("방 번호를 입력해주세요");
             else
-                MessageBox.Show("없는 방입니다.");
-
+                if (pwd.CheckState == CheckState.Unchecked)
+                MessageBox.Show(start.post_query("http://layer7.kr/room.php", "type=join", "id=" + r_id.Text, "key=" + key));
+            else
+                MessageBox.Show(start.post_query("http://layer7.kr/room.php", "type=join", "id=" + r_id.Text, "key=" + key, "pw=" + r_pw.Text));
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Visible = false;
+            this.Owner.Visible = true;
+            this.Close();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        { 
-            Check_Pw *= -1;
-            if (Check_Pw == -1)
-                textBox2.ReadOnly = false;
-
+        {
+            check_pw *= -1;
+            if (check_pw == -1)
+                r_pw.ReadOnly = false;
             else
-                textBox2.ReadOnly = true;
+                r_pw.ReadOnly = true;
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-
             if (!(Char.IsDigit(e.KeyChar)) && e.KeyChar != 8)
                 e.Handled = true;
         }
