@@ -109,5 +109,10 @@ namespace Crazy
             frm.Show();
             this.Close();
         }
+
+        private void Choose_Room_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
