@@ -15,10 +15,12 @@ namespace Crazy
     public partial class before_game : Form
     {
         int player_char = 0;
+        int key;
 
-        public before_game()
+        public before_game(int k)
         {
             InitializeComponent();
+            key = k;
         }
 
         private void game_exit_Click(object sender, EventArgs e)

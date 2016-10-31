@@ -25,6 +25,8 @@ namespace Crazy
 
         private void quitButton_Yes_Click(object sender, EventArgs e)
         {
+            this.Owner.Owner.Close();
+            this.Owner.Close();
             Application.Exit();
         }
     }
