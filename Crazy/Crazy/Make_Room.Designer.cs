@@ -40,9 +40,10 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(220, 117);
+            this.label1.Location = new System.Drawing.Point(318, 140);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 40);
+            this.label1.Size = new System.Drawing.Size(129, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "방제목";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -50,9 +51,10 @@
             // pwd
             // 
             this.pwd.AutoSize = true;
-            this.pwd.Location = new System.Drawing.Point(222, 252);
+            this.pwd.Location = new System.Drawing.Point(321, 302);
+            this.pwd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pwd.Name = "pwd";
-            this.pwd.Size = new System.Drawing.Size(71, 24);
+            this.pwd.Size = new System.Drawing.Size(113, 29);
             this.pwd.TabIndex = 1;
             this.pwd.Text = "비밀방";
             this.pwd.UseVisualStyleBackColor = true;
@@ -60,27 +62,30 @@
             // 
             // room_sub
             // 
-            this.room_sub.Location = new System.Drawing.Point(329, 123);
+            this.room_sub.Location = new System.Drawing.Point(475, 148);
+            this.room_sub.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.room_sub.MaxLength = 12;
             this.room_sub.Name = "room_sub";
-            this.room_sub.Size = new System.Drawing.Size(279, 26);
+            this.room_sub.Size = new System.Drawing.Size(401, 35);
             this.room_sub.TabIndex = 2;
             // 
             // room_pwd
             // 
-            this.room_pwd.Location = new System.Drawing.Point(329, 250);
+            this.room_pwd.Location = new System.Drawing.Point(475, 300);
+            this.room_pwd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.room_pwd.MaxLength = 20;
             this.room_pwd.Name = "room_pwd";
             this.room_pwd.PasswordChar = '*';
             this.room_pwd.ReadOnly = true;
-            this.room_pwd.Size = new System.Drawing.Size(279, 26);
+            this.room_pwd.Size = new System.Drawing.Size(401, 35);
             this.room_pwd.TabIndex = 3;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(235, 473);
+            this.button1.Location = new System.Drawing.Point(339, 568);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 127);
+            this.button1.Size = new System.Drawing.Size(196, 152);
             this.button1.TabIndex = 4;
             this.button1.Text = "생성";
             this.button1.UseVisualStyleBackColor = true;
@@ -88,9 +93,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(472, 473);
+            this.button2.Location = new System.Drawing.Point(682, 568);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(136, 127);
+            this.button2.Size = new System.Drawing.Size(196, 152);
             this.button2.TabIndex = 5;
             this.button2.Text = "취소";
             this.button2.UseVisualStyleBackColor = true;
@@ -108,25 +114,28 @@
             "6",
             "7",
             "8"});
-            this.room_max.Location = new System.Drawing.Point(536, 340);
+            this.room_max.Location = new System.Drawing.Point(774, 408);
+            this.room_max.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.room_max.Name = "room_max";
-            this.room_max.Size = new System.Drawing.Size(85, 28);
+            this.room_max.Size = new System.Drawing.Size(121, 32);
             this.room_max.TabIndex = 6;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(212, 333);
+            this.label2.Location = new System.Drawing.Point(306, 400);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 40);
+            this.label2.Size = new System.Drawing.Size(129, 48);
             this.label2.TabIndex = 7;
             this.label2.Text = "인원";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Make_Room
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 850);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(1228, 1020);
             this.ControlBox = false;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.room_max);
@@ -136,6 +145,7 @@
             this.Controls.Add(this.room_sub);
             this.Controls.Add(this.pwd);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Make_Room";
             this.Text = "Make_Room";
             this.ResumeLayout(false);
