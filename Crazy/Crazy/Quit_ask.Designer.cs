@@ -36,21 +36,19 @@
             // ASK
             // 
             this.ASK.AutoSize = true;
-            this.ASK.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ASK.Font = new System.Drawing.Font("제주고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ASK.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.ASK.Location = new System.Drawing.Point(67, 52);
-            this.ASK.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.ASK.Location = new System.Drawing.Point(36, 26);
             this.ASK.Name = "ASK";
-            this.ASK.Size = new System.Drawing.Size(469, 44);
+            this.ASK.Size = new System.Drawing.Size(211, 19);
             this.ASK.TabIndex = 0;
             this.ASK.Text = "게임을 종료하시겠습니까?";
             // 
             // quitButton_Yes
             // 
-            this.quitButton_Yes.Location = new System.Drawing.Point(74, 136);
-            this.quitButton_Yes.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.quitButton_Yes.Location = new System.Drawing.Point(40, 68);
             this.quitButton_Yes.Name = "quitButton_Yes";
-            this.quitButton_Yes.Size = new System.Drawing.Size(139, 46);
+            this.quitButton_Yes.Size = new System.Drawing.Size(75, 23);
             this.quitButton_Yes.TabIndex = 1;
             this.quitButton_Yes.Text = "예";
             this.quitButton_Yes.UseVisualStyleBackColor = true;
@@ -58,10 +56,9 @@
             // 
             // quitButton_No
             // 
-            this.quitButton_No.Location = new System.Drawing.Point(319, 136);
-            this.quitButton_No.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.quitButton_No.Location = new System.Drawing.Point(172, 68);
             this.quitButton_No.Name = "quitButton_No";
-            this.quitButton_No.Size = new System.Drawing.Size(139, 46);
+            this.quitButton_No.Size = new System.Drawing.Size(75, 23);
             this.quitButton_No.TabIndex = 1;
             this.quitButton_No.Text = "아니오";
             this.quitButton_No.UseVisualStyleBackColor = true;
@@ -69,16 +66,14 @@
             // 
             // Quit_ask
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(539, 216);
+            this.ClientSize = new System.Drawing.Size(290, 108);
             this.ControlBox = false;
             this.Controls.Add(this.quitButton_No);
             this.Controls.Add(this.quitButton_Yes);
             this.Controls.Add(this.ASK);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Quit_ask";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";

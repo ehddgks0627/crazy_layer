@@ -20,21 +20,12 @@ namespace Crazy
             ID_BOX.Text = "";
             PW_BOX.Text = "";
         }
-<<<<<<< HEAD
-        static string[] respons;
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string respon = start.post_query("http://layer7.kr/login.php", "id=" + ID_BOX.Text, "pw=" + PW_BOX.Text);
-            respons = respon.Split('-');
-
-=======
 
         private void button1_Click(object sender, EventArgs e)
         {
             string respon = start.post_query("http://layer7.kr/login.php", "id=" + ID_BOX.Text, "pw=" + PW_BOX.Text);
             string[] respons = respon.Split('-');
 
->>>>>>> origin/error_fix
             if (respon[0] != '0')
             {
                 MessageBox.Show("로그인 성공");

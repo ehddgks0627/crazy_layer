@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -122,189 +121,68 @@ namespace Crazy
             this.Close();
         }
 
-        public class send_sock
-        {
-            public UdpClient udpclient = null;
-            private IPAddress multiaddress;
-            private IPEndPoint remoteEP;
-            byte[] buffer = null;
-            public send_sock(string ip, int port)
-            {
-                udpclient = new UdpClient();
-                multiaddress = IPAddress.Parse(ip);
-                udpclient.JoinMulticastGroup(multiaddress);
-                remoteEP = new IPEndPoint(multiaddress, port);
-            }
-            public bool sendbuf(string message)
-            {
-                buffer = Encoding.Unicode.GetBytes(message);
-                udpclient.Send(buffer, buffer.Length, remoteEP);
-                return true;
-            }
-            public void closesock()
-            {
-                if (udpclient != null)
-                    udpclient.Close();
-                else
-                    MessageBox.Show("서버 안열림여");
-            }
-        }
-        public class listen_sock
-        {
-            public UdpClient udpclient = null;
-            public IPAddress multiaddress;
-            private IPEndPoint localEp;
-            public listen_sock(string ip, int port)
-            {
-                udpclient = new UdpClient();
-
-                udpclient.ExclusiveAddressUse = false;
-                localEp = new IPEndPoint(IPAddress.Any, 2222);
-
-                udpclient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-                udpclient.ExclusiveAddressUse = false;
-
-                udpclient.Client.Bind(localEp);
-
-                multiaddress = IPAddress.Parse("239.0.0.222");
-                udpclient.JoinMulticastGroup(multiaddress);
-            }
-            public void listen()
-            {
-                while (true)
-                {
-                    byte[] data = udpclient.Receive(ref localEp);
-                    string strData = Encoding.Unicode.GetString(data);
-                    MessageBox.Show(strData);
-                    
-                    if (strData == "quit")
-                        break;
-                }
-            }
-            public void close()
-            {
-                udpclient.Close();
-            }
-        }
     }
-}
-=======
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Crazy
-{
-    public partial class Choose_Room : Form
+    public class send_sock
     {
-        int key;
-        public Choose_Room(int k = 0)
+        public UdpClient udpclient = null;
+        private IPAddress multiaddress;
+        private IPEndPoint remoteEP;
+        byte[] buffer = null;
+        public send_sock(string ip, int port)
         {
-            InitializeComponent();
-            key = k;
+            udpclient = new UdpClient();
+            multiaddress = IPAddress.Parse(ip);
+            udpclient.JoinMulticastGroup(multiaddress);
+            remoteEP = new IPEndPoint(multiaddress, port);
         }
-
-        public static int Check_chatting = 0;
-
-        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        public bool sendbuf(string message)
         {
-            if (textBox1.Text.Length != 0 && e.KeyCode == Keys.Enter)
+            buffer = Encoding.Unicode.GetBytes(message);
+            udpclient.Send(buffer, buffer.Length, remoteEP);
+            return true;
+        }
+        public void closesock()
+        {
+            if (udpclient != null)
+                udpclient.Close();
+            else
+                MessageBox.Show("서버 안열림여");
+        }
+    }
+    public class listen_sock
+    {
+        public UdpClient udpclient = null;
+        public IPAddress multiaddress;
+        private IPEndPoint localEp;
+        public listen_sock(string ip, int port)
+        {
+            udpclient = new UdpClient();
+
+            udpclient.ExclusiveAddressUse = false;
+            localEp = new IPEndPoint(IPAddress.Any, 2222);
+
+            udpclient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+            udpclient.ExclusiveAddressUse = false;
+
+            udpclient.Client.Bind(localEp);
+
+            multiaddress = IPAddress.Parse("239.0.0.222");
+            udpclient.JoinMulticastGroup(multiaddress);
+        }
+        public void listen()
+        {
+            while (true)
             {
-                Chatting_Box.Items.Add(Register.Nickname + " : " + textBox1.Text);
-                textBox1.Text = "";
-                Chatting_Box.SelectedIndex = Chatting_Box.Items.Count - 1;
+                byte[] data = udpclient.Receive(ref localEp);
+                string strData = Encoding.Unicode.GetString(data);
+
+                if (strData == "quit")
+                    break;
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        public void close()
         {
-            Search_Room frm = new Search_Room(key);
-            frm.Owner = this;
-            frm.Show();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Make_Room frm = new Make_Room(key);
-            frm.Owner = this;
-            frm.Show();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-            Shop frm = new Shop();
-            frm.Owner = this;
-            frm.Show();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            if (Check_chatting == 0)
-            {
-                textBox1.Text = "";
-                Check_chatting = 1;
-            }
-        }
-
-        public static int Page_Num = 1;
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Page_Num--;
-            label2.Text = "" + Page_Num;
-            this.Visible = false;
-            Choose_Room frm = new Choose_Room();
-            frm.Owner = this;
-            frm.Show();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-            Page_Num++;
-            label2.Text = "" + Page_Num;
-            this.Visible = false;
-            Choose_Room frm = new Choose_Room();
-            frm.Owner = this;
-            frm.Show();
-
-        }
-
-        private void PictureBox_Num(object sender, EventArgs e)
-        {
-            Console.WriteLine("{0}", sender);
-            this.Visible = false;
-            before_game frm = new before_game(key);
-            frm.Owner = this;
-            frm.Show();
-        }
-
-        private void Quit_Button_Click(object sender, EventArgs e)
-        {
-            Quit_ask frm = new Quit_ask(); // 새 폼 생성
-            frm.Owner = this; // 새 폼의 오너를 현재 폼으로
-            frm.Show();
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-            start frm = new start(); // 새 폼 생성
-            frm.Show();
-            this.Close();
-        }
-
-        private void Choose_Room_Load(object sender, EventArgs e)
-        {
-
+            udpclient.Close();
         }
     }
 }
->>>>>>> origin/error_fix
