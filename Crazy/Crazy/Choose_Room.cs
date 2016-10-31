@@ -115,9 +115,9 @@ namespace Crazy
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Make_Room frm = new Make_Room();
+            Make_Room frm = new Make_Room(key);
+            frm.Owner = this;
             frm.Show();
-            frm.set_key(key);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -165,7 +165,7 @@ namespace Crazy
         {
             Console.WriteLine("{0}", sender);
             this.Visible = false;
-            before_game frm = new before_game();
+            before_game frm = new before_game(key);
             frm.Owner = this;
             frm.Show();
         }

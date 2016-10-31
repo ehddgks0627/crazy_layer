@@ -31,7 +31,7 @@
             this.r_id = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.r_pw = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.pwd = new System.Windows.Forms.CheckBox();
             this.enter = new System.Windows.Forms.Button();
             this.exit = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -64,16 +64,16 @@
             this.r_pw.Size = new System.Drawing.Size(71, 26);
             this.r_pw.TabIndex = 2;
             // 
-            // checkBox1
+            // pwd
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(138, 207);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(83, 24);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "비밀번호";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.pwd.AutoSize = true;
+            this.pwd.Location = new System.Drawing.Point(138, 207);
+            this.pwd.Name = "pwd";
+            this.pwd.Size = new System.Drawing.Size(83, 24);
+            this.pwd.TabIndex = 3;
+            this.pwd.Text = "비밀번호";
+            this.pwd.UseVisualStyleBackColor = true;
+            this.pwd.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // enter
             // 
@@ -103,7 +103,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.exit);
             this.Controls.Add(this.enter);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.pwd);
             this.Controls.Add(this.r_pw);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.r_id);
@@ -121,7 +121,7 @@
         private System.Windows.Forms.TextBox r_id;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox r_pw;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox pwd;
         private System.Windows.Forms.Button enter;
         private System.Windows.Forms.Button exit;
     }

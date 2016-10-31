@@ -16,50 +16,12 @@ namespace Crazy
     {
         int key;
 
-        public void set_key(int k)
-        {
-            key = k;
-        }
-        public Make_Room()
+        public Make_Room(int k)
         {
             InitializeComponent();
-
-            Check_Room[Check_Num] = 1;
-            Room_Number[Check_Num] = (Check_Num + 1);
-            Room_Now_People[Check_Num] = 1;
-
+            key = k;
         }
-        public string post_query(params string[] postDatas) // 첫 인자는 무조건 URL주소
-        {
-            HttpWebRequest wReq;
-            HttpWebResponse wRes;
-            var resResult = "";
-            var uri = new Uri(postDatas[0]); // string 을 Uri 로 형변환
-
-            wReq = (HttpWebRequest)WebRequest.Create(uri); // WebRequest 객체 형성 및 HttpWebRequest 로 형변환
-            wReq.Method = "POST"; // 전송 방법 "GET" or "POST"
-            wReq.ServicePoint.Expect100Continue = false;
-            wReq.ContentType = "application/x-www-form-urlencoded";
-            String postData = "";
-            for (int i = 1; i < postDatas.Length; i++)
-            {
-                if (i != 1)
-                    postData += "&";
-                postData += postDatas[i];
-            }
-            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
-
-            Stream dataStream = wReq.GetRequestStream();
-            dataStream.Write(byteArray, 0, byteArray.Length);
-            dataStream.Close();
-            using (wRes = (HttpWebResponse)wReq.GetResponse())
-            {
-                Stream respPostStream = wRes.GetResponseStream();
-                StreamReader readerPost = new StreamReader(respPostStream, Encoding.GetEncoding("UTF-8"), true);
-                resResult = readerPost.ReadToEnd();
-            }
-            return resResult;
-        }
+       
         public static string[] Room_name = new string[32];
         public static string[] Room_PW = new string[32];
         public static int[] Room_Size = new int[32];     //방 최대 인원수
@@ -71,52 +33,41 @@ namespace Crazy
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Room_name[Check_Num] = textBox1.Text;
-            Room_PW[Check_Num] = textBox2.Text;
-
-            if (Room_name[Check_Num].Length == 0)
-            {
+            if (room_sub.Text.Length == 0)
                 MessageBox.Show("방제목을 입력해주세요.");
-            }
 
-            else if (Check_Room[Check_Num] == -1)
+            else if (pwd.CheckState == CheckState.Checked)
             {
-                if (Room_PW[Check_Num].Length > 3)
+                if (room_pwd.Text.Length > 3)
                 {
-                    if (comboBox1.Text != "")
+                    if (room_max.Text != "")
                     {
-                        Room_Size[Check_Num] = Convert.ToInt32(comboBox1.Text);
-                        Check_Num++;
                         this.Visible = false;
-                        Application.OpenForms["Form2"].Close();
-                        before_game frm = new before_game();
-                        frm.Owner = this;
+                        before_game frm = new before_game(key);
+                        frm.Owner = this.Owner;
                         frm.Show();
+                        this.Close();
                     }
-
                     else
                         MessageBox.Show("인원수를 선택해주세요");
                 }
-
                 else
                     MessageBox.Show("비밀번호 4글자 이상을 입력해주세요.");
             }
 
-            else if (Check_Room[Check_Num] == 1)
+            else if (pwd.CheckState == CheckState.Unchecked)
             {
-                if (comboBox1.Text != "")
+                if (room_max.Text != "")
                 {
-                    Room_Size[Check_Num] = Convert.ToInt32(comboBox1.Text);
-                    Check_Num++;
-                    this.Visible = false;
-                    Application.OpenForms["Choose_Room"].Close();
+                    string respon;
                     if (Room_PW[0].Equals(""))
-                        post_query("http://layer7.kr/room.php", "type=create", "max=" + Room_Size[1], "owner_key=" + key);
+                        respon = start.post_query("http://layer7.kr/room.php", "type=create", "max=" + Room_Size[1], "owner_key=" + key);
                     else
-                        post_query("http://layer7.kr/room.php", "type=create", "max=" + Room_Size[1], "owner_key=" + key, "pw=" + Room_PW[0]);
-                    before_game frm = new before_game();
-                    frm.Owner = this;
+                        respon = start.post_query("http://layer7.kr/room.php", "type=create", "max=" + Room_Size[1], "owner_key=" + key, "pw=" + Room_PW[0]);
+                    before_game frm = new before_game(key);
+                    frm.Owner = this.Owner;
                     frm.Show();
+                    this.Close();
                 }
 
                 else
@@ -132,13 +83,10 @@ namespace Crazy
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            Check_Room[Check_Num] *= -1;
-            if (Check_Room[Check_Num] == -1)
-                textBox2.ReadOnly = false;
-
+            if (pwd.CheckState == CheckState.Unchecked)
+                room_pwd.ReadOnly = false;
             else
-                textBox2.ReadOnly = true;
+                room_pwd.ReadOnly = true;
         }
-
     }
 }
