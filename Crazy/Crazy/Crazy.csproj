@@ -88,12 +88,6 @@
     <Compile Include="Search_Room.Designer.cs">
       <DependentUpon>Search_Room.cs</DependentUpon>
     </Compile>
-    <Compile Include="Shop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Shop.Designer.cs">
-      <DependentUpon>Shop.cs</DependentUpon>
-    </Compile>
     <Compile Include="start.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,9 +125,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Search_Room.resx">
       <DependentUpon>Search_Room.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Shop.resx">
-      <DependentUpon>Shop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="start.resx">
       <DependentUpon>start.cs</DependentUpon>

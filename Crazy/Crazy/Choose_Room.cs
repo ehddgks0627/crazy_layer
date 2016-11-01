@@ -56,14 +56,6 @@ namespace Crazy
             frm.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-            Shop frm = new Shop();
-            frm.Owner = this;
-            frm.Show();
-        }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             if (Check_chatting == 0)

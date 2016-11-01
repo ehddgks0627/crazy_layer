@@ -38,38 +38,42 @@
             // 
             // r_id
             // 
-            this.r_id.Location = new System.Drawing.Point(303, 90);
+            this.r_id.Location = new System.Drawing.Point(210, 75);
+            this.r_id.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.r_id.MaxLength = 4;
             this.r_id.Name = "r_id";
-            this.r_id.Size = new System.Drawing.Size(71, 26);
+            this.r_id.Size = new System.Drawing.Size(56, 21);
             this.r_id.TabIndex = 0;
             this.r_id.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(134, 92);
+            this.label1.Location = new System.Drawing.Point(91, 78);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 20);
+            this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 1;
             this.label1.Text = "방번호";
             // 
             // r_pw
             // 
-            this.r_pw.Location = new System.Drawing.Point(303, 207);
+            this.r_pw.Location = new System.Drawing.Point(210, 135);
+            this.r_pw.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.r_pw.MaxLength = 20;
             this.r_pw.Name = "r_pw";
             this.r_pw.PasswordChar = '*';
             this.r_pw.ReadOnly = true;
-            this.r_pw.Size = new System.Drawing.Size(71, 26);
+            this.r_pw.Size = new System.Drawing.Size(56, 21);
             this.r_pw.TabIndex = 2;
             // 
             // pwd
             // 
             this.pwd.AutoSize = true;
-            this.pwd.Location = new System.Drawing.Point(138, 207);
+            this.pwd.Location = new System.Drawing.Point(62, 137);
+            this.pwd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pwd.Name = "pwd";
-            this.pwd.Size = new System.Drawing.Size(83, 24);
+            this.pwd.Size = new System.Drawing.Size(72, 16);
             this.pwd.TabIndex = 3;
             this.pwd.Text = "비밀번호";
             this.pwd.UseVisualStyleBackColor = true;
@@ -77,9 +81,10 @@
             // 
             // enter
             // 
-            this.enter.Location = new System.Drawing.Point(134, 292);
+            this.enter.Location = new System.Drawing.Point(62, 186);
+            this.enter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.enter.Name = "enter";
-            this.enter.Size = new System.Drawing.Size(99, 87);
+            this.enter.Size = new System.Drawing.Size(77, 52);
             this.enter.TabIndex = 4;
             this.enter.Text = "입장";
             this.enter.UseVisualStyleBackColor = true;
@@ -87,9 +92,10 @@
             // 
             // exit
             // 
-            this.exit.Location = new System.Drawing.Point(303, 292);
+            this.exit.Location = new System.Drawing.Point(198, 186);
+            this.exit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(99, 87);
+            this.exit.Size = new System.Drawing.Size(77, 52);
             this.exit.TabIndex = 5;
             this.exit.Text = "취소";
             this.exit.UseVisualStyleBackColor = true;
@@ -97,9 +103,9 @@
             // 
             // Search_Room
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(568, 398);
+            this.ClientSize = new System.Drawing.Size(334, 311);
             this.ControlBox = false;
             this.Controls.Add(this.exit);
             this.Controls.Add(this.enter);
@@ -107,6 +113,7 @@
             this.Controls.Add(this.r_pw);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.r_id);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Search_Room";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search_Room";
