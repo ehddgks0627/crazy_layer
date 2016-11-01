@@ -24,17 +24,10 @@ namespace Crazy
         {
             chat_send = new send_sock("239.0.0.222", 2222);
             chat_listen = new listen_sock("239.0.0.222", 2222);
-            string str = start.post_query("http://layer7.kr/room.php", "type=list");
-            float count = str.Length - str.Replace(";", "").Length;
             t = new Thread(chat_listen.listen);
             t.Start();
             InitializeComponent();
             key = k;
-            label2.Text = "" + Page_Num;
-            if (1 == Page_Num)
-                button4.Enabled = false;
-            if (Page_Num == Math.Ceiling(count / 4))
-                button5.Enabled = false;
         }
 
         public static int Check_chatting = 0;
@@ -77,6 +70,7 @@ namespace Crazy
         private void button4_Click(object sender, EventArgs e)
         {
             Page_Num--;
+            label2.Text = "" + Page_Num;
             this.Visible = false;
             Choose_Room frm = new Choose_Room();
             frm.Owner = this;
@@ -87,6 +81,7 @@ namespace Crazy
         {
 
             Page_Num++;
+            label2.Text = "" + Page_Num;
             this.Visible = false;
             Choose_Room frm = new Choose_Room();
             frm.Owner = this;
