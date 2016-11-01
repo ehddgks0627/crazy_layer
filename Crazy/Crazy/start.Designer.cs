@@ -37,10 +37,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(440, 838);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(237, 419);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(559, 180);
+            this.button1.Size = new System.Drawing.Size(301, 90);
             this.button1.TabIndex = 0;
             this.button1.Text = "GAME START";
             this.button1.UseVisualStyleBackColor = true;
@@ -48,10 +48,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(743, 1086);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(400, 543);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(254, 36);
+            this.button2.Size = new System.Drawing.Size(137, 18);
             this.button2.TabIndex = 1;
             this.button2.Text = "회원가입";
             this.button2.UseVisualStyleBackColor = true;
@@ -59,20 +59,20 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(1064, 96);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(573, 48);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(373, 32);
+            this.label1.Size = new System.Drawing.Size(201, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "label1";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(440, 1086);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Location = new System.Drawing.Point(237, 543);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(254, 36);
+            this.button3.Size = new System.Drawing.Size(137, 18);
             this.button3.TabIndex = 4;
             this.button3.Text = "로그인";
             this.button3.UseVisualStyleBackColor = true;
@@ -80,10 +80,10 @@
             // 
             // Logout
             // 
-            this.Logout.Location = new System.Drawing.Point(440, 1086);
-            this.Logout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Logout.Location = new System.Drawing.Point(237, 543);
+            this.Logout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Logout.Name = "Logout";
-            this.Logout.Size = new System.Drawing.Size(254, 36);
+            this.Logout.Size = new System.Drawing.Size(137, 18);
             this.Logout.TabIndex = 5;
             this.Logout.Text = "로그아웃";
             this.Logout.UseVisualStyleBackColor = true;
@@ -91,17 +91,16 @@
             // 
             // start
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1493, 1202);
+            this.ClientSize = new System.Drawing.Size(804, 601);
             this.ControlBox = false;
             this.Controls.Add(this.Logout);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "start";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
