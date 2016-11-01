@@ -48,7 +48,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(464, 74);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(409, 188);
             this.button1.TabIndex = 0;
@@ -59,7 +59,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(1025, 74);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(409, 188);
             this.button2.TabIndex = 1;
@@ -72,7 +72,7 @@
             this.pictureBox1.BackgroundImage = global::Crazy.Properties.Resources.charater;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(41, 74);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(396, 402);
             this.pictureBox1.TabIndex = 3;
@@ -92,7 +92,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(782, 814);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(91, 36);
             this.button4.TabIndex = 16;
@@ -103,7 +103,7 @@
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(1025, 814);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(91, 36);
             this.button5.TabIndex = 17;
@@ -126,7 +126,7 @@
             // 
             this.Quit_Button.Image = ((System.Drawing.Image)(resources.GetObject("Quit_Button.Image")));
             this.Quit_Button.Location = new System.Drawing.Point(111, 1130);
-            this.Quit_Button.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Quit_Button.Margin = new System.Windows.Forms.Padding(6);
             this.Quit_Button.Name = "Quit_Button";
             this.Quit_Button.Size = new System.Drawing.Size(31, 24);
             this.Quit_Button.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -138,7 +138,7 @@
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(22, 1130);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(6);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(31, 24);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -149,7 +149,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(464, 1062);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.MaxLength = 100;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(988, 35);
@@ -163,7 +163,7 @@
             this.Chatting_Box.FormattingEnabled = true;
             this.Chatting_Box.ItemHeight = 24;
             this.Chatting_Box.Location = new System.Drawing.Point(464, 878);
-            this.Chatting_Box.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Chatting_Box.Margin = new System.Windows.Forms.Padding(4);
             this.Chatting_Box.Name = "Chatting_Box";
             this.Chatting_Box.ScrollAlwaysVisible = true;
             this.Chatting_Box.Size = new System.Drawing.Size(988, 172);
@@ -173,6 +173,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1493, 1202);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox2);
@@ -186,7 +187,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Choose_Room";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
