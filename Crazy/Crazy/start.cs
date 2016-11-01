@@ -13,7 +13,7 @@ using System.IO;
 namespace Crazy
 {
     public partial class start : Form
-    {
+    {   
         string Nickname = "";
         bool login_check = false;
         int key = 0;
@@ -56,17 +56,17 @@ namespace Crazy
             key = k;
             login_check = logged;
             if (login_check == false)
+            {
                 label1.Text = "로그인 해주세요";
+                Logout.Visible = false;
+                button3.Visible = true;
+            }
 
             else
             {
                 label1.Text = Nickname + "님 반갑습니다.";
-                Button Logout_Button = new Button();
-                Logout_Button.Location = new Point(30, 30);
-                Logout_Button.Size = new Size(70, 70);
-                Logout_Button.Text = "Logout";
-                Controls.Add(Logout_Button);
-                Logout_Button.Click += Logout_Button_Click;
+                Logout.Visible = true;
+                button3.Visible = false;
             }
         }
 
@@ -98,18 +98,18 @@ namespace Crazy
             frm.Show();
         }
 
-        private void Logout_Button_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("로그아웃 성공");
-            set_var();
-        }
-
         private void button3_Click(object sender, EventArgs e)
-        {
+        {   
             this.Visible = false;
             Login frm = new Login();
             frm.Owner = this;
             frm.Show();
+        }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("로그아웃 성공");
+            set_var();
         }
     }
 }
