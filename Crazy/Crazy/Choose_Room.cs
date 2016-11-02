@@ -24,10 +24,44 @@ namespace Crazy
         {
             chat_send = new send_sock("239.0.0.222", 2222);
             chat_listen = new listen_sock("239.0.0.222", 2222);
+            string str = start.post_query("http://layer7.kr/room.php", "type=list");
+            float Room_count = str.Length - str.Replace(";", "").Length;
+            string[] Room = str.Split(';');
+            int For_Max = 0;
+            int j = 0;
+
             t = new Thread(chat_listen.listen);
             t.Start();
             InitializeComponent();
             key = k;
+            label2.Text = "" + Page_Num;
+            if (1 == Page_Num)
+                button4.Enabled = false;
+            if (Page_Num == Math.Ceiling(Room_count / 4))
+                button5.Enabled = false;
+
+            PictureBox[] PictureBox = new PictureBox[4] { pictureBox3, pictureBox4, pictureBox5, pictureBox6 };
+            Label[] Label_People = new Label[4] { label3, label4, label5, label6 };
+            Label[] Label_name = new Label[4] { label7, label8, label9, label10 };
+
+            if (Page_Num * 4 <= Room_count)
+                For_Max = Page_Num * 4;
+            else
+                For_Max = Convert.ToInt16(Room_count);
+
+            for (int i = (Page_Num - 1) * 4; i < For_Max; i++)
+            {
+                string[] Room_Decomposition = Room[i].Split('-');
+                if(Room_Decomposition[1] == "1")
+                    PictureBox[j].Image = Properties.Resources.yes;
+                else
+                    PictureBox[j].Image = Properties.Resources.no;
+                Label_People[j].Text = Room_Decomposition[5] + " / " + Room_Decomposition[4];
+                Label_name[j].Text = Room_Decomposition[2] + " / " + Room_Decomposition[0];
+                j++;
+            }
+        
+          
         }
 
         public static int Check_chatting = 0;
@@ -70,7 +104,6 @@ namespace Crazy
         private void button4_Click(object sender, EventArgs e)
         {
             Page_Num--;
-            label2.Text = "" + Page_Num;
             this.Visible = false;
             Choose_Room frm = new Choose_Room();
             frm.Owner = this;
@@ -81,7 +114,6 @@ namespace Crazy
         {
 
             Page_Num++;
-            label2.Text = "" + Page_Num;
             this.Visible = false;
             Choose_Room frm = new Choose_Room();
             frm.Owner = this;

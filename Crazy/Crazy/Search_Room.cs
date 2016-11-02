@@ -23,13 +23,10 @@ namespace Crazy
             r_pw.Text = "";
         }
 
-        public static string Room_List = (start.post_query("http://layer7.kr/room.php", "type=list"));
-        public static string[] Room = Room_List.Split(';');
-
-        //3-0-fuck-admin-7-1-0   7 맥스 1
-
         private void button1_Click(object sender, EventArgs e)
         {
+            string Room_List = (start.post_query("http://layer7.kr/room.php", "type=list"));
+            string[] Room = Room_List.Split(';');
             if (r_id.Text == "")
                 MessageBox.Show("방 번호를 입력해주세요");
             else
