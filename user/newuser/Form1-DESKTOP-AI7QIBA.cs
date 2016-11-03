@@ -1,30 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.Diagnostics;
+using System.Timers;
 using System.Collections;
 
 namespace newuser
 {
     public partial class Form1 : Form
     {
-        int[,] arr = new int[15, 15] {
-            { 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
-            { 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
-            { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1 },
-            { 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1 },
-            { 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 },
-            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-            { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 0 },
-            { 0, 0, 1, 2, 1, 1, 2, 2, 2, 1, 1, 2, 1, 0 ,0 },
-            { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 0 },
-            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-            { 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 },
-            { 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1 },
-            { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1 },
-            { 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
-            { 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
-            };//맵의 블럭 유무상태
         public Form1()
         {
             InitializeComponent();
@@ -51,6 +42,7 @@ namespace newuser
                 {
                     if (temp.stat != 1)
                     {
+                        Console.WriteLine("1111111111111");
                         temp.stat = 1;
                     }
                 }
@@ -98,6 +90,7 @@ namespace newuser
             data.stat = 0;
             list.Add(data);
 
+            Console.WriteLine("1111111122222222222222211111");
             data = new inputdata();
             data.key = Keys.Right;
             data.stat = 0;
@@ -129,20 +122,17 @@ namespace newuser
             for (int i = 0; i < list.Count; i++)
             {
                 inputdata temp = list[i] as inputdata;
-                inputdata temp1 = list[1] as inputdata;
-                inputdata temp2 = list[2] as inputdata;
-                inputdata temp3 = list[3] as inputdata;
-                inputdata temp4 = list[4] as inputdata;
                 if (temp.key == Keys.Space)
                 {
                     if (temp.stat == 1)
                     {
                         bubble balloon = new bubble(this);
+                        Controls.Add(balloon.bp_bubble);
                         Console.Write("guud");
                     }
                 }
 
-                else if (temp.key == Keys.Right && (temp3.stat != 1 && temp4.stat != 1))
+                else if (temp.key == Keys.Right)
                 {
                     if (temp.stat == 1)
                     {
@@ -152,16 +142,16 @@ namespace newuser
                     }
                 }
 
-                else if (temp.key == Keys.Left && (temp3.stat != 1 && temp4.stat != 1))
-                {
-                    if (temp.stat == 1)
+                else if (temp.key == Keys.Left)
+                {   
+                    if(temp.stat ==1)
                     {
-                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed , hero.pb_hero.Location.Y);
                         //hero.pb_hero.Image = Properties.Resources.B;
                     }
                 }
 
-                else if (temp.key == Keys.Up && (temp1.stat != 1 && temp2.stat != 1))
+                else if (temp.key == Keys.Up)
                 {
                     if (temp.stat == 1)
                     {
@@ -170,7 +160,7 @@ namespace newuser
                     }
                 }
 
-                else if (temp.key == Keys.Down && (temp1.stat != 1 && temp2.stat != 1))
+                else if (temp.key == Keys.Down)
                 {
                     if (temp.stat == 1)
                     {
@@ -220,19 +210,18 @@ namespace newuser
         public int stat { get; set; }
     }
 
-    public class hero
     {
         public static PictureBox pb_hero;//사용자 캐릭터
         public static Control Parent;//?
         public static Thread th_key_handler;//?
 
         public int key;
-        public int i_x;//내좌표
-        public int i_y;
+        public static int i_x;//내좌표
+        public static int i_y;
         public int level = 2;//상태레벨
         public static int speed = 10;//이동속도
         public int i_max_bubble = 1;//버블길이
-        public int i_cur_bubble = 1;//버블갯수
+        public int i_cur_bubble = 10;//버블갯수
 
         public static bool b_KEY_UP;//키
         public static bool b_KEY_DOWN;
@@ -240,7 +229,7 @@ namespace newuser
         public static bool b_KEY_RIGHT;
         public bool b_MOVING;
 
-        public hero(Control c_par)
+        public  hero(Control c_par)
         {
             i_x = 0;//맵에따라 위치설정
             i_y = 0;
@@ -250,6 +239,7 @@ namespace newuser
             b_KEY_UP = false;
             b_KEY_DOWN = false;
             b_KEY_LEFT = false;
+    public class hero
             b_KEY_RIGHT = false;
             b_MOVING = false;
 
@@ -340,12 +330,12 @@ namespace newuser
         {
             bp_bubble = new PictureBox();
             pb_bubble = new PictureBox();
-
+            
             timer_A = new System.Windows.Forms.Timer();
             timer_A.Interval = 2000;
             timer_A.Tick += new EventHandler(timer_A_Tick);
 
-            bp_bubble.Location = new System.Drawing.Point(100, 100);
+            bp_bubble.Location = new Point(hero.i_x, hero.i_y);
             bp_bubble.Image = global::newuser.Properties.Resources.ezgif_1448237685;
             bp_bubble.Size = new System.Drawing.Size(60, 60);
             bp_bubble.Margin = new System.Windows.Forms.Padding(0);
@@ -353,7 +343,7 @@ namespace newuser
             bp_bubble.Visible = true;
 
 
-            pb_bubble.Location = new System.Drawing.Point(100, 100);
+            pb_bubble.Location = new Point(hero.i_x, hero.i_y);
             pb_bubble.Image = global::newuser.Properties.Resources.ezgif_1448237685;
             pb_bubble.Size = new System.Drawing.Size(60, 60);
             pb_bubble.Margin = new System.Windows.Forms.Padding(0);
