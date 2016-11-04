@@ -29,26 +29,39 @@
         private void InitializeComponent()
         {
             this.background = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.background)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // background
             // 
-            this.background.Location = new System.Drawing.Point(-1, -1);
+            this.background.Location = new System.Drawing.Point(70, 93);
             this.background.Name = "background";
-            this.background.Size = new System.Drawing.Size(750, 750);
+            this.background.Size = new System.Drawing.Size(679, 656);
             this.background.TabIndex = 0;
             this.background.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(527, 161);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(748, 749);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.background);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.background)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -56,6 +69,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox background;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

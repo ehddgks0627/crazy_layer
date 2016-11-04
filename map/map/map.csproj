@@ -81,10 +81,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Image1.png" />
+    <None Include="Resources\걸상.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\50_50.png" />
+    <None Include="Resources\바닥.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\상자%28이동_오브젝트%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\책상.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\캐비넷1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\캐비넷2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\컴퓨터.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

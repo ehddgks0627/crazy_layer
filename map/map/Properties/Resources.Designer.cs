@@ -63,9 +63,69 @@ namespace map.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap image_1 {
+        internal static System.Drawing.Bitmap 걸상 {
             get {
-                object obj = ResourceManager.GetObject("image_1", resourceCulture);
+                object obj = ResourceManager.GetObject("걸상", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 바닥 {
+            get {
+                object obj = ResourceManager.GetObject("바닥", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 상자_이동_오브젝트_ {
+            get {
+                object obj = ResourceManager.GetObject("상자_이동_오브젝트_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 책상 {
+            get {
+                object obj = ResourceManager.GetObject("책상", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 캐비넷1 {
+            get {
+                object obj = ResourceManager.GetObject("캐비넷1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 캐비넷2 {
+            get {
+                object obj = ResourceManager.GetObject("캐비넷2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap 컴퓨터 {
+            get {
+                object obj = ResourceManager.GetObject("컴퓨터", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
