@@ -346,14 +346,14 @@ namespace newuser
             timer_A.Tick += new EventHandler(timer_A_Tick);
 
             bp_bubble.Location = new System.Drawing.Point(100, 100);
-            bp_bubble.Image = global::newuser.Properties.Resources.ezgif_1448237685;
+            bp_bubble.Image = Properties.Resources.ezgif_1448237685;
             bp_bubble.Size = new System.Drawing.Size(60, 60);
             bp_bubble.Margin = new System.Windows.Forms.Padding(0);
-            bp_bubble.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            bp_bubble.SizeMode = PictureBoxSizeMode.StretchImage;
             bp_bubble.Visible = true;
 
 
-            pb_bubble.Location = new System.Drawing.Point(100, 100);
+            pb_bubble.Location = new Point(100, 100);
             pb_bubble.Image = global::newuser.Properties.Resources.ezgif_1448237685;
             pb_bubble.Size = new System.Drawing.Size(60, 60);
             pb_bubble.Margin = new System.Windows.Forms.Padding(0);
