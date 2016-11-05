@@ -44,6 +44,7 @@ namespace Crazy
             PictureBox[] PictureBox = new PictureBox[4] { pictureBox3, pictureBox4, pictureBox5, pictureBox6 };
             Label[] Label_People = new Label[4] { label3, label4, label5, label6 };
             Label[] Label_name = new Label[4] { label7, label8, label9, label10 };
+            label1.Text = start.nick;
 
             if (Page_Num * 4 <= Room_count)
                 For_Max = Page_Num * 4;
