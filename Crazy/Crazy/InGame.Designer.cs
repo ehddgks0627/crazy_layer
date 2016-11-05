@@ -36,7 +36,8 @@
             // gmae_out
             // 
             this.gmae_out.Image = ((System.Drawing.Image)(resources.GetObject("gmae_out.Image")));
-            this.gmae_out.Location = new System.Drawing.Point(647, 560);
+            this.gmae_out.Location = new System.Drawing.Point(924, 840);
+            this.gmae_out.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.gmae_out.Name = "gmae_out";
             this.gmae_out.Size = new System.Drawing.Size(140, 32);
             this.gmae_out.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -46,12 +47,14 @@
             // 
             // ingame
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(804, 601);
+            this.ClientSize = new System.Drawing.Size(1149, 902);
             this.ControlBox = false;
             this.Controls.Add(this.gmae_out);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ingame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ingame";
