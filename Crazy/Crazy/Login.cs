@@ -31,6 +31,7 @@ namespace Crazy
                 MessageBox.Show("로그인 성공");
                 start.logged = true;
                 start.nick = respons[1].Substring(0, respons[1].Length - 1);
+                Room_Pw_InputBox.key = respons[0];
                 this.Visible = false;
                 var handle = this.Owner as start;
                 handle.set_var(Convert.ToInt32(respons[0]));

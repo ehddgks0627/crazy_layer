@@ -82,6 +82,12 @@
     <Compile Include="Quit_ask.Designer.cs">
       <DependentUpon>Quit_ask.cs</DependentUpon>
     </Compile>
+    <Compile Include="Room_Pw_InputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Room_Pw_InputBox.Designer.cs">
+      <DependentUpon>Room_Pw_InputBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Search_Room.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Quit_ask.resx">
       <DependentUpon>Quit_ask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Room_Pw_InputBox.resx">
+      <DependentUpon>Room_Pw_InputBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Search_Room.resx">
       <DependentUpon>Search_Room.cs</DependentUpon>

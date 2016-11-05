@@ -184,6 +184,7 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 23;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.DoubleClick += new System.EventHandler(this.pictureBox3_DoubleClick);
             // 
             // pictureBox4
             // 
@@ -193,6 +194,7 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 24;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.DoubleClick += new System.EventHandler(this.pictureBox4_DoubleClick);
             // 
             // pictureBox5
             // 
@@ -202,6 +204,7 @@
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 25;
             this.pictureBox5.TabStop = false;
+            this.pictureBox5.DoubleClick += new System.EventHandler(this.pictureBox5_DoubleClick);
             // 
             // pictureBox6
             // 
@@ -211,6 +214,7 @@
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox6.TabIndex = 26;
             this.pictureBox6.TabStop = false;
+            this.pictureBox6.DoubleClick += new System.EventHandler(this.pictureBox6_DoubleClick);
             // 
             // label3
             // 
@@ -288,7 +292,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1149, 902);
+            this.ClientSize = new System.Drawing.Size(1149, 899);
             this.ControlBox = false;
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);

@@ -44,6 +44,7 @@ namespace Crazy
             PictureBox[] PictureBox = new PictureBox[4] { pictureBox3, pictureBox4, pictureBox5, pictureBox6 };
             Label[] Label_People = new Label[4] { label3, label4, label5, label6 };
             Label[] Label_name = new Label[4] { label7, label8, label9, label10 };
+            ClientSize = new System.Drawing.Size(800, 600);
             label1.Text = start.nick;
 
             if (Page_Num * 4 <= Room_count)
@@ -74,6 +75,31 @@ namespace Crazy
 
         public static int Check_chatting = 0;
         public static int Page_Num = 1;
+        public static int Use_Room_Pw_InputBox = 0;
+        public static void DoubleClick(int k)
+        {
+            string str = start.post_query("http://layer7.kr/room.php", "type=list");
+            string[] Room = str.Split(';');
+            string[] Room_Decomposition = Room[k-1].Split('-');
+            Use_Room_Pw_InputBox = k;
+            if (Room_Decomposition[4] == Room_Decomposition[5])
+                MessageBox.Show("방이 꽉 찼습니다.");
+            else
+            {
+                if (Room_Decomposition[1] == "1")
+                {
+                    Room_Pw_InputBox frm = new Room_Pw_InputBox();
+                    frm.Show();
+                }
+
+                else
+                {
+                    before_game frm = new before_game((Page_Num - 1) * 4 + 1); // 새 폼 생성
+                    Application.OpenForms["Choose_Room"].Close();
+                    frm.Show();
+                }
+            }
+        }
 
         private void textBox1_KeyUp(object sender, KeyEventArgs e)
         {
@@ -122,7 +148,6 @@ namespace Crazy
         }
         private void PictureBox_Num(object sender, EventArgs e)
         {
-            Console.WriteLine("{0}", sender);
             this.Visible = false;
             before_game frm = new before_game(key);
             frm.Owner = this;
@@ -140,6 +165,22 @@ namespace Crazy
             start frm = new start(); // 새 폼 생성
             frm.Show();
             this.Close();
+        }
+        private void pictureBox3_DoubleClick(object sender, EventArgs e)
+        {
+            DoubleClick((Page_Num - 1) * 4 + 1);
+        }
+        private void pictureBox4_DoubleClick(object sender, EventArgs e)
+        {
+            DoubleClick((Page_Num - 1) * 4 + 2);
+        }
+        private void pictureBox5_DoubleClick(object sender, EventArgs e)
+        {
+            DoubleClick((Page_Num - 1) * 4 + 3);
+        }
+        private void pictureBox6_DoubleClick(object sender, EventArgs e)
+        {
+            DoubleClick((Page_Num - 1) * 4 + 4);
         }
     }
 
