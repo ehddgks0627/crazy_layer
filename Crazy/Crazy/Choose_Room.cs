@@ -28,6 +28,7 @@ namespace Crazy
             float Room_count = str.Length - str.Replace(";", "").Length;
             string[] Room = str.Split(';');
             int For_Max = 0;
+            int For_Visible = 4;
             int j = 0;
 
             t = new Thread(chat_listen.listen);
@@ -47,8 +48,10 @@ namespace Crazy
             if (Page_Num * 4 <= Room_count)
                 For_Max = Page_Num * 4;
             else
+            {
                 For_Max = Convert.ToInt16(Room_count);
-
+                For_Visible = For_Max % 4;
+            }
             for (int i = (Page_Num - 1) * 4; i < For_Max; i++)
             {
                 string[] Room_Decomposition = Room[i].Split('-');
@@ -60,11 +63,16 @@ namespace Crazy
                 Label_name[j].Text = Room_Decomposition[2] + " / " + Room_Decomposition[0];
                 j++;
             }
-        
-          
+            for (int i = 3; i >= For_Visible; i--)
+            {
+                PictureBox[i].Visible = false;
+                Label_name[i].Visible = false;
+                Label_People[i].Visible = false;
+            }
         }
 
         public static int Check_chatting = 0;
+        public static int Page_Num = 1;
 
         private void textBox1_KeyUp(object sender, KeyEventArgs e)
         {
@@ -75,21 +83,18 @@ namespace Crazy
                 Chatting_Box.SelectedIndex = Chatting_Box.Items.Count - 1;
             }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             Search_Room frm = new Search_Room(key);
             frm.Owner = this;
             frm.Show();
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             Make_Room frm = new Make_Room(key);
             frm.Owner = this;
             frm.Show();
         }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             if (Check_chatting == 0)
@@ -98,9 +103,6 @@ namespace Crazy
                 Check_chatting = 1;
             }
         }
-
-        public static int Page_Num = 1;
-
         private void button4_Click(object sender, EventArgs e)
         {
             Page_Num--;
@@ -109,18 +111,14 @@ namespace Crazy
             frm.Owner = this;
             frm.Show();
         }
-
         private void button5_Click(object sender, EventArgs e)
         {
-
             Page_Num++;
             this.Visible = false;
             Choose_Room frm = new Choose_Room();
             frm.Owner = this;
             frm.Show();
-
         }
-
         private void PictureBox_Num(object sender, EventArgs e)
         {
             Console.WriteLine("{0}", sender);
@@ -129,14 +127,12 @@ namespace Crazy
             frm.Owner = this;
             frm.Show();
         }
-
         private void Quit_Button_Click(object sender, EventArgs e)
         {
             Quit_ask frm = new Quit_ask(); // 새 폼 생성
             frm.Owner = this; // 새 폼의 오너를 현재 폼으로
             frm.Show();
         }
-
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Visible = false;
@@ -144,8 +140,8 @@ namespace Crazy
             frm.Show();
             this.Close();
         }
-
     }
+
     public class send_sock
     {
         public UdpClient udpclient = null;
@@ -181,15 +177,11 @@ namespace Crazy
         public listen_sock(string ip, int port)
         {
             udpclient = new UdpClient();
-
             udpclient.ExclusiveAddressUse = false;
             localEp = new IPEndPoint(IPAddress.Any, 2222);
-
             udpclient.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
             udpclient.ExclusiveAddressUse = false;
-
             udpclient.Client.Bind(localEp);
-
             multiaddress = IPAddress.Parse("239.0.0.222");
             udpclient.JoinMulticastGroup(multiaddress);
         }
@@ -199,7 +191,6 @@ namespace Crazy
             {
                 byte[] data = udpclient.Receive(ref localEp);
                 string strData = Encoding.Unicode.GetString(data);
-
                 if (strData == "quit")
                     break;
             }
