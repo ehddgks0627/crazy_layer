@@ -42,9 +42,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(73, 369);
+            this.button1.Location = new System.Drawing.Point(51, 246);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 33);
+            this.button1.Size = new System.Drawing.Size(89, 22);
             this.button1.TabIndex = 1;
             this.button1.Text = "회원 가입";
             this.button1.UseVisualStyleBackColor = true;
@@ -53,26 +54,29 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(69, 68);
+            this.label1.Location = new System.Drawing.Point(48, 45);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 18);
+            this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 3;
             this.label1.Text = "아이디";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(69, 147);
+            this.label2.Location = new System.Drawing.Point(48, 98);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 18);
+            this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 4;
             this.label2.Text = "패스워드";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(274, 369);
+            this.button2.Location = new System.Drawing.Point(192, 246);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(137, 33);
+            this.button2.Size = new System.Drawing.Size(96, 22);
             this.button2.TabIndex = 5;
             this.button2.Text = "취소";
             this.button2.UseVisualStyleBackColor = true;
@@ -80,62 +84,67 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(220, 64);
+            this.textBox1.Location = new System.Drawing.Point(154, 43);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.MaxLength = 32;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(204, 28);
+            this.textBox1.Size = new System.Drawing.Size(144, 21);
             this.textBox1.TabIndex = 6;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(220, 140);
+            this.textBox2.Location = new System.Drawing.Point(154, 93);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.MaxLength = 32;
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(204, 28);
+            this.textBox2.Size = new System.Drawing.Size(144, 21);
             this.textBox2.TabIndex = 7;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(220, 213);
+            this.textBox3.Location = new System.Drawing.Point(154, 142);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.MaxLength = 32;
             this.textBox3.Name = "textBox3";
             this.textBox3.PasswordChar = '*';
-            this.textBox3.Size = new System.Drawing.Size(204, 28);
+            this.textBox3.Size = new System.Drawing.Size(144, 21);
             this.textBox3.TabIndex = 8;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(69, 291);
+            this.label3.Location = new System.Drawing.Point(48, 194);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 18);
+            this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 9;
             this.label3.Text = "닉네임";
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(220, 284);
+            this.textBox4.Location = new System.Drawing.Point(154, 189);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
             this.textBox4.MaxLength = 32;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(204, 28);
+            this.textBox4.Size = new System.Drawing.Size(144, 21);
             this.textBox4.TabIndex = 10;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(69, 214);
+            this.label4.Location = new System.Drawing.Point(48, 143);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 18);
+            this.label4.Size = new System.Drawing.Size(81, 12);
             this.label4.TabIndex = 11;
             this.label4.Text = "패스워드 확인";
             // 
             // Register
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(477, 466);
+            this.ClientSize = new System.Drawing.Size(334, 311);
             this.ControlBox = false;
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox4);
@@ -147,6 +156,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";

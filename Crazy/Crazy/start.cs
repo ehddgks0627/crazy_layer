@@ -50,9 +50,7 @@ namespace Crazy
             return resResult;
         }
 
-        public static bool logged = false;
-        public static string nick;
-        public void set_var(int k = 0)
+        public void set_var(int k = 0, string nick = "", bool logged = false)
         {
             Nickname = nick;
             key = k;
@@ -111,7 +109,6 @@ namespace Crazy
         private void Logout_Click(object sender, EventArgs e)
         {
             MessageBox.Show("로그아웃 성공");
-            logged = false;
             set_var();
         }
     }
