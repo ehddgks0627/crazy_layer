@@ -8,23 +8,6 @@ namespace newuser
 {
     public partial class Form1 : Form
     {
-        int[,] block = new int[15, 15] {
-            { 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
-            { 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
-            { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1 },
-            { 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1 },
-            { 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 },
-            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-            { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 0 },
-            { 0, 0, 1, 2, 1, 1, 2, 2, 2, 1, 1, 2, 1, 0 ,0 },
-            { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 0 },
-            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-            { 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 },
-            { 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1 },
-            { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1 },
-            { 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
-            { 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
-            };//맵의 블럭 유무상태
         public Form1()
         {
             InitializeComponent();
@@ -212,134 +195,162 @@ namespace newuser
                 data.stat = 0;
             }
         }
-    }
 
-    class inputdata
-    {
-        public Keys key { get; set; }
-        public int stat { get; set; }
-    }
-
-    public class hero
-    {
-        public static PictureBox pb_hero;//사용자 캐릭터
-
-        public int key;
-        public int level = 2;//상태레벨
-        public static int speed = 10;//이동속도
-        public int i_max_bubble = 1;//버블길이
-        public int i_cur_bubble = 1;//버블갯수
-
-        public hero(Control c_par)
+        public class hero
         {
+            public static PictureBox pb_hero;//사용자 캐릭터
 
-            i_max_bubble = 2;
-            i_cur_bubble = 0;
+            public int key;
+            public int level = 2;//상태레벨
+            public static int speed = 10;//이동속도
+            public int i_max_bubble = 1;//버블길이
+            public int i_cur_bubble = 1;//버블갯수
 
-            pb_hero = new PictureBox();
-            pb_hero.Location = new Point(20, 20);
-            pb_hero.Size = new Size(40, 40);
-            pb_hero.Image = Properties.Resources.F;
-            pb_hero.SizeMode = PictureBoxSizeMode.StretchImage;
-            pb_hero.Visible = true;
-            c_par.Controls.Add(pb_hero);
-        }
-
-        public static void move(Control moveit, ArrayList list)
-        {
-            for (int i = 0; i < list.Count; i++)
+            public hero(Control c_par)
             {
-                inputdata temp = list[i] as inputdata;
-                if (temp.key == Keys.Space)
+
+                i_max_bubble = 2;
+                i_cur_bubble = 0;
+
+                pb_hero = new PictureBox();
+                pb_hero.Location = new Point(20, 20);
+                pb_hero.Size = new Size(40, 40);
+                pb_hero.Image = Properties.Resources.F;
+                pb_hero.SizeMode = PictureBoxSizeMode.StretchImage;
+                pb_hero.Visible = true;
+                c_par.Controls.Add(pb_hero);
+            }
+
+            public static void move(Control moveit, ArrayList list)
+            {
+                for (int i = 0; i < list.Count; i++)
                 {
-                    if (temp.stat == 1)
+                    inputdata temp = list[i] as inputdata;
+                    if (temp.key == Keys.Space)
                     {
-                        bubble balloon = new bubble();
-                        Console.Write("guud");
+                        if (temp.stat == 1)
+                        {
+                            bubble balloon = new bubble();
+                            Console.Write("guud");
+                        }
                     }
-                }
 
-                else if (temp.key == Keys.Right)
-                {
-                    if (temp.stat == 1)
+                    else if (temp.key == Keys.Right)
                     {
-                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
-                        //hero.pb_hero.Image = Properties.Resources.B;
+                        if (temp.stat == 1)
+                        {
+                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
+                            //hero.pb_hero.Image = Properties.Resources.B;
 
+                        }
                     }
-                }
 
-                else if (temp.key == Keys.Left)
-                {
-                    if (temp.stat == 1)
+                    else if (temp.key == Keys.Left)
                     {
-                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
-                        //hero.pb_hero.Image = Properties.Resources.B;
+                        if (temp.stat == 1)
+                        {
+                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                            //hero.pb_hero.Image = Properties.Resources.B;
+                        }
                     }
-                }
 
-                else if (temp.key == Keys.Up)
-                {
-                    if (temp.stat == 1)
+                    else if (temp.key == Keys.Up)
                     {
-                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
-                        hero.pb_hero.Image = Properties.Resources.B;
+                        if (temp.stat == 1)
+                        {
+                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
+                            hero.pb_hero.Image = Properties.Resources.B;
+                        }
                     }
-                }
 
-                else if (temp.key == Keys.Down)
-                {
-                    if (temp.stat == 1)
+                    else if (temp.key == Keys.Down)
                     {
-                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
-                        hero.pb_hero.Image = Properties.Resources.F;
+                        if (temp.stat == 1)
+                        {
+                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
+                            hero.pb_hero.Image = Properties.Resources.F;
+                        }
                     }
                 }
             }
         }
-    }
 
-    public class bubble
-    {
-        public PictureBox bp_bubble;
-        public PictureBox pb_bubble;
-        System.Windows.Forms.Timer timer_A;
-        public bubble()
+        public class bubble
         {
-            bp_bubble = new PictureBox();
-            pb_bubble = new PictureBox();
+            public PictureBox bp_bubble;
+            public PictureBox pb_bubble;
+            System.Windows.Forms.Timer timer_A;
+            public bubble()
+            {
+                bp_bubble = new PictureBox();
+                pb_bubble = new PictureBox();
 
-            timer_A = new System.Windows.Forms.Timer();
-            timer_A.Interval = 2000;
-            timer_A.Tick += new EventHandler(timer_A_Tick);
+                timer_A = new System.Windows.Forms.Timer();
+                timer_A.Interval = 2000;
+                timer_A.Tick += new EventHandler(timer_A_Tick);
 
-            bp_bubble.Location = new System.Drawing.Point(100, 100);
-            bp_bubble.Image = Properties.Resources.ezgif_1448237685;
-            bp_bubble.Size = new System.Drawing.Size(60, 60);
-            bp_bubble.Margin = new System.Windows.Forms.Padding(0);
-            bp_bubble.SizeMode = PictureBoxSizeMode.StretchImage;
-            bp_bubble.Visible = true;
+                bp_bubble.Location = new System.Drawing.Point(100, 100);
+                bp_bubble.Image = Properties.Resources.ezgif_1448237685;
+                bp_bubble.Size = new System.Drawing.Size(60, 60);
+                bp_bubble.Margin = new System.Windows.Forms.Padding(0);
+                bp_bubble.SizeMode = PictureBoxSizeMode.StretchImage;
+                bp_bubble.Visible = true;
 
 
-            pb_bubble.Location = new Point(100, 100);
-            pb_bubble.Image = global::newuser.Properties.Resources.ezgif_1448237685;
-            pb_bubble.Size = new System.Drawing.Size(60, 60);
-            pb_bubble.Margin = new System.Windows.Forms.Padding(0);
-            pb_bubble.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            pb_bubble.Visible = true;
+                pb_bubble.Location = new Point(100, 100);
+                pb_bubble.Image = global::newuser.Properties.Resources.ezgif_1448237685;
+                pb_bubble.Size = new System.Drawing.Size(60, 60);
+                pb_bubble.Margin = new System.Windows.Forms.Padding(0);
+                pb_bubble.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+                pb_bubble.Visible = true;
 
-            bp_bubble.Controls.Add(pb_bubble);
-            timer_A.Start();
+                bp_bubble.Controls.Add(pb_bubble);
+                timer_A.Start();
 
+            }
+            public void timer_A_Tick(object sender, EventArgs e)
+            {
+                //bp_bubble.Visible = false;
+                //물풍선갯수 감소 (i_cur_bubble
+                //터지는 이펙트ㄱ
+                //터지는것기준으로 양옆 i_max_bubble만큼 픽쳐박스생성
+                //충돌판정필요
+                //종료
+            }
         }
-        public void timer_A_Tick(object sender, EventArgs e)
+
+        class inputdata
         {
-            //bp_bubble.Visible = false;
-            //물풍선갯수 감소 (i_cur_bubble
-            //터지는 이펙트ㄱ
-            //터지는것기준으로 양옆 i_max_bubble만큼 픽쳐박스생성
-            //충돌판정필요
-            //종료
+            public Keys key { get; set; }
+            public int stat { get; set; }
         }
+
+        class map
+        {
+            int[,] block = new int[15, 15] {
+            { 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
+            { 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
+            { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1 },
+            { 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1 },
+            { 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 },
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+            { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 0 },
+            { 0, 0, 1, 2, 1, 1, 2, 2, 2, 1, 1, 2, 1, 0 ,0 },
+            { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 0 },
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+            { 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 },
+            { 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1 },
+            { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1 },
+            { 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
+            { 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
+            };//맵의 블럭 유무상태
+
+            //아이템, 물풍선, 타이머
+            class timer
+            {
+
+            }
+        }
+        
     }
 }
