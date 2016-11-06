@@ -28,46 +28,39 @@ namespace Crazy
             string Room_List = (start.post_query("http://layer7.kr/room.php", "type=list"));
             string[] Room = Room_List.Split(';');
             string[] Room_Decomposition = Room[Convert.ToInt16(r_id.Text) - 1].Split('-');
+            //id=( )-pw=( )-title=( )-owner_nickname=( )-max=( )-now=( )-started=( );
             if (r_id.Text == "")
                 MessageBox.Show("방 번호를 입력해주세요");
             else
             {
-                if (Room_Decomposition[1] != "1")
+                if (Room_Decomposition[1] == "1") //1이면 비밀방
                 {
-                    if (start.post_query("http://layer7.kr/room.php", "type=join", "id=" + r_id.Text, "key=" + Room_Pw_InputBox.key , "nickname="+start.nick) == "1")
+                    if ((start.post_query("http://layer7.kr/room.php", "type=join", "id=" + Convert.ToInt16(r_id.Text), "key=" + Room_Pw_InputBox.key, "nickname=" + start.nick, "pw=" + r_pw) == "1@"))
                     {
-                        if (Room_Decomposition[4] != Room_Decomposition[5])
+                        if (Room_Decomposition[4] == Room_Decomposition[5])
+                            MessageBox.Show("방이 꽉 찼습니다.");
+                        else
                         {
                             this.Visible = false;
-                            before_game frm = new before_game(key);
+                            before_game frm = new before_game(Convert.ToInt16(r_id.Text));
                             frm.Owner = this;
                             frm.Show();
                         }
-                        else
-                            MessageBox.Show("방이 꽉 찼습니다.");
-
-                        MessageBox.Show(start.post_query("http://layer7.kr/room.php", "type=join", "id=" + r_id.Text, "key=" + Room_Pw_InputBox.key, "nickname="+start.nick));
-                    }
-                }
-
-                else
-                {
-                    if (start.post_query("http://layer7.kr/room.php", "type=join", "id=" + r_id.Text, "key=" + Room_Pw_InputBox.key, "nickname=" + start.nick ,"pw=" + r_pw.Text) == "1@")
-                    {
-                        if (Room_Decomposition[4] != Room_Decomposition[5])
-                        {
-                            this.Visible = false;
-                            before_game frm = new before_game(key);
-                            frm.Owner = this;
-                            frm.Show();
-                        }
-                        else
-                            MessageBox.Show("방이 꽉 찼습니다.");
-
-                        MessageBox.Show(start.post_query("http://layer7.kr/room.php", "type=join", "id=" + r_id.Text, "key=" + key, "pw=" + r_pw.Text));
                     }
                     else
-                        MessageBox.Show("없는 방 입니다.");
+                        MessageBox.Show("비밀번호가 잘못됬습니다.");
+                }
+                else
+                {
+                    if (Room_Decomposition[4] == Room_Decomposition[5]) //방 꽉찻는지 체크
+                        MessageBox.Show("방이 꽉 찼습니다.");
+                    else
+                    {
+                        this.Visible = false;
+                        before_game frm = new before_game(Convert.ToInt16(r_id.Text));
+                        frm.Owner = this;
+                        frm.Show();
+                    }
                 }
             }
         }
