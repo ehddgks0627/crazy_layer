@@ -14,10 +14,11 @@ namespace newuser
         }
         ArrayList list = new ArrayList();
         ArrayList midlist = new ArrayList();
-        ArrayList lastlist = new ArrayList();
+        static ArrayList lastlist = new ArrayList();
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
+
             inputdata listtmp1 = list[1] as inputdata;
             inputdata listtmp2 = list[2] as inputdata;
             inputdata listtmp3 = list[3] as inputdata;
@@ -129,6 +130,8 @@ namespace newuser
         {
             System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
             inputdata data = new inputdata();
+
+            data = new inputdata();
             data.key = Keys.Space;
             data.stat = 0;
             list.Add(data);
@@ -152,6 +155,56 @@ namespace newuser
             data.key = Keys.Down;
             data.stat = 0;
             list.Add(data);
+
+            data = new inputdata();
+            data.key = Keys.Space;
+            data.stat = 0;
+            midlist.Add(data);
+
+            data = new inputdata();
+            data.key = Keys.Right;
+            data.stat = 0;
+            midlist.Add(data);
+
+            data = new inputdata();
+            data.key = Keys.Left;
+            data.stat = 0;
+            midlist.Add(data);
+
+            data = new inputdata();
+            data.key = Keys.Up;
+            data.stat = 0;
+            midlist.Add(data);
+
+            data = new inputdata();
+            data.key = Keys.Down;
+            data.stat = 0;
+            midlist.Add(data);
+
+            data = new inputdata();
+            data.key = Keys.Space;
+            data.stat = 0;
+            lastlist.Add(data);
+
+            data = new inputdata();
+            data.key = Keys.Right;
+            data.stat = 0;
+            lastlist.Add(data);
+
+            data = new inputdata();
+            data.key = Keys.Left;
+            data.stat = 0;
+            lastlist.Add(data);
+
+            data = new inputdata();
+            data.key = Keys.Up;
+            data.stat = 0;
+            lastlist.Add(data);
+
+            data = new inputdata();
+            data.key = Keys.Down;
+            data.stat = 0;
+            lastlist.Add(data);
 
             hero myhero = new hero(this);
             timer1.Interval = 50;
@@ -226,6 +279,14 @@ namespace newuser
                 for (int i = 0; i < list.Count; i++)
                 {
                     inputdata temp = list[i] as inputdata;
+                    inputdata temp1 = list[1] as inputdata;
+                    inputdata temp2 = list[2] as inputdata;
+                    inputdata temp3 = list[3] as inputdata;
+                    inputdata temp4 = list[4] as inputdata;
+                    inputdata right = lastlist[1] as inputdata;
+                    inputdata left = lastlist[2] as inputdata;
+                    inputdata up = lastlist[3] as inputdata;
+                    inputdata down = lastlist[4] as inputdata;
                     if (temp.key == Keys.Space)
                     {
                         if (temp.stat == 1)
@@ -239,7 +300,8 @@ namespace newuser
                     {
                         if (temp.stat == 1)
                         {
-                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
+                            if ((temp3.stat != up.stat) && (temp4.stat != down.stat))
+                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
                             //hero.pb_hero.Image = Properties.Resources.B;
 
                         }
@@ -249,8 +311,9 @@ namespace newuser
                     {
                         if (temp.stat == 1)
                         {
-                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
-                            //hero.pb_hero.Image = Properties.Resources.B;
+                                if ((temp3.stat != up.stat) && (temp4.stat != down.stat))
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                                //hero.pb_hero.Image = Properties.Resources.B;
                         }
                     }
 
@@ -258,7 +321,8 @@ namespace newuser
                     {
                         if (temp.stat == 1)
                         {
-                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
+                            if ((temp1.stat != right.stat) && (temp2.stat != left.stat))
+                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
                             hero.pb_hero.Image = Properties.Resources.B;
                         }
                     }
@@ -267,7 +331,8 @@ namespace newuser
                     {
                         if (temp.stat == 1)
                         {
-                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
+                            if ((temp1.stat != right.stat) && (temp2.stat != left.stat))
+                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
                             hero.pb_hero.Image = Properties.Resources.F;
                         }
                     }
@@ -351,6 +416,6 @@ namespace newuser
 
             }
         }
-        
+
     }
 }
