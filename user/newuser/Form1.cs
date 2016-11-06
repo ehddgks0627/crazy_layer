@@ -12,6 +12,7 @@ namespace newuser
         {
             InitializeComponent();
         }
+        PictureBox[,] Bubbles = new PictureBox[15, 15];
         ArrayList list = new ArrayList();
         ArrayList midlist = new ArrayList();
         static ArrayList lastlist = new ArrayList();
@@ -39,6 +40,14 @@ namespace newuser
                     if (temp.stat != 1)
                     {
                         temp.stat = 1;
+
+                        int x = hero.pb_hero.Location.X;
+                        int y = hero.pb_hero.Location.Y;
+
+                        Bubbles[x / 40, y / 40].Visible = true;
+
+
+
                     }
                 }
             }
@@ -190,6 +199,19 @@ namespace newuser
             timer1.Interval = 50;
             timer1.Start();
             timer1.Tick += new EventHandler(timer1_Tick);
+            
+            for (int i = 0; i < 15; ++i)
+                for (int j = 0; j < 15; ++j)
+                {
+                    Bubbles[i, j] = new PictureBox();
+                    Bubbles[i, j].SizeMode = PictureBoxSizeMode.StretchImage;
+                    Bubbles[i, j].Location = new Point(i * 40, j * 40);
+                    Bubbles[i, j].Width = 40;
+                    Bubbles[i, j].Height = 40;
+                    Bubbles[i, j].Image = Properties.Resources.bubble;
+                    Bubbles[i, j].Visible = false;
+                    this.Controls.Add(Bubbles[i, j]);
+                }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -413,7 +435,7 @@ namespace newuser
                 timer_A.Tick += new EventHandler(timer_A_Tick);
 
                 bp_bubble.Location = new System.Drawing.Point(100, 100);
-                bp_bubble.Image = Properties.Resources.ezgif_1448237685;
+                bp_bubble.Image = Properties.Resources.bubble;
                 bp_bubble.Size = new System.Drawing.Size(60, 60);
                 bp_bubble.Margin = new System.Windows.Forms.Padding(0);
                 bp_bubble.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -421,7 +443,7 @@ namespace newuser
 
 
                 pb_bubble.Location = new Point(100, 100);
-                pb_bubble.Image = global::newuser.Properties.Resources.ezgif_1448237685;
+                pb_bubble.Image = global::newuser.Properties.Resources.bubble;
                 pb_bubble.Size = new System.Drawing.Size(60, 60);
                 pb_bubble.Margin = new System.Windows.Forms.Padding(0);
                 pb_bubble.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
