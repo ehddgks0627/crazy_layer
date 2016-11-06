@@ -288,7 +288,7 @@ namespace newuser
                     {
                         if (temp.stat == 1)
                         {
-                            if ((temp3.stat != up.stat) && (temp4.stat != down.stat))
+                            if ((temp3.stat != up.stat) || (temp4.stat != down.stat))
                             {
                                 hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
                                 hero.pb_hero.Image = Properties.Resources.R;
@@ -301,7 +301,7 @@ namespace newuser
                     {
                         if (temp.stat == 1)
                         {
-                            if ((temp3.stat != up.stat) && (temp4.stat != down.stat))
+                            if ((temp3.stat != up.stat) || (temp4.stat != down.stat))
                             {
                                 hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
                                 //hero.pb_hero.Image = Properties.Resources.B;
@@ -314,7 +314,7 @@ namespace newuser
                     {
                         if (temp.stat == 1)
                         {
-                            if ((temp1.stat != right.stat) && (temp2.stat != left.stat))
+                            if ((temp1.stat != right.stat) || (temp2.stat != left.stat))
                             {
                                 hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
                                 hero.pb_hero.Image = Properties.Resources.B;
@@ -327,7 +327,7 @@ namespace newuser
                     {
                         if (temp.stat == 1)
                         {
-                            if ((temp1.stat != right.stat) && (temp2.stat != left.stat))
+                            if ((temp1.stat != right.stat) || (temp2.stat != left.stat))
                             {
                                 hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
                                 hero.pb_hero.Image = Properties.Resources.F;
