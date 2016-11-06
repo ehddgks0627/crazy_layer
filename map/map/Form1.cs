@@ -35,7 +35,6 @@ namespace map
              * 0 : 아이템 없음
              * 1 : 추가중
             */
-            
             int[,] arr = new int[15, 15] {
             { 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
             { 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
@@ -59,7 +58,6 @@ namespace map
              * 2 : 부술 수 없는 블럭(이미지 : 책상)
              * 3 : 준비중
             */
-
             PictureBox[,] PictureBox_map = new PictureBox[15, 15];
             
             for (int i = 0; i < 15; ++i)

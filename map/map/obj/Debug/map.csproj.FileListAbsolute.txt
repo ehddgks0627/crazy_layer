@@ -19,3 +19,12 @@ C:\Users\chongin12\Desktop\crazy_layer\map\map\obj\Debug\map.csprojResolveAssemb
 C:\Users\chongin12\Desktop\crazy_layer\map\map\obj\Debug\map.Form1.resources
 C:\Users\chongin12\Desktop\crazy_layer\map\map\obj\Debug\map.Properties.Resources.resources
 C:\Users\chongin12\Desktop\crazy_layer\map\map\obj\Debug\map.csproj.GenerateResource.Cache
+C:\Users\KOOKK\Documents\GitHub\crazy_layer\map\map\bin\Debug\map.exe.config
+C:\Users\KOOKK\Documents\GitHub\crazy_layer\map\map\obj\Debug\map.exe
+C:\Users\KOOKK\Documents\GitHub\crazy_layer\map\map\obj\Debug\map.pdb
+C:\Users\KOOKK\Documents\GitHub\crazy_layer\map\map\bin\Debug\map.exe
+C:\Users\KOOKK\Documents\GitHub\crazy_layer\map\map\bin\Debug\map.pdb
+C:\Users\KOOKK\Documents\GitHub\crazy_layer\map\map\obj\Debug\map.csprojResolveAssemblyReference.cache
+C:\Users\KOOKK\Documents\GitHub\crazy_layer\map\map\obj\Debug\map.Form1.resources
+C:\Users\KOOKK\Documents\GitHub\crazy_layer\map\map\obj\Debug\map.Properties.Resources.resources
+C:\Users\KOOKK\Documents\GitHub\crazy_layer\map\map\obj\Debug\map.csproj.GenerateResource.Cache
