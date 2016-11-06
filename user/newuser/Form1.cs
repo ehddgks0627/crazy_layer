@@ -19,22 +19,18 @@ namespace newuser
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
 
-            inputdata listtmp1 = list[1] as inputdata;
-            inputdata listtmp2 = list[2] as inputdata;
-            inputdata listtmp3 = list[3] as inputdata;
-            inputdata listtmp4 = list[4] as inputdata;
-            inputdata midlisttmp1 = midlist[1] as inputdata;
-            inputdata midlisttmp2 = midlist[2] as inputdata;
-            inputdata midlisttmp3 = midlist[3] as inputdata;
-            inputdata midlisttmp4 = midlist[4] as inputdata;
-            inputdata tempa1 = lastlist[1] as inputdata;
-            inputdata tempa2 = lastlist[2] as inputdata;
-            inputdata tempa3 = lastlist[3] as inputdata;
-            inputdata tempa4 = lastlist[4] as inputdata;
-            midlisttmp1 = listtmp1;
-            midlisttmp2 = listtmp2;
-            midlisttmp3 = listtmp3;
-            midlisttmp4 = listtmp4;
+            inputdata list1 = list[1] as inputdata;
+            inputdata list2 = list[2] as inputdata;
+            inputdata list3 = list[3] as inputdata;
+            inputdata list4 = list[4] as inputdata;
+            inputdata midlist1 = midlist[1] as inputdata;
+            inputdata midlist2 = midlist[2] as inputdata;
+            inputdata midlist3 = midlist[3] as inputdata;
+            inputdata midlist4 = midlist[4] as inputdata;
+            inputdata lastlist1 = lastlist[1] as inputdata;
+            inputdata lastlist2 = lastlist[2] as inputdata;
+            inputdata lastlist3 = lastlist[3] as inputdata;
+            inputdata lastlist4 = lastlist[4] as inputdata;
             if (e.KeyCode == Keys.Space)
             {
                 inputdata temp = list[0] as inputdata;
@@ -90,40 +86,32 @@ namespace newuser
                     }
                 }
             }
-            listtmp1 = list[1] as inputdata;
-            listtmp2 = list[2] as inputdata;
-            listtmp3 = list[3] as inputdata;
-            listtmp4 = list[4] as inputdata;
-            if ((midlisttmp1 != listtmp1) || (midlisttmp2 != listtmp2) || (midlisttmp3 != listtmp3) || (midlisttmp4 != listtmp4))
+            if ((midlist1 != list1) || (midlist2 != list2) || (midlist3 != list3) || (midlist4 != list4))//새로운 값이 입력되었을때
             {
-                if (listtmp1.stat + listtmp2.stat + listtmp3.stat + listtmp4.stat >= 2)
+                if (list1.stat + list2.stat + list3.stat + list4.stat >= 2)//키값이 2개 이상일때
                 {
-                    tempa1 = midlisttmp1;
-                    tempa2 = midlisttmp2;
-                    tempa3 = midlisttmp3;
-                    tempa4 = midlisttmp4;
+                    lastlist1 = midlist1;
+                    lastlist2 = midlist2;
+                    lastlist3 = midlist3;
+                    lastlist4 = midlist4;
                 }
-                midlisttmp1 = listtmp1;
-                midlisttmp2 = listtmp2;
-                midlisttmp3 = listtmp3;
-                midlisttmp4 = listtmp4;
+                midlist1 = list1;
+                midlist2 = list2;
+                midlist3 = list3;
+                midlist4 = list4;
             }
-            midlist[1] = midlisttmp1;
-            midlist[2] = midlisttmp2;
-            midlist[3] = midlisttmp3;
-            midlist[4] = midlisttmp4;
-            list[1] = listtmp1;
-            list[2] = listtmp2;
-            list[3] = listtmp3;
-            list[4] = listtmp4;
-            tempa1.stat = 0;
-            tempa2.stat = 0;
-            tempa3.stat = 0;
-            tempa4.stat = 0;
-            lastlist[1] = tempa1;
-            lastlist[2] = tempa2;
-            lastlist[3] = tempa3;
-            lastlist[4] = tempa4;
+                midlist[1] = midlist1;
+                midlist[2] = midlist2;
+                midlist[3] = midlist3;
+                midlist[4] = midlist4;
+                list[1] = list1;
+                list[2] = list2;
+                list[3] = list3;
+                list[4] = list4;
+                lastlist[1] = lastlist1;
+                lastlist[2] = lastlist2;
+                lastlist[3] = lastlist3;
+                lastlist[4] = lastlist4;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -301,8 +289,10 @@ namespace newuser
                         if (temp.stat == 1)
                         {
                             if ((temp3.stat != up.stat) && (temp4.stat != down.stat))
+                            {
                                 hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
-                            //hero.pb_hero.Image = Properties.Resources.B;
+                                hero.pb_hero.Image = Properties.Resources.R;
+                            }
 
                         }
                     }
@@ -311,9 +301,12 @@ namespace newuser
                     {
                         if (temp.stat == 1)
                         {
-                                if ((temp3.stat != up.stat) && (temp4.stat != down.stat))
-                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                            if ((temp3.stat != up.stat) && (temp4.stat != down.stat))
+                            {
+                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
                                 //hero.pb_hero.Image = Properties.Resources.B;
+                            }
+
                         }
                     }
 
@@ -322,8 +315,11 @@ namespace newuser
                         if (temp.stat == 1)
                         {
                             if ((temp1.stat != right.stat) && (temp2.stat != left.stat))
+                            {
                                 hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
-                            hero.pb_hero.Image = Properties.Resources.B;
+                                hero.pb_hero.Image = Properties.Resources.B;
+                            }
+
                         }
                     }
 
@@ -332,8 +328,11 @@ namespace newuser
                         if (temp.stat == 1)
                         {
                             if ((temp1.stat != right.stat) && (temp2.stat != left.stat))
+                            {
                                 hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
-                            hero.pb_hero.Image = Properties.Resources.F;
+                                hero.pb_hero.Image = Properties.Resources.F;
+                            }
+
                         }
                     }
                 }
