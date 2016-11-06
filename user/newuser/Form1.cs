@@ -178,67 +178,7 @@ namespace newuser
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            for (int i = 0; i < list.Count; i++)
-            {
-                inputdata temp = list[i] as inputdata;
-                inputdata temp1 = list[1] as inputdata;
-                inputdata temp2 = list[2] as inputdata;
-                inputdata temp3 = list[3] as inputdata;
-                inputdata temp4 = list[4] as inputdata;
-                inputdata right = lastlist[1] as inputdata;
-                inputdata left = lastlist[2] as inputdata;
-                inputdata up = lastlist[3] as inputdata;
-                inputdata down = lastlist[4] as inputdata;
-                if (temp.key == Keys.Space)
-                {
-                    if (temp.stat == 1)
-                    {
-                        bubble balloon = new bubble(this);
-                        Console.Write("guud");
-                    }
-                }
-
-                else if (temp.key == Keys.Right)
-                {
-                    if (temp.stat == 1)
-                    {
-                        if ((temp3.stat != up.stat) && (temp4.stat != down.stat))
-                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
-                        //hero.pb_hero.Image = Properties.Resources.B;
-
-                    }
-                }
-
-                else if (temp.key == Keys.Left)
-                {
-                    if (temp.stat == 1)
-                    {
-                        if ((temp3.stat != up.stat) && (temp4.stat != down.stat))
-                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
-                        //hero.pb_hero.Image = Properties.Resources.B;
-                    }
-                }
-
-                else if (temp.key == Keys.Up)
-                {
-                    if (temp.stat == 1)
-                    {
-                        if ((temp1.stat != right.stat) && (temp2.stat != left.stat))
-                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
-                        hero.pb_hero.Image = Properties.Resources.B;
-                    }
-                }
-
-                else if (temp.key == Keys.Down && (temp1.stat != 1 && temp2.stat != 1))
-                {
-                    if (temp.stat == 1)
-                    {
-                        if ((temp1.stat != right.stat) && (temp2.stat != left.stat))
-                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
-                        hero.pb_hero.Image = Properties.Resources.F;
-                    }
-                }
-            }
+            hero.move(this, list);
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -283,35 +223,18 @@ namespace newuser
     public class hero
     {
         public static PictureBox pb_hero;//사용자 캐릭터
-        public static Control Parent;//?
-        public static Thread th_key_handler;//?
 
         public int key;
-        public int i_x;//내좌표
-        public int i_y;
         public int level = 2;//상태레벨
         public static int speed = 10;//이동속도
         public int i_max_bubble = 1;//버블길이
         public int i_cur_bubble = 1;//버블갯수
 
-        public static bool b_KEY_UP;//키
-        public static bool b_KEY_DOWN;
-        public static bool b_KEY_LEFT;
-        public static bool b_KEY_RIGHT;
-        public bool b_MOVING;
-
         public hero(Control c_par)
         {
-            i_x = 0;//맵에따라 위치설정
-            i_y = 0;
 
             i_max_bubble = 2;
             i_cur_bubble = 0;
-            b_KEY_UP = false;
-            b_KEY_DOWN = false;
-            b_KEY_LEFT = false;
-            b_KEY_RIGHT = false;
-            b_MOVING = false;
 
             pb_hero = new PictureBox();
             pb_hero.Location = new Point(20, 20);
@@ -320,75 +243,60 @@ namespace newuser
             pb_hero.SizeMode = PictureBoxSizeMode.StretchImage;
             pb_hero.Visible = true;
             c_par.Controls.Add(pb_hero);
-            th_key_handler = new Thread(new ThreadStart(key_handler));
-            th_key_handler.Start();
-            Parent = c_par;
         }
 
-        public void Dispose()
+        public static void move(Control moveit, ArrayList list)
         {
-            th_key_handler.Abort();
-        }
-
-        private void key_handler()
-        {
-            try
+            for (int i = 0; i < list.Count; i++)
             {
-                while (true)
+                inputdata temp = list[i] as inputdata;
+                if (temp.key == Keys.Space)
                 {
-                    if (b_KEY_UP == true && i_y > 0)
+                    if (temp.stat == 1)
                     {
-                        for (int i = 0; i <= (Parent.Size.Height - pb_hero.Size.Height - 100) / 15; i++)
-                        {
-                            pb_hero.Location = new Point(pb_hero.Location.X, pb_hero.Location.Y - 1);
-                            Delay(1000000);
-                        }
-                        i_y--;
+                        bubble balloon = new bubble();
+                        Console.Write("guud");
                     }
-                    if (b_KEY_LEFT == true && i_x > 0)
+                }
+
+                else if (temp.key == Keys.Right)
+                {
+                    if (temp.stat == 1)
                     {
-                        for (int i = 0; i <= (Parent.Size.Width - pb_hero.Size.Width - 100) / 15; i++)
-                        {
-                            pb_hero.Location = new Point(pb_hero.Location.X - 1, pb_hero.Location.Y);
-                            Delay(1000000);
-                        }
-                        i_x--;
+                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
+                        //hero.pb_hero.Image = Properties.Resources.B;
+
                     }
-                    if (b_KEY_DOWN == true && i_y < 15)
+                }
+
+                else if (temp.key == Keys.Left)
+                {
+                    if (temp.stat == 1)
                     {
-                        for (int i = 0; i <= (Parent.Size.Height - pb_hero.Size.Height - 100) / 15; i++)
-                        {
-                            pb_hero.Location = new Point(pb_hero.Location.X, pb_hero.Location.Y + 1);
-                            Delay(1000000);
-                        }
-                        i_y++;
+                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                        //hero.pb_hero.Image = Properties.Resources.B;
                     }
-                    if (b_KEY_RIGHT == true && i_x < 15)
+                }
+
+                else if (temp.key == Keys.Up)
+                {
+                    if (temp.stat == 1)
                     {
-                        for (int i = 0; i <= (Parent.Size.Width - pb_hero.Size.Width - 100) / 15; i++)
-                        {
-                            pb_hero.Location = new Point(pb_hero.Location.X + 1, pb_hero.Location.Y);
-                            Delay(1000000);
-                        }
-                        i_x++;
+                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
+                        hero.pb_hero.Image = Properties.Resources.B;
                     }
-                    int i_delay = 0;
-                    Delay(i_delay * 100);//??
+                }
+
+                else if (temp.key == Keys.Down)
+                {
+                    if (temp.stat == 1)
+                    {
+                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
+                        hero.pb_hero.Image = Properties.Resources.F;
+                    }
                 }
             }
-            catch { }
         }
-
-        private void Delay(int i_i)
-        {
-            int i_n = 0;
-            while (i_n++ < i_i) ;
-        }
-
-        public int get_x() { return i_x; }
-        public int get_y() { return i_y; }
-        public void set_x(int _i_x) { i_x = _i_x; }
-        public void set_y(int _i_y) { i_y = _i_y; }
     }
 
     public class bubble
@@ -396,7 +304,7 @@ namespace newuser
         public PictureBox bp_bubble;
         public PictureBox pb_bubble;
         System.Windows.Forms.Timer timer_A;
-        public bubble(Control fuck)
+        public bubble()
         {
             bp_bubble = new PictureBox();
             pb_bubble = new PictureBox();
