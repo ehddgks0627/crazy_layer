@@ -61,17 +61,21 @@ namespace map
             */
 
             PictureBox[,] PictureBox_map = new PictureBox[15, 15];
-
+            
             for (int i = 0; i < 15; ++i)
             {
                 for (int j = 0; j < 15; ++j)
                 {
                     PictureBox_map[i, j] = new PictureBox();
                     PictureBox_map[i, j].Location = new Point(j * 50, i * 50);
-
+                    PictureBox_map[i, j].Size = new Size(50, 50);
+                    PictureBox_map[i, j].SizeMode = PictureBoxSizeMode.StretchImage;
+                    PictureBox_map[i, j].Visible = true;
                     PictureBox_map[i, j].Image = Properties.Resources.바닥;
+                    Controls.Add(PictureBox_map[i, j]);
                 }
             }
+            
             PictureBox[,] PictureBox_block = new PictureBox[15, 15];
             for (int i = 0; i < 15; ++i)
             {
@@ -85,17 +89,29 @@ namespace map
                     {
                         PictureBox_block[i, j] = new PictureBox();
                         PictureBox_block[i, j].Location = new Point(j * 50, i * 50);
+                        PictureBox_block[i, j].Size = new Size(50, 50);
+                        PictureBox_block[i, j].SizeMode = PictureBoxSizeMode.StretchImage;
                         PictureBox_block[i, j].Image = Properties.Resources.걸상;
+                        PictureBox_block[i, j].Visible = true;
+                        Controls.Add(PictureBox_block[i, j]);
+                        PictureBox_block[i, j].BringToFront();
                     }
                     else if (arr[i, j] == 2)
                     {
+                        
                         PictureBox_block[i, j] = new PictureBox();
                         PictureBox_block[i, j].Location = new Point(j * 50, i * 50);
+                        PictureBox_block[i, j].Size = new Size(50, 50);
                         PictureBox_block[i, j].Image = Properties.Resources.책상;
+                        PictureBox_block[i, j].SizeMode = PictureBoxSizeMode.StretchImage;
+                        PictureBox_block[i, j].Visible = true;
+                        Controls.Add(PictureBox_block[i, j]);
+                        PictureBox_block[i, j].BringToFront();
                     }
                     item_on_block[i, j] = random_();
                 }
             }
+            
         }
     }
 
