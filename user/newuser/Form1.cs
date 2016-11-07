@@ -12,11 +12,11 @@ namespace newuser
         {
             InitializeComponent();
         }
-        PictureBox[,] Bubbles = new PictureBox[15, 15];
+        static PictureBox[,] Bubbles = new PictureBox[15, 15];
         ArrayList list = new ArrayList();
         ArrayList midlist = new ArrayList();
         static ArrayList lastlist = new ArrayList();
-
+        static int x, y;
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
 
@@ -40,14 +40,6 @@ namespace newuser
                     if (temp.stat != 1)
                     {
                         temp.stat = 1;
-
-                        int x = hero.pb_hero.Location.X;
-                        int y = hero.pb_hero.Location.Y;
-
-                        Bubbles[x / 40, y / 40].Visible = true;
-
-
-
                     }
                 }
             }
@@ -97,7 +89,7 @@ namespace newuser
             }
             if ((midlist1 != list1) || (midlist2 != list2) || (midlist3 != list3) || (midlist4 != list4))//새로운 값이 입력되었을때
             {
-                
+
                 if (list1.stat + list2.stat + list3.stat + list4.stat >= 2)//키값이 2개 이상일때
                 {
                     lastlist1 = midlist1;
@@ -199,24 +191,24 @@ namespace newuser
             timer1.Interval = 50;
             timer1.Start();
             timer1.Tick += new EventHandler(timer1_Tick);
-            
-            for (int i = 0; i < 15; ++i)
-                for (int j = 0; j < 15; ++j)
+
+            for (y = 0; y < 15; ++y)
+                for (x = 0; x < 15; ++x)
                 {
-                    Bubbles[i, j] = new PictureBox();
-                    Bubbles[i, j].SizeMode = PictureBoxSizeMode.StretchImage;
-                    Bubbles[i, j].Location = new Point(i * 40, j * 40);
-                    Bubbles[i, j].Width = 40;
-                    Bubbles[i, j].Height = 40;
-                    Bubbles[i, j].Image = Properties.Resources.bubble;
-                    Bubbles[i, j].Visible = false;
-                    this.Controls.Add(Bubbles[i, j]);
+                    Bubbles[y, x] = new PictureBox();
+                    Bubbles[y, x].SizeMode = PictureBoxSizeMode.StretchImage;
+                    Bubbles[y, x].Location = new Point(y * 40, x * 40);
+                    Bubbles[y, x].Width = 40;
+                    Bubbles[y, x].Height = 40;
+                    Bubbles[y, x].Image = Properties.Resources.bubble;
+                    Bubbles[y, x].Visible = false;
+                    this.Controls.Add(Bubbles[y, x]);
                 }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            hero.move(this, list);
+            hero.move(this, list, Bubbles);
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -276,7 +268,7 @@ namespace newuser
                 c_par.Controls.Add(pb_hero);
             }
 
-            public static void move(Control moveit, ArrayList list)
+            public static void move(Control moveit, ArrayList list, PictureBox[,] Bubbles)
             {
                 for (int i = 0; i < list.Count; i++)
                 {
@@ -289,181 +281,155 @@ namespace newuser
                     inputdata left = lastlist[2] as inputdata;
                     inputdata up = lastlist[3] as inputdata;
                     inputdata down = lastlist[4] as inputdata;
+                    System.Windows.Forms.Timer timer_A;
+                    timer_A = new System.Windows.Forms.Timer();
+                    timer_A.Interval = 2000;
+                    timer_A.Tick += new EventHandler(timer_A_Tick);
                     if (temp.key == Keys.Space)
                     {
                         if (temp.stat == 1)
                         {
-                            bubble balloon = new bubble();
-                            Console.Write("guud");
-                        }
-                    }
+                            int x = hero.pb_hero.Location.X;
+                            int y = hero.pb_hero.Location.Y;
 
-                    else if (temp.key == Keys.Right)
-                    {
-                        if (temp.stat == 1)
+                            if (((moveit.Size.Width / 15) * (hero.pb_hero.Location.X / (moveit.Size.Width / 15))) + (moveit.Size.Width / 30) > hero.pb_hero.Location.X && (((moveit.Size.Height / 15) * (hero.pb_hero.Location.X / (moveit.Size.Height / 15))) + (moveit.Size.Height / 30) > hero.pb_hero.Location.X))
+                            {
+                                Bubbles[].Visible = true;
+                                timer_A.Start();
+                            }
+                            else if (((moveit.Size.Width / 15) * (hero.pb_hero.Location.X / (moveit.Size.Width / 15))) + (moveit.Size.Width / 30) < hero.pb_hero.Location.X && (((moveit.Size.Height / 15) * (hero.pb_hero.Location.X / (moveit.Size.Height / 15))) + (moveit.Size.Height / 30) < hero.pb_hero.Location.X))
+                            {
+                                Bubbles[].Visible = true;
+                                timer_A.Start();
+                            }
+                        }
+
+
+                        else if (temp.key == Keys.Right)
                         {
-                            if ((temp3.stat != up.stat) || (temp4.stat != down.stat))//수직처리
+                            if (temp.stat == 1)
                             {
+                                if ((temp3.stat != up.stat) || (temp4.stat != down.stat))//수직처리
+                                {
+
+                                }
+                                else if ((temp2.stat != left.stat))//왼쪽
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                                }
+                                else
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
+
+                                }
 
                             }
-                            else if((temp2.stat != left.stat))//왼쪽
-                            {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
-                            }
-                            else
-                            {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
-
-                            }
-
                         }
-                    }
 
-                    else if (temp.key == Keys.Left)
-                    {
-                        if (temp.stat == 1)
+                        else if (temp.key == Keys.Left)
                         {
-                            if ((temp3.stat != up.stat) || (temp4.stat != down.stat))//수직
+                            if (temp.stat == 1)
                             {
+                                if ((temp3.stat != up.stat) || (temp4.stat != down.stat))//수직
+                                {
+
+                                }
+                                else if ((temp1.stat != right.stat))//오른쪽
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
+                                    hero.pb_hero.Image = Properties.Resources.R;
+                                }
+                                else
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                                }
 
                             }
-                            else if ((temp1.stat != right.stat))//오른쪽
-                            {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
-                                hero.pb_hero.Image = Properties.Resources.R;
-                            }
-                            else
-                            {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
-                            }
-
                         }
-                    }
 
-                    else if (temp.key == Keys.Up)
-                    {
-                        if (temp.stat == 1)
+                        else if (temp.key == Keys.Up)
                         {
-                            if ((temp1.stat != right.stat))//오른쪽
+                            if (temp.stat == 1)
                             {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
-                                hero.pb_hero.Image = Properties.Resources.R;
+                                if ((temp1.stat != right.stat))//오른쪽
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
+                                    hero.pb_hero.Image = Properties.Resources.R;
+
+                                }
+                                else if ((temp2.stat != left.stat))//왼쪽
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+
+                                }
+                                else if ((temp4.stat != down.stat))//반대
+                                {
+
+                                }
+                                else
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
+                                    hero.pb_hero.Image = Properties.Resources.B;
+
+                                }
 
                             }
-                            else if ((temp2.stat != left.stat))//왼쪽
-                            {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
-
-                            }
-                            else if((temp4.stat != down.stat))//반대
-                            {
-
-                            }
-                            else
-                            {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
-                                hero.pb_hero.Image = Properties.Resources.B;
-
-                            }
-
                         }
-                    }
 
-                    else if (temp.key == Keys.Down)
-                    {
-                        if (temp.stat == 1)
+                        else if (temp.key == Keys.Down)
                         {
-                            if ((temp1.stat != right.stat))//오른쪽
+                            if (temp.stat == 1)
                             {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
-                                hero.pb_hero.Image = Properties.Resources.R;
+                                if ((temp1.stat != right.stat))//오른쪽
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
+                                    hero.pb_hero.Image = Properties.Resources.R;
+
+                                }
+                                else if ((temp2.stat != left.stat))//왼쪽
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+
+                                }
+                                else if ((temp3.stat != up.stat))//반대
+                                {
+
+                                }
+                                else
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
+                                    hero.pb_hero.Image = Properties.Resources.F;
+                                }
 
                             }
-                            else if ((temp2.stat != left.stat))//왼쪽
-                            {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                        }
+                        if (hero.pb_hero.Location.X < 0)//왼쪽으로 너무갔을때
+                        {
+                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
 
-                            }
-                            else if ((temp3.stat != up.stat))//반대
-                            {
+                        }
+                        else if (hero.pb_hero.Location.X > 584)//오른쪽으로 너무갔을때
+                        {
+                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
 
-                            }
-                            else
-                            {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
-                                hero.pb_hero.Image = Properties.Resources.F;
-                            }
+                        }
+                        else if (hero.pb_hero.Location.Y < 0)//위쪽으로 너무갔을때
+                        {
+                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
+
+                        }
+                        else if (hero.pb_hero.Location.Y > 561)//아래쪽으로 너무 갔을때
+                        {
+                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
 
                         }
                     }
-                    if (hero.pb_hero.Location.X < 0)//왼쪽으로 너무갔을때
-                    {
-                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
 
-                    }
-                    else if (hero.pb_hero.Location.X > 544)//오른쪽으로 너무갔을때
-                    {
-                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
-
-                    }
-                    else if (hero.pb_hero.Location.Y < 0)//위쪽으로 너무갔을때
-                    {
-                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
-
-                    }
-                    else if (hero.pb_hero.Location.Y > 521)//아래쪽으로 너무 갔을때
-                    {
-                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
-
-                    }
                 }
+
             }
+
         }
-
-        public class bubble
-        {
-            public PictureBox bp_bubble;
-            public PictureBox pb_bubble;
-            System.Windows.Forms.Timer timer_A;
-            public bubble()
-            {
-                bp_bubble = new PictureBox();
-                pb_bubble = new PictureBox();
-
-                timer_A = new System.Windows.Forms.Timer();
-                timer_A.Interval = 2000;
-                timer_A.Tick += new EventHandler(timer_A_Tick);
-
-                bp_bubble.Location = new System.Drawing.Point(100, 100);
-                bp_bubble.Image = Properties.Resources.bubble;
-                bp_bubble.Size = new System.Drawing.Size(60, 60);
-                bp_bubble.Margin = new System.Windows.Forms.Padding(0);
-                bp_bubble.SizeMode = PictureBoxSizeMode.StretchImage;
-                bp_bubble.Visible = true;
-
-
-                pb_bubble.Location = new Point(100, 100);
-                pb_bubble.Image = global::newuser.Properties.Resources.bubble;
-                pb_bubble.Size = new System.Drawing.Size(60, 60);
-                pb_bubble.Margin = new System.Windows.Forms.Padding(0);
-                pb_bubble.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-                pb_bubble.Visible = true;
-
-                bp_bubble.Controls.Add(pb_bubble);
-                timer_A.Start();
-
-            }
-            public void timer_A_Tick(object sender, EventArgs e)
-            {
-                //bp_bubble.Visible = false;
-                //물풍선갯수 감소 (i_cur_bubble
-                //터지는 이펙트ㄱ
-                //터지는것기준으로 양옆 i_max_bubble만큼 픽쳐박스생성
-                //충돌판정필요
-                //종료
-            }
-        }
-
         class inputdata
         {
             public Keys key { get; set; }
@@ -496,6 +462,7 @@ namespace newuser
 
             }
         }
+
 
     }
 }
