@@ -16,16 +16,24 @@ namespace Crazy
     {
         int player_char = 0;
         int key;
+        public static string User_List = start.post_query("http://layer7.kr/room.php", "type=user_list", "id=" + Choose_Room.Room_Key);
+        public static string[] Member = User_List.Split(';');
+        
+       
 
         public before_game(int k)
         {
             InitializeComponent();
             key = k;
+            Label[] Name = new Label[8] { label1, label2, label3, label4,label5, label6, label7, label8 };
+            for (int i = 0; i < Member.Length - 1; i++)
+            {
+                Name[i].Text = Member[i];
+            }
+                 
         }
-
         private void game_exit_Click(object sender, EventArgs e)
         {
-
             Quit_ask frm = new Quit_ask(); // 새 폼 생성¬
             frm.Owner = this; // 새 폼의 오너를 현재 폼으로
             frm.Show();
@@ -33,7 +41,7 @@ namespace Crazy
 
         private void social_open_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void game_start_Click(object sender, EventArgs e)
@@ -81,7 +89,7 @@ namespace Crazy
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            start.post_query("http://layer7.kr/room.php", "type=leave", "id="+ Choose_Room.Use_Room_Pw_InputBox, "key="+Room_Pw_InputBox.key);
+            start.post_query("http://layer7.kr/room.php", "type=leave", "id="+ Choose_Room.Room_Key, "key="+start.User_Key);
             this.Visible = false;
             Choose_Room frm = new Choose_Room(); // 새 폼 생성¬
             frm.Owner = this; // 새 폼의 오너를 현재 폼으로

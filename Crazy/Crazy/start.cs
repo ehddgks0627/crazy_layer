@@ -52,6 +52,7 @@ namespace Crazy
 
         public static bool logged = false;
         public static string nick;
+        public static int User_Key;
         public void set_var(int k = 0)
         {
             Nickname = nick;

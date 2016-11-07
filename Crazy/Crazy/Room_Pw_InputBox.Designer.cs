@@ -77,11 +77,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(329, 244);
+            this.ControlBox = false;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.No);
             this.Controls.Add(this.Yes);
             this.Controls.Add(this.textBox1);
             this.Name = "Room_Pw_InputBox";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Room_Pw_InputBox";
             this.ResumeLayout(false);
             this.PerformLayout();

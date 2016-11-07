@@ -35,7 +35,7 @@ namespace Crazy
             {
                 if (Room_Decomposition[1] == "1") //1이면 비밀방
                 {
-                    if ((start.post_query("http://layer7.kr/room.php", "type=join", "id=" + Convert.ToInt16(r_id.Text), "key=" + Room_Pw_InputBox.key, "nickname=" + start.nick, "pw=" + r_pw) == "1@"))
+                    if ((start.post_query("http://layer7.kr/room.php", "type=join", "id=" + Convert.ToInt16(r_id.Text), "key=" + start.User_Key, "nickname=" + start.nick, "pw=" + r_pw) == "1@"))
                     {
                         if (Room_Decomposition[4] == Room_Decomposition[5])
                             MessageBox.Show("방이 꽉 찼습니다.");

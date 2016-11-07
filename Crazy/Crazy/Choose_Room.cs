@@ -75,13 +75,13 @@ namespace Crazy
 
         public static int Check_chatting = 0;
         public static int Page_Num = 1;
-        public static int Use_Room_Pw_InputBox = 0;
+        public static int Room_Key = 0;
         public static void DoubleClick(int k)
         {
             string str = start.post_query("http://layer7.kr/room.php", "type=list");
             string[] Room = str.Split(';');
             string[] Room_Decomposition = Room[k-1].Split('-');
-            Use_Room_Pw_InputBox = k;
+            Room_Key = k;
             if (Room_Decomposition[4] == Room_Decomposition[5])
                 MessageBox.Show("방이 꽉 찼습니다.");
             else
