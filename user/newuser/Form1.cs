@@ -289,17 +289,23 @@ namespace newuser
                     {
                         if (temp.stat == 1)
                         {
-                            int x = hero.pb_hero.Location.X;
-                            int y = hero.pb_hero.Location.Y;
+                            double x = hero.pb_hero.Location.X;
+                            double y = hero.pb_hero.Location.Y;
+
+                            x = Math.Round(x / 40);
+                            y = Math.Round(y / 40);
+
+                            int X = (int)x;
+                            int Y = (int)y;
 
                             if (((moveit.Size.Width / 15) * (hero.pb_hero.Location.X / (moveit.Size.Width / 15))) + (moveit.Size.Width / 30) > hero.pb_hero.Location.X && (((moveit.Size.Height / 15) * (hero.pb_hero.Location.X / (moveit.Size.Height / 15))) + (moveit.Size.Height / 30) > hero.pb_hero.Location.X))
                             {
-                                Bubbles[].Visible = true;
+                                Bubbles[X, Y].Visible = true;
                                 timer_A.Start();
                             }
                             else if (((moveit.Size.Width / 15) * (hero.pb_hero.Location.X / (moveit.Size.Width / 15))) + (moveit.Size.Width / 30) < hero.pb_hero.Location.X && (((moveit.Size.Height / 15) * (hero.pb_hero.Location.X / (moveit.Size.Height / 15))) + (moveit.Size.Height / 30) < hero.pb_hero.Location.X))
                             {
-                                Bubbles[].Visible = true;
+                                Bubbles[X, Y].Visible = true;
                                 timer_A.Start();
                             }
                         }
