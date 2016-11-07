@@ -54,6 +54,7 @@ namespace Crazy
         {
             this.Close();
         }
+
     }
 }
 
