@@ -7,11 +7,12 @@ using System.Collections;
 namespace newuser
 {
     public partial class Form1 : Form
-    {
+    {   
         public Form1()
         {
             InitializeComponent();
         }
+        
         static PictureBox[,] Bubbles = new PictureBox[15, 15];
         ArrayList list = new ArrayList();
         ArrayList midlist = new ArrayList();
@@ -281,12 +282,8 @@ namespace newuser
                     inputdata left = lastlist[2] as inputdata;
                     inputdata up = lastlist[3] as inputdata;
                     inputdata down = lastlist[4] as inputdata;
-                    System.Windows.Forms.Timer timer_A;
-                    timer_A = new System.Windows.Forms.Timer();
-                    timer_A.Interval = 2000;
-                    timer_A.Tick += new EventHandler(timer_A_Tick);
                     if (temp.key == Keys.Space)
-                    {
+                    {   
                         if (temp.stat == 1)
                         {
                             double x = hero.pb_hero.Location.X;
@@ -301,12 +298,10 @@ namespace newuser
                             if (((moveit.Size.Width / 15) * (hero.pb_hero.Location.X / (moveit.Size.Width / 15))) + (moveit.Size.Width / 30) > hero.pb_hero.Location.X && (((moveit.Size.Height / 15) * (hero.pb_hero.Location.X / (moveit.Size.Height / 15))) + (moveit.Size.Height / 30) > hero.pb_hero.Location.X))
                             {
                                 Bubbles[X, Y].Visible = true;
-                                timer_A.Start();
                             }
                             else if (((moveit.Size.Width / 15) * (hero.pb_hero.Location.X / (moveit.Size.Width / 15))) + (moveit.Size.Width / 30) < hero.pb_hero.Location.X && (((moveit.Size.Height / 15) * (hero.pb_hero.Location.X / (moveit.Size.Height / 15))) + (moveit.Size.Height / 30) < hero.pb_hero.Location.X))
                             {
                                 Bubbles[X, Y].Visible = true;
-                                timer_A.Start();
                             }
                         }
 
