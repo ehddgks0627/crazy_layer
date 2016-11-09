@@ -281,10 +281,6 @@ namespace newuser
                     inputdata left = lastlist[2] as inputdata;
                     inputdata up = lastlist[3] as inputdata;
                     inputdata down = lastlist[4] as inputdata;
-                    System.Windows.Forms.Timer timer_A;
-                    timer_A = new System.Windows.Forms.Timer();
-                    timer_A.Interval = 2000;
-                    timer_A.Tick += new EventHandler(timer_A_Tick);
                     if (temp.key == Keys.Space)
                     {
                         if (temp.stat == 1)
@@ -292,15 +288,7 @@ namespace newuser
                             int x = hero.pb_hero.Location.X;
                             int y = hero.pb_hero.Location.Y;
 
-                            if (((moveit.Size.Width / 15) * (hero.pb_hero.Location.X / (moveit.Size.Width / 15))) + (moveit.Size.Width / 30) > hero.pb_hero.Location.X && (((moveit.Size.Height / 15) * (hero.pb_hero.Location.X / (moveit.Size.Height / 15))) + (moveit.Size.Height / 30) > hero.pb_hero.Location.X))
-                            {
-                                Bubbles[].Visible = true;
-                                timer_A.Start();
-                            }
-                            else if (((moveit.Size.Width / 15) * (hero.pb_hero.Location.X / (moveit.Size.Width / 15))) + (moveit.Size.Width / 30) < hero.pb_hero.Location.X && (((moveit.Size.Height / 15) * (hero.pb_hero.Location.X / (moveit.Size.Height / 15))) + (moveit.Size.Height / 30) < hero.pb_hero.Location.X))
-                            {
-                                Bubbles[].Visible = true;
-                                timer_A.Start();
+                                Bubbles[x/40, y/40].Visible = true;
                             }
                         }
 
@@ -465,4 +453,3 @@ namespace newuser
 
 
     }
-}
