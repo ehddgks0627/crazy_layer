@@ -251,7 +251,8 @@ namespace newuser
             public int level = 2;//상태레벨
             public static int speed = 10;//이동속도
             public int i_max_bubble = 1;//버블길이
-            public int i_cur_bubble = 1;//
+            public int i_cur_bubble = 1;
+            public int nowbubble=0;
 
             public hero(Control c_par)
             {
@@ -287,13 +288,12 @@ namespace newuser
                         {
                             int x = hero.pb_hero.Location.X;
                             int y = hero.pb_hero.Location.Y;
-
-                                Bubbles[x/40, y/40].Visible = true;
-                            }
+                            Bubbles[x / 40, y / 40].Visible = true;
                         }
+                    }
 
 
-                        else if (temp.key == Keys.Right)
+                    else if (temp.key == Keys.Right)
                         {
                             if (temp.stat == 1)
                             {
