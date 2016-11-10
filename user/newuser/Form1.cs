@@ -24,14 +24,17 @@ namespace newuser
             inputdata list2 = list[2] as inputdata;
             inputdata list3 = list[3] as inputdata;
             inputdata list4 = list[4] as inputdata;
+            inputdata list5 = list[5] as inputdata;
             inputdata midlist1 = midlist[1] as inputdata;
             inputdata midlist2 = midlist[2] as inputdata;
             inputdata midlist3 = midlist[3] as inputdata;
             inputdata midlist4 = midlist[4] as inputdata;
+            inputdata midlist5 = midlist[5] as inputdata;
             inputdata lastlist1 = lastlist[1] as inputdata;
             inputdata lastlist2 = lastlist[2] as inputdata;
             inputdata lastlist3 = lastlist[3] as inputdata;
             inputdata lastlist4 = lastlist[4] as inputdata;
+            inputdata lastlist5 = lastlist[5] as inputdata;
             if (e.KeyCode == Keys.Space)
             {
                 inputdata temp = list[0] as inputdata;
@@ -87,7 +90,18 @@ namespace newuser
                     }
                 }
             }
-            if ((midlist1 != list1) || (midlist2 != list2) || (midlist3 != list3) || (midlist4 != list4))//새로운 값이 입력되었을때
+            else if (e.KeyCode == Keys.Shift)
+            {
+                inputdata temp = list[5] as inputdata;
+                if (temp.key == e.KeyCode)
+                {
+                    if (temp.stat != 1)
+                    {
+                        temp.stat = 1;
+                    }
+                }
+            }
+            if ((midlist1 != list1) || (midlist2 != list2) || (midlist3 != list3) || (midlist4 != list4) || (midlist5 != list5))//새로운 값이 입력되었을때
             {
 
                 if (list1.stat + list2.stat + list3.stat + list4.stat >= 2)//키값이 2개 이상일때
@@ -96,6 +110,7 @@ namespace newuser
                     lastlist2 = midlist2;
                     lastlist3 = midlist3;
                     lastlist4 = midlist4;
+                    lastlist5 = midlist5;
                 }
                 else
                 {
@@ -103,6 +118,7 @@ namespace newuser
                     midlist2 = list2;
                     midlist3 = list3;
                     midlist4 = list4;
+                    midlist5 = list5;
                 }
             }
         }
@@ -138,6 +154,11 @@ namespace newuser
             list.Add(data);
 
             data = new inputdata();
+            data.key = Keys.Shift;
+            data.stat = 0;
+            list.Add(data);
+
+            data = new inputdata();
             data.key = Keys.Space;
             data.stat = 0;
             midlist.Add(data);
@@ -163,6 +184,11 @@ namespace newuser
             midlist.Add(data);
 
             data = new inputdata();
+            data.key = Keys.Shift;
+            data.stat = 0;
+            midlist.Add(data);
+
+            data = new inputdata();
             data.key = Keys.Space;
             data.stat = 0;
             lastlist.Add(data);
@@ -184,6 +210,11 @@ namespace newuser
 
             data = new inputdata();
             data.key = Keys.Down;
+            data.stat = 0;
+            lastlist.Add(data);
+
+            data = new inputdata();
+            data.key = Keys.Shift;
             data.stat = 0;
             lastlist.Add(data);
 
@@ -252,7 +283,7 @@ namespace newuser
             public static int speed = 10;//이동속도
             public int i_max_bubble = 1;//버블길이
             public int i_cur_bubble = 1;
-            public int nowbubble=0;
+            public int nowbubble = 0;
 
             public hero(Control c_par)
             {
@@ -294,102 +325,114 @@ namespace newuser
 
 
                     else if (temp.key == Keys.Right)
+                    {
+                        if (temp.stat == 1)
                         {
-                            if (temp.stat == 1)
+                            if ((temp3.stat != up.stat) || (temp4.stat != down.stat))//수직처리
                             {
-                                if ((temp3.stat != up.stat) || (temp4.stat != down.stat))//수직처리
-                                {
-
-                                }
-                                else if ((temp2.stat != left.stat))//왼쪽
-                                {
-                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
-                                }
-                                else
-                                {
-                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
-
-                                }
 
                             }
+                            else if ((temp2.stat != left.stat))//왼쪽
+                            {
+                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                                hero.pb_hero.Image = Properties.Resources.L;
+                            }
+                            else
+                            {
+                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
+                                hero.pb_hero.Image = Properties.Resources.R;
+                            }
+
                         }
+                    }
 
-                        else if (temp.key == Keys.Left)
+                    else if (temp.key == Keys.Left)
+                    {
+                        if (temp.stat == 1)
                         {
-                            if (temp.stat == 1)
+                            if ((temp3.stat != up.stat) || (temp4.stat != down.stat))//수직
                             {
-                                if ((temp3.stat != up.stat) || (temp4.stat != down.stat))//수직
-                                {
-
-                                }
-                                else if ((temp1.stat != right.stat))//오른쪽
-                                {
-                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
-                                    hero.pb_hero.Image = Properties.Resources.R;
-                                }
-                                else
-                                {
-                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
-                                }
 
                             }
+                            else if ((temp1.stat != right.stat))//오른쪽
+                            {
+                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
+                                hero.pb_hero.Image = Properties.Resources.R;
+                            }
+                            else
+                            {
+                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                                hero.pb_hero.Image = Properties.Resources.L;
+
+                            }
+
                         }
+                    }
 
-                        else if (temp.key == Keys.Up)
+                    else if (temp.key == Keys.Up)
+                    {
+                        if (temp.stat == 1)
                         {
-                            if (temp.stat == 1)
+                            if ((temp1.stat != right.stat))//오른쪽
                             {
-                                if ((temp1.stat != right.stat))//오른쪽
-                                {
-                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
-                                    hero.pb_hero.Image = Properties.Resources.R;
-
-                                }
-                                else if ((temp2.stat != left.stat))//왼쪽
-                                {
-                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
-
-                                }
-                                else if ((temp4.stat != down.stat))//반대
-                                {
-
-                                }
-                                else
-                                {
-                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
-                                    hero.pb_hero.Image = Properties.Resources.B;
-
-                                }
+                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
+                                hero.pb_hero.Image = Properties.Resources.R;
 
                             }
+                            else if ((temp2.stat != left.stat))//왼쪽
+                            {
+                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                                hero.pb_hero.Image = Properties.Resources.L;
+
+                            }
+                            else if ((temp4.stat != down.stat))//반대
+                            {
+
+                            }
+                            else
+                            {
+                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
+                                hero.pb_hero.Image = Properties.Resources.B;
+
+                            }
+
                         }
+                    }
 
-                        else if (temp.key == Keys.Down)
+                    else if (temp.key == Keys.Down)
+                    {
+                        if (temp.stat == 1)
                         {
-                            if (temp.stat == 1)
+                            if ((temp1.stat != right.stat))//오른쪽
                             {
-                                if ((temp1.stat != right.stat))//오른쪽
-                                {
-                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
-                                    hero.pb_hero.Image = Properties.Resources.R;
-
-                                }
-                                else if ((temp2.stat != left.stat))//왼쪽
-                                {
-                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
-
-                                }
-                                else if ((temp3.stat != up.stat))//반대
-                                {
-
-                                }
-                                else
-                                {
-                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
-                                    hero.pb_hero.Image = Properties.Resources.F;
-                                }
+                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
+                                hero.pb_hero.Image = Properties.Resources.R;
 
                             }
+                            else if ((temp2.stat != left.stat))//왼쪽
+                            {
+                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                                hero.pb_hero.Image = Properties.Resources.L;
+
+                            }
+                            else if ((temp3.stat != up.stat))//반대
+                            {
+
+                            }
+                            else
+                            {
+                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
+                                hero.pb_hero.Image = Properties.Resources.F;
+                            }
+
+                        }
+                    }
+                    else if (temp.key == Keys.Shift)
+                    {
+                        if (temp.stat == 1)
+                        {
+                            Thread thread_Dart = new Thread(shoot_Dart(check_Direction()));
+                            thread_Dart.Start();
                         }
                         if (hero.pb_hero.Location.X < 0)//왼쪽으로 너무갔을때
                         {
@@ -415,6 +458,126 @@ namespace newuser
 
                 }
 
+
+            }
+
+            void shoot_Dart(int direction)
+            {
+                switch (direction)
+                {
+                    case 0:
+                        PictureBox DartR = new PictureBox();
+
+                        DartR.Location = new Point(heroX, heroY);
+                        DartR.Size = new Size(40, 40);
+                        DartR.Image = Properties.Resources.Dart_Right;
+                        DartR.SizeMode = PictureBoxSizeMode.StretchImage;
+                        DartR.Visible = true;
+
+                        Controls.Add(DartR);
+
+                        for (; DartR.Location.X < 940 && DartR.Location.X < 920;)
+                        {
+                            if (map[DartR.Location.X / 40, DartR.Location.Y / 40] == 1)
+                            {
+                                pung(DartR.Location.X, DartR.Location.Y);
+                                break;
+                            }
+
+                            DartR.Location = new Point(DartR.Location.X + 50, DartR.Location.Y);
+                            Sleep(200);
+                            Controls.Remove(DartR);
+                        }
+                        break;
+
+                    case 1:
+                        PictureBox DartL = new PictureBox();
+
+                        DartL.Location = new Point(heroX, heroY);
+                        DartL.Size = new Size(40, 40);
+                        DartL.Image = Properties.Resources.Dart_left;
+                        DartL.SizeMode = PictureBoxSizeMode.StretchImage;
+                        DartL.Visible = true;
+
+                        Controls.Add(DartL);
+
+                        for (; DartL.Location.X < 940 && DartL.Location.X < 920;)
+                        {
+                            if (map[DartL.Location.X / 40, DartL.Location.Y / 40] == 1)
+                            {
+                                pung(DartL.Location.X, DartL.Location.Y);
+                                break;
+                            }
+
+                            DartL.Location = new Point(DartL.Location.X - 50, DartL.Location.Y);
+                            Sleep(200);
+                            Controls.Remove(DartL);
+                        }
+                        break;
+
+                    case 2:
+                        PictureBox DartU = new PictureBox();
+
+                        DartU.Location = new Point(heroX, heroY);
+                        DartU.Size = new Size(40, 40);
+                        DartU.Image = Properties.Resources.Dart_up;
+                        DartU.SizeMode = PictureBoxSizeMode.StretchImage;
+                        DartU.Visible = true;
+
+                        Controls.Add(DartU);
+
+                        for (; DartU.Location.X < 940 && DartU.Location.X < 920;)
+                        {
+                            if (map[DartU.Location.X / 40, DartU.Location.Y / 40] == 1)
+                            {
+                                pung(DartU.Location.X, DartU.Location.Y);
+                                break;
+                            }
+
+                            DartU.Location = new Point(DartU.Location.X, DartU.Location.Y - 50);
+                            Sleep(200);
+                            Controls.Remove(DartU);
+                        }
+                        break;
+
+                    case 3:
+                        PictureBox DartD = new PictureBox();
+
+                        DartD.Location = new Point(heroX, heroY);
+                        DartD.Size = new Size(40, 40);
+                        DartD.Image = Properties.Resources.Dart_down;
+                        DartD.SizeMode = PictureBoxSizeMode.StretchImage;
+                        DartD.Visible = true;
+
+                        Controls.Add(DartD);
+
+                        for (; DartD.Location.X < 940 && DartD.Location.X < 920;)
+                        {
+                            if (map[DartD.Location.X / 40, DartD.Location.Y / 40] == 1)
+                            {
+                                pung(DartD.Location.X, DartD.Location.Y);
+                                break;
+                            }
+
+                            DartD.Location = new Point(DartD.Location.X, DartD.Location.Y + 50);
+                            Sleep(200);
+                            Controls.Remove(DartD);
+                        }
+                        break;
+                }
+                thread_Dart.Abort;
+            }
+
+            static int check_Direction()
+            {
+                if (hero.pb_hero.Image == Properties.Resources.R)
+                    return 0;
+                else if (hero.pb_hero.Image == Properties.Resources.L)
+                    return 1;
+                else if (hero.pb_hero.Image == Properties.Resources.B)
+                    return 2;
+                else if (hero.pb_hero.Image == Properties.Resources.F)
+                    return 3;
             }
 
         }
@@ -450,6 +613,5 @@ namespace newuser
 
             }
         }
-
-
     }
+}
