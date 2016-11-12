@@ -13,10 +13,12 @@ namespace newuser
             InitializeComponent();
         }
         static PictureBox[,] Bubbles = new PictureBox[15, 15];
+        static PictureBox[,] splash = new PictureBox[15, 15];
         ArrayList list = new ArrayList();
         ArrayList midlist = new ArrayList();
         static ArrayList lastlist = new ArrayList();
         static int x, y;
+
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
 
@@ -90,7 +92,7 @@ namespace newuser
                     }
                 }
             }
-            else if (e.KeyCode == Keys.Shift)
+            else if (e.KeyCode == Keys.Z)
             {
                 inputdata temp = list[5] as inputdata;
                 if (temp.key == e.KeyCode)
@@ -154,7 +156,7 @@ namespace newuser
             list.Add(data);
 
             data = new inputdata();
-            data.key = Keys.Shift;
+            data.key = Keys.Z;
             data.stat = 0;
             list.Add(data);
 
@@ -184,7 +186,7 @@ namespace newuser
             midlist.Add(data);
 
             data = new inputdata();
-            data.key = Keys.Shift;
+            data.key = Keys.Z;
             data.stat = 0;
             midlist.Add(data);
 
@@ -214,14 +216,14 @@ namespace newuser
             lastlist.Add(data);
 
             data = new inputdata();
-            data.key = Keys.Shift;
+            data.key = Keys.Z;
             data.stat = 0;
             lastlist.Add(data);
 
-            hero myhero = new hero(this);
             timer1.Interval = 50;
             timer1.Start();
             timer1.Tick += new EventHandler(timer1_Tick);
+            hero myhero = new hero(this);
 
             for (y = 0; y < 15; ++y)
                 for (x = 0; x < 15; ++x)
@@ -233,6 +235,18 @@ namespace newuser
                     Bubbles[y, x].Height = 40;
                     Bubbles[y, x].Image = Properties.Resources.bubble;
                     Bubbles[y, x].Visible = false;
+                    this.Controls.Add(Bubbles[y, x]);
+                }
+            for (y = 0; y < 15; ++y)
+                for (x = 0; x < 15; ++x)
+                {
+                    splash[y, x] = new PictureBox();
+                    splash[y, x].SizeMode = PictureBoxSizeMode.StretchImage;
+                    splash[y, x].Location = new Point(y * 40, x * 40);
+                    splash[y, x].Width = 40;
+                    splash[y, x].Height = 40;
+                    splash[y, x].Image = Properties.Resources.water;
+                    splash[y, x].Visible = false;
                     this.Controls.Add(Bubbles[y, x]);
                 }
         }
@@ -272,18 +286,62 @@ namespace newuser
                 inputdata data = list[4] as inputdata;
                 data.stat = 0;
             }
+            else if (e.KeyCode == Keys.Z)
+            {
+                inputdata data = list[5] as inputdata;
+                data.stat = 0;
+            }
         }
 
         public class hero
         {
             public static PictureBox pb_hero;//사용자 캐릭터
 
-            public int key;
-            public int level = 2;//상태레벨
+            public static int key;
+            public static int level = 2;//상태레벨
             public static int speed = 10;//이동속도
-            public int i_max_bubble = 1;//버블길이
-            public int i_cur_bubble = 1;
-            public int nowbubble = 0;
+            public static int i_max_bubble = 1;//버블길이
+            public static int i_cur_bubble = 1;
+            public static int nowbubble = 0;
+            public static int dart_locationX;
+            public static int dart_locationY;
+
+            public static int[,] map = new int[15, 15] {
+            { 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
+            { 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
+            { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1 },
+            { 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1 },
+            { 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 },
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+            { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 0 },
+            { 0, 0, 1, 2, 1, 1, 2, 2, 2, 1, 1, 2, 1, 0 ,0 },
+            { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 0 },
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+            { 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 },
+            { 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1 },
+            { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1 },
+            { 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
+            { 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
+            };//맵의 블럭 유무상태
+
+            public static int[,] item = new int[15, 15] {
+            { 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
+            { 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
+            { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1 },
+            { 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1 },
+            { 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 },
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+            { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 0 },
+            { 0, 0, 1, 2, 1, 1, 2, 2, 2, 1, 1, 2, 1, 0 ,0 },
+            { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 0 },
+            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+            { 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 },
+            { 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1 },
+            { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1 },
+            { 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
+            { 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
+            };//맵의 아이템
+
 
             public hero(Control c_par)
             {
@@ -292,7 +350,7 @@ namespace newuser
                 i_cur_bubble = 0;
 
                 pb_hero = new PictureBox();
-                pb_hero.Location = new Point(20, 20);
+                pb_hero.Location = new Point(0, 0);
                 pb_hero.Size = new Size(40, 40);
                 pb_hero.Image = Properties.Resources.F;
                 pb_hero.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -334,13 +392,25 @@ namespace newuser
                             }
                             else if ((temp2.stat != left.stat))//왼쪽
                             {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
-                                hero.pb_hero.Image = Properties.Resources.L;
+                                if (map[hero.pb_hero.Location.X / 40 - 1, hero.pb_hero.Location.Y / 40] != 0)//블럭이 있을경우
+                                {
+                                }
+                                else
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                                    hero.pb_hero.Image = Properties.Resources.L;
+                                }
                             }
                             else
                             {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
-                                hero.pb_hero.Image = Properties.Resources.R;
+                                if (map[hero.pb_hero.Location.X / 40+1, hero.pb_hero.Location.Y / 40] != 0)
+                                {
+                                }
+                                else
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
+                                    hero.pb_hero.Image = Properties.Resources.R;
+                                }
                             }
 
                         }
@@ -356,13 +426,18 @@ namespace newuser
                             }
                             else if ((temp1.stat != right.stat))//오른쪽
                             {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
-                                hero.pb_hero.Image = Properties.Resources.R;
+                                
                             }
                             else
                             {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
-                                hero.pb_hero.Image = Properties.Resources.L;
+                                if (map[hero.pb_hero.Location.X / 40, hero.pb_hero.Location.Y / 40] != 0)
+                                {
+                                }
+                                else
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                                    hero.pb_hero.Image = Properties.Resources.L;
+                                }
 
                             }
 
@@ -375,14 +450,26 @@ namespace newuser
                         {
                             if ((temp1.stat != right.stat))//오른쪽
                             {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
-                                hero.pb_hero.Image = Properties.Resources.R;
+                                if (map[hero.pb_hero.Location.X / 40+1, hero.pb_hero.Location.Y / 40] != 0)
+                                {
+                                }
+                                else
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
+                                    hero.pb_hero.Image = Properties.Resources.R;
+                                }
 
                             }
                             else if ((temp2.stat != left.stat))//왼쪽
                             {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
-                                hero.pb_hero.Image = Properties.Resources.L;
+                                if (map[hero.pb_hero.Location.X / 40-1, hero.pb_hero.Location.Y / 40] != 0)
+                                {
+                                }
+                                else
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                                    hero.pb_hero.Image = Properties.Resources.L;
+                                }
 
                             }
                             else if ((temp4.stat != down.stat))//반대
@@ -391,8 +478,14 @@ namespace newuser
                             }
                             else
                             {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
-                                hero.pb_hero.Image = Properties.Resources.B;
+                                if (map[hero.pb_hero.Location.X / 40, hero.pb_hero.Location.Y / 40-1] != 0)
+                                {
+                                }
+                                else
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
+                                    hero.pb_hero.Image = Properties.Resources.B;
+                                }
 
                             }
 
@@ -405,15 +498,25 @@ namespace newuser
                         {
                             if ((temp1.stat != right.stat))//오른쪽
                             {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
-                                hero.pb_hero.Image = Properties.Resources.R;
-
+                                if (map[hero.pb_hero.Location.X / 40+1, hero.pb_hero.Location.Y / 40] != 0)
+                                {
+                                }
+                                else
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
+                                    hero.pb_hero.Image = Properties.Resources.R;
+                                }
                             }
                             else if ((temp2.stat != left.stat))//왼쪽
                             {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
-                                hero.pb_hero.Image = Properties.Resources.L;
-
+                                if (map[hero.pb_hero.Location.X / 40-1, hero.pb_hero.Location.Y / 40] != 0)
+                                {
+                                }
+                                else
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                                    hero.pb_hero.Image = Properties.Resources.L;
+                                }
                             }
                             else if ((temp3.stat != up.stat))//반대
                             {
@@ -421,151 +524,265 @@ namespace newuser
                             }
                             else
                             {
-                                hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
-                                hero.pb_hero.Image = Properties.Resources.F;
+                                if (map[hero.pb_hero.Location.X / 40, hero.pb_hero.Location.Y / 40+1] != 0)
+                                {
+                                }
+                                else
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
+                                    hero.pb_hero.Image = Properties.Resources.F;
+                                }
                             }
 
                         }
                     }
-                    else if (temp.key == Keys.Shift)
+                    else if (temp.key == Keys.Z)
                     {
                         if (temp.stat == 1)
                         {
-                            Thread thread_Dart = new Thread(shoot_Dart(check_Direction()));
+                            Console.Write("god");
+                            int dev;
+                            dev = check_Direction();
+                            Thread thread_Dart = new Thread(shoot_Dart(dev));
                             thread_Dart.Start();
                         }
-                        if (hero.pb_hero.Location.X < 0)//왼쪽으로 너무갔을때
-                        {
-                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
-
-                        }
-                        else if (hero.pb_hero.Location.X > 584)//오른쪽으로 너무갔을때
-                        {
-                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
-
-                        }
-                        else if (hero.pb_hero.Location.Y < 0)//위쪽으로 너무갔을때
-                        {
-                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
-
-                        }
-                        else if (hero.pb_hero.Location.Y > 561)//아래쪽으로 너무 갔을때
-                        {
-                            hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
-
-                        }
                     }
+                    if (hero.pb_hero.Location.X < 0)//왼쪽으로 너무갔을때
+                    {
+                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
 
+                    }
+                    else if (hero.pb_hero.Location.X > 584)//오른쪽으로 너무갔을때
+                    {
+                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+
+                    }
+                    else if (hero.pb_hero.Location.Y < 0)//위쪽으로 너무갔을때
+                    {
+                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
+
+                    }
+                    else if (hero.pb_hero.Location.Y > 561)//아래쪽으로 너무 갔을때
+                    {
+                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
+
+                    }
                 }
-
-
             }
 
-            void shoot_Dart(int direction)
+            private static ThreadStart shoot_Dart(int direction)
             {
                 switch (direction)
                 {
                     case 0:
                         PictureBox DartR = new PictureBox();
 
-                        DartR.Location = new Point(heroX, heroY);
+                        DartR.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y);
                         DartR.Size = new Size(40, 40);
                         DartR.Image = Properties.Resources.Dart_Right;
                         DartR.SizeMode = PictureBoxSizeMode.StretchImage;
                         DartR.Visible = true;
-
-                        Controls.Add(DartR);
+                        DartR.Controls.Add(DartR);
 
                         for (; DartR.Location.X < 940 && DartR.Location.X < 920;)
                         {
-                            if (map[DartR.Location.X / 40, DartR.Location.Y / 40] == 1)
+                            if (Bubbles[DartR.Location.X / 40, DartR.Location.Y / 40].Visible == true)
                             {
                                 pung(DartR.Location.X, DartR.Location.Y);
                                 break;
                             }
-
                             DartR.Location = new Point(DartR.Location.X + 50, DartR.Location.Y);
-                            Sleep(200);
-                            Controls.Remove(DartR);
+                            Thread.Sleep(200);
                         }
+                        DartR.Controls.Remove(DartR);
                         break;
 
                     case 1:
                         PictureBox DartL = new PictureBox();
 
-                        DartL.Location = new Point(heroX, heroY);
+                        DartL.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y);
                         DartL.Size = new Size(40, 40);
                         DartL.Image = Properties.Resources.Dart_left;
                         DartL.SizeMode = PictureBoxSizeMode.StretchImage;
                         DartL.Visible = true;
-
-                        Controls.Add(DartL);
+                        DartL.Controls.Add(DartL);
 
                         for (; DartL.Location.X < 940 && DartL.Location.X < 920;)
                         {
-                            if (map[DartL.Location.X / 40, DartL.Location.Y / 40] == 1)
+                            if (Bubbles[DartL.Location.X / 40, DartL.Location.Y / 40].Visible == true)
                             {
                                 pung(DartL.Location.X, DartL.Location.Y);
                                 break;
                             }
-
                             DartL.Location = new Point(DartL.Location.X - 50, DartL.Location.Y);
-                            Sleep(200);
-                            Controls.Remove(DartL);
+                            Thread.Sleep(200);
                         }
+                        DartL.Controls.Remove(DartL);
                         break;
 
                     case 2:
                         PictureBox DartU = new PictureBox();
 
-                        DartU.Location = new Point(heroX, heroY);
+                        DartU.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y);
                         DartU.Size = new Size(40, 40);
                         DartU.Image = Properties.Resources.Dart_up;
                         DartU.SizeMode = PictureBoxSizeMode.StretchImage;
                         DartU.Visible = true;
-
-                        Controls.Add(DartU);
+                        DartU.Controls.Add(DartU);
 
                         for (; DartU.Location.X < 940 && DartU.Location.X < 920;)
                         {
-                            if (map[DartU.Location.X / 40, DartU.Location.Y / 40] == 1)
+                            if (Bubbles[DartU.Location.X / 40, DartU.Location.Y / 40].Visible == true)
                             {
                                 pung(DartU.Location.X, DartU.Location.Y);
                                 break;
                             }
-
                             DartU.Location = new Point(DartU.Location.X, DartU.Location.Y - 50);
-                            Sleep(200);
-                            Controls.Remove(DartU);
+                            Thread.Sleep(200);
                         }
+                        DartU.Controls.Remove(DartU);
                         break;
 
                     case 3:
                         PictureBox DartD = new PictureBox();
 
-                        DartD.Location = new Point(heroX, heroY);
+                        DartD.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y);
                         DartD.Size = new Size(40, 40);
                         DartD.Image = Properties.Resources.Dart_down;
                         DartD.SizeMode = PictureBoxSizeMode.StretchImage;
                         DartD.Visible = true;
-
-                        Controls.Add(DartD);
+                        DartD.Controls.Add(DartD);
 
                         for (; DartD.Location.X < 940 && DartD.Location.X < 920;)
                         {
-                            if (map[DartD.Location.X / 40, DartD.Location.Y / 40] == 1)
+                            if (Bubbles[DartD.Location.X / 40, DartD.Location.Y / 40].Visible == true)
                             {
                                 pung(DartD.Location.X, DartD.Location.Y);
                                 break;
                             }
-
                             DartD.Location = new Point(DartD.Location.X, DartD.Location.Y + 50);
-                            Sleep(200);
-                            Controls.Remove(DartD);
+                            Thread.Sleep(200);
                         }
+                        DartD.Controls.Remove(DartD);
                         break;
                 }
-                thread_Dart.Abort;
+                return null;
+            }
+
+            static void pung(int X, int Y)
+            {
+                Bubbles[hero.pb_hero.Location.X, hero.pb_hero.Location.Y].Visible = false;
+                Thread splash_thread = new Thread(splashEffect(X, Y));
+                splash_thread.Start();
+            }
+
+            private static ThreadStart splashEffect(int X, int Y)
+            {
+                int R = 1, L = 1, U = 1, D = 1;
+                X /= 40;
+                Y /= 40;
+                for (int i = 1; i <= hero.i_max_bubble; ++i)//블럭을 만날때까지 이펙트 표시
+                {
+                    //L
+                    if (X - i >= 0 && L == 1)//블럭이 있을때
+                    {
+                        if (map[X - i, Y] == 1)
+                        {
+                            map[X - i, Y] = 0;
+                            L -= 1;
+                        }
+                    }
+                    else if (L == 1 && X - i >= 0)//못부술때
+                    {
+                        if (map[X - i, Y] == 2)
+                            L -= 1;
+                    }
+                    else if (X - i >= 0 && L == 1)//블럭이 없을때
+                    {
+                        if (map[X - i, Y] == 0)
+                        {
+                            splash[X - i, Y].Visible = true;
+                        }
+                    }
+
+                    //R
+                    if (X + i <= 14 && R == 1)
+                    {
+                        if (map[X + i, Y] == 1)
+                        {
+                            map[X + i, Y] = 0;
+                            R -= 1;
+                        }
+                    }
+                    else if (R == 1 && X + i <= 14)
+                    {
+                        if (map[X + i, Y] == 2)
+                            R -= 1;
+                    }
+                    else if (R == 1 && X + i <= 14)
+                    {
+                        if (map[X + i, Y] == 0)
+                            splash[X + i, Y].Visible = true;
+                    }
+
+                    //U
+                    if (Y - i >= 0 && U == 1)
+                    {
+                        if (map[X, Y - i] == 1)
+                        {
+                            map[X, Y - i] = 0;
+                            U -= 1;
+                        }
+                    }
+                    else if (U == i && Y - i >= 0)
+                    {
+                        if (map[X, Y - i] == 2)
+                            U -= 1;
+                    }
+                    else if (U == 1 && Y - i >= 0)
+                    {
+                        if (map[X, Y - i] == 0)
+                            splash[X, Y - i].Visible = true;
+                    }
+
+                    //D
+                    if (Y + i <= 14 && D == 1)
+                    {
+                        if (map[X, Y + i] == 1)
+                        {
+                            map[X, Y + i] = 0;
+                            D -= 1;
+                        }
+
+                    }
+                    else if (D == 1 && Y + i <= 14)
+                    {
+                        if (map[X, Y + i] == 2)
+                            D -= 1;
+                    }
+                    else if (D == 1 && Y + i <= 14)
+                    {
+                        if (map[X, Y + i] == 0)
+                            splash[X, Y + i].Visible = true;
+                    }
+                }
+                Thread.Sleep(500);
+                for (int i = 1; i <= hero.i_max_bubble; ++i)//표시된 이펙트 제거
+                {
+                    if (X - i >= 0)
+                        if (splash[X - i, Y].Visible == true)
+                            splash[X - i, Y].Visible = false;
+                    if (X + i <= 14)
+                        if (splash[X + i, Y].Visible == true)
+                            splash[X + i, Y].Visible = false;
+                    if (Y - i >= 0)
+                        if (splash[X, Y - i].Visible == true)
+                            splash[X, Y - i].Visible = false;
+                    if (Y + i <= 14)
+                        if (splash[X, Y + i].Visible == true)
+                            splash[X, Y + i].Visible = false;
+                }
+                return null;
             }
 
             static int check_Direction()
@@ -578,40 +795,45 @@ namespace newuser
                     return 2;
                 else if (hero.pb_hero.Image == Properties.Resources.F)
                     return 3;
+                else
+                    return 9;
             }
 
         }
+
         class inputdata
         {
             public Keys key { get; set; }
             public int stat { get; set; }
         }
 
-        class map
-        {
-            int[,] block = new int[15, 15] {
-            { 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
-            { 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
-            { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1 },
-            { 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1 },
-            { 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 },
-            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-            { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 0 },
-            { 0, 0, 1, 2, 1, 1, 2, 2, 2, 1, 1, 2, 1, 0 ,0 },
-            { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 0 },
-            { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-            { 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 },
-            { 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1 },
-            { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1 },
-            { 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
-            { 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
-            };//맵의 블럭 유무상태
+        //public class map
+        //{
+        //    int[,] block = new int[15, 15] {
+        //    { 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
+        //    { 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
+        //    { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1 },
+        //    { 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1 },
+        //    { 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 },
+        //    { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+        //    { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 0 },
+        //    { 0, 0, 1, 2, 1, 1, 2, 2, 2, 1, 1, 2, 1, 0 ,0 },
+        //    { 0, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 0 },
+        //    { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+        //    { 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 },
+        //    { 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1 },
+        //    { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1 },
+        //    { 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
+        //    { 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
+        //    };//맵의 블럭 유무상태
 
-            //아이템, 물풍선, 타이머
-            class timer
-            {
 
-            }
-        }
+
+        //    //아이템, 물풍선, 타이머
+        //    class timer
+        //    {
+
+        //    }
+        //}
     }
 }
