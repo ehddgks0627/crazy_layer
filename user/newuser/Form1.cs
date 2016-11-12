@@ -392,6 +392,7 @@ namespace newuser
                             }
                             else if ((temp2.stat != left.stat))//왼쪽
                             {
+                                if(hero.pb_hero.Location.X/40-1>=0)
                                 if (map[hero.pb_hero.Location.X / 40 - 1, hero.pb_hero.Location.Y / 40] != 0)//블럭이 있을경우
                                 {
                                 }
