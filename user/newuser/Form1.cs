@@ -386,26 +386,45 @@ namespace newuser
                     {
                         if (temp.stat == 1)
                         {
-                            if ((temp3.stat != up.stat) || (temp4.stat != down.stat))//수직처리
+                            if (hero.pb_hero.Location.X / 40 > 0 && hero.pb_hero.Location.X / 40 < 15)
                             {
-
-                            }
-                            else if ((temp2.stat != left.stat))//왼쪽
-                            {
-                                if(hero.pb_hero.Location.X/40-1>=0)
-                                if (map[hero.pb_hero.Location.X / 40 - 1, hero.pb_hero.Location.Y / 40] != 0)//블럭이 있을경우
+                                if ((temp3.stat != up.stat) || (temp4.stat != down.stat))//수직처리
                                 {
+
+                                }
+                                else if ((temp2.stat != left.stat))//왼쪽
+                                {
+                                    if (map[hero.pb_hero.Location.X / 40 - 1, hero.pb_hero.Location.Y / 40] != 0)//블럭이 있을경우
+                                    {
+                                    }
+                                    else
+                                    {
+                                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                                        hero.pb_hero.Image = Properties.Resources.L;
+                                    }
                                 }
                                 else
                                 {
-                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
-                                    hero.pb_hero.Image = Properties.Resources.L;
+                                    if (map[hero.pb_hero.Location.X / 40 + 1, hero.pb_hero.Location.Y / 40] != 0)
+                                    {
+                                    }
+                                    else
+                                    {
+                                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
+                                        hero.pb_hero.Image = Properties.Resources.R;
+                                    }
                                 }
                             }
                             else
                             {
-                                if (map[hero.pb_hero.Location.X / 40+1, hero.pb_hero.Location.Y / 40] != 0)
+                                if ((temp3.stat != up.stat) || (temp4.stat != down.stat))//수직처리
                                 {
+
+                                }
+                                else if ((temp2.stat != left.stat))//왼쪽
+                                {
+                                    hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                                    hero.pb_hero.Image = Properties.Resources.L;
                                 }
                                 else
                                 {
@@ -413,7 +432,6 @@ namespace newuser
                                     hero.pb_hero.Image = Properties.Resources.R;
                                 }
                             }
-
                         }
                     }
 
@@ -421,27 +439,45 @@ namespace newuser
                     {
                         if (temp.stat == 1)
                         {
-                            if ((temp3.stat != up.stat) || (temp4.stat != down.stat))//수직
+                            if (hero.pb_hero.Location.X / 40 < 15 && hero.pb_hero.Location.X / 40 > 0)
                             {
+                                if ((temp3.stat != up.stat) || (temp4.stat != down.stat))//수직
+                                {
 
-                            }
-                            else if ((temp1.stat != right.stat))//오른쪽
-                            {
-                                
+                                }
+                                else if ((temp1.stat != right.stat))//오른쪽
+                                {
+
+                                }
+                                else
+                                {
+                                    if (map[hero.pb_hero.Location.X / 40 - 1, hero.pb_hero.Location.Y / 40] != 0)
+                                    {
+                                    }
+                                    else
+                                    {
+                                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                                        hero.pb_hero.Image = Properties.Resources.L;
+                                    }
+
+                                }
                             }
                             else
                             {
-                                if (map[hero.pb_hero.Location.X / 40, hero.pb_hero.Location.Y / 40] != 0)
+                                if ((temp3.stat != up.stat) || (temp4.stat != down.stat))//수직
                                 {
+
+                                }
+                                else if ((temp1.stat != right.stat))//오른쪽
+                                {
+
                                 }
                                 else
                                 {
                                     hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
                                     hero.pb_hero.Image = Properties.Resources.L;
                                 }
-
                             }
-
                         }
                     }
 
@@ -449,47 +485,71 @@ namespace newuser
                     {
                         if (temp.stat == 1)
                         {
-                            if ((temp1.stat != right.stat))//오른쪽
+                            if (hero.pb_hero.Location.Y / 40 > 0 && hero.pb_hero.Location.Y / 40 < 14&& hero.pb_hero.Location.X / 40 > 0 && hero.pb_hero.Location.X / 40 < 15)
                             {
-                                if (map[hero.pb_hero.Location.X / 40+1, hero.pb_hero.Location.Y / 40] != 0)
+                                if ((temp1.stat != right.stat))//오른쪽
                                 {
+                                    if (map[hero.pb_hero.Location.X / 40 + 1, hero.pb_hero.Location.Y / 40] != 0)
+                                    {
+                                    }
+                                    else
+                                    {
+                                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
+                                        hero.pb_hero.Image = Properties.Resources.R;
+                                    }
+
+                                }
+                                else if ((temp2.stat != left.stat))//왼쪽
+                                {
+                                    if (map[hero.pb_hero.Location.X / 40 - 1, hero.pb_hero.Location.Y / 40] != 0)
+                                    {
+                                    }
+                                    else
+                                    {
+                                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                                        hero.pb_hero.Image = Properties.Resources.L;
+                                    }
+
+                                }
+                                else if ((temp4.stat != down.stat))//반대
+                                {
+
                                 }
                                 else
+                                {
+                                    if (map[hero.pb_hero.Location.X / 40, hero.pb_hero.Location.Y / 40 - 1] != 0)
+                                    {
+                                    }
+                                    else
+                                    {
+                                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
+                                        hero.pb_hero.Image = Properties.Resources.B;
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                if ((temp1.stat != right.stat))//오른쪽
                                 {
                                     hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
                                     hero.pb_hero.Image = Properties.Resources.R;
                                 }
-
-                            }
-                            else if ((temp2.stat != left.stat))//왼쪽
-                            {
-                                if (map[hero.pb_hero.Location.X / 40-1, hero.pb_hero.Location.Y / 40] != 0)
-                                {
-                                }
-                                else
+                                else if ((temp2.stat != left.stat))//왼쪽
                                 {
                                     hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
                                     hero.pb_hero.Image = Properties.Resources.L;
                                 }
-
-                            }
-                            else if ((temp4.stat != down.stat))//반대
-                            {
-
-                            }
-                            else
-                            {
-                                if (map[hero.pb_hero.Location.X / 40, hero.pb_hero.Location.Y / 40-1] != 0)
+                                else if ((temp4.stat != down.stat))//반대
                                 {
+
                                 }
                                 else
                                 {
                                     hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y - hero.speed);
                                     hero.pb_hero.Image = Properties.Resources.B;
                                 }
-
                             }
-
                         }
                     }
 
@@ -497,36 +557,61 @@ namespace newuser
                     {
                         if (temp.stat == 1)
                         {
-                            if ((temp1.stat != right.stat))//오른쪽
+                            if (hero.pb_hero.Location.Y / 40 < 14 && hero.pb_hero.Location.Y / 40 > 0&& hero.pb_hero.Location.X / 40 > 0 && hero.pb_hero.Location.X / 40 < 15)
                             {
-                                if (map[hero.pb_hero.Location.X / 40+1, hero.pb_hero.Location.Y / 40] != 0)
+                                if ((temp1.stat != right.stat))//오른쪽
                                 {
+                                    if (map[hero.pb_hero.Location.X / 40 + 1, hero.pb_hero.Location.Y / 40] != 0)
+                                    {
+                                    }
+                                    else
+                                    {
+                                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
+                                        hero.pb_hero.Image = Properties.Resources.R;
+                                    }
+                                }
+                                else if ((temp2.stat != left.stat))//왼쪽
+                                {
+                                    if (map[hero.pb_hero.Location.X / 40 - 1, hero.pb_hero.Location.Y / 40] != 0)
+                                    {
+                                    }
+                                    else
+                                    {
+                                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
+                                        hero.pb_hero.Image = Properties.Resources.L;
+                                    }
+                                }
+                                else if ((temp3.stat != up.stat))//반대
+                                {
+
                                 }
                                 else
+                                {
+                                    if (map[hero.pb_hero.Location.X / 40, hero.pb_hero.Location.Y / 40 + 1] != 0)
+                                    {
+                                    }
+                                    else
+                                    {
+                                        hero.pb_hero.Location = new Point(hero.pb_hero.Location.X, hero.pb_hero.Location.Y + hero.speed);
+                                        hero.pb_hero.Image = Properties.Resources.F;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if ((temp1.stat != right.stat))//오른쪽
                                 {
                                     hero.pb_hero.Location = new Point(hero.pb_hero.Location.X + hero.speed, hero.pb_hero.Location.Y);
                                     hero.pb_hero.Image = Properties.Resources.R;
                                 }
-                            }
-                            else if ((temp2.stat != left.stat))//왼쪽
-                            {
-                                if (map[hero.pb_hero.Location.X / 40-1, hero.pb_hero.Location.Y / 40] != 0)
-                                {
-                                }
-                                else
+                                else if ((temp2.stat != left.stat))//왼쪽
                                 {
                                     hero.pb_hero.Location = new Point(hero.pb_hero.Location.X - hero.speed, hero.pb_hero.Location.Y);
                                     hero.pb_hero.Image = Properties.Resources.L;
                                 }
-                            }
-                            else if ((temp3.stat != up.stat))//반대
-                            {
-
-                            }
-                            else
-                            {
-                                if (map[hero.pb_hero.Location.X / 40, hero.pb_hero.Location.Y / 40+1] != 0)
+                                else if ((temp3.stat != up.stat))//반대
                                 {
+
                                 }
                                 else
                                 {
@@ -534,6 +619,7 @@ namespace newuser
                                     hero.pb_hero.Image = Properties.Resources.F;
                                 }
                             }
+
 
                         }
                     }
