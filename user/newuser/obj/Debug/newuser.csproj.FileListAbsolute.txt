@@ -1,0 +1,18 @@
+C:\Users\rlaxo\OneDrive\Documents\Club Activity\TP\BTP\newuser\newuser\newuser\bin\Debug\newuser.exe.config
+C:\Users\rlaxo\OneDrive\Documents\Club Activity\TP\BTP\newuser\newuser\newuser\obj\Debug\newuser.csprojResolveAssemblyReference.cache
+C:\Users\rlaxo\OneDrive\Documents\Club Activity\TP\BTP\newuser\newuser\newuser\obj\Debug\newuser.Form1.resources
+C:\Users\rlaxo\OneDrive\Documents\Club Activity\TP\BTP\newuser\newuser\newuser\obj\Debug\newuser.Properties.Resources.resources
+C:\Users\rlaxo\OneDrive\Documents\Club Activity\TP\BTP\newuser\newuser\newuser\obj\Debug\newuser.csproj.GenerateResource.Cache
+C:\Users\rlaxo\OneDrive\Documents\Club Activity\TP\BTP\newuser\newuser\newuser\bin\Debug\newuser.exe
+C:\Users\rlaxo\OneDrive\Documents\Club Activity\TP\BTP\newuser\newuser\newuser\bin\Debug\newuser.pdb
+C:\Users\rlaxo\OneDrive\Documents\Club Activity\TP\BTP\newuser\newuser\newuser\obj\Debug\newuser.exe
+C:\Users\rlaxo\OneDrive\Documents\Club Activity\TP\BTP\newuser\newuser\newuser\obj\Debug\newuser.pdb
+C:\Users\rlaxo\Documents\GitHub\crazy_layer\user\newuser\bin\Debug\newuser.exe.config
+C:\Users\rlaxo\Documents\GitHub\crazy_layer\user\newuser\obj\Debug\newuser.exe
+C:\Users\rlaxo\Documents\GitHub\crazy_layer\user\newuser\obj\Debug\newuser.pdb
+C:\Users\rlaxo\Documents\GitHub\crazy_layer\user\newuser\bin\Debug\newuser.exe
+C:\Users\rlaxo\Documents\GitHub\crazy_layer\user\newuser\bin\Debug\newuser.pdb
+C:\Users\rlaxo\Documents\GitHub\crazy_layer\user\newuser\obj\Debug\newuser.csprojResolveAssemblyReference.cache
+C:\Users\rlaxo\Documents\GitHub\crazy_layer\user\newuser\obj\Debug\newuser.Form1.resources
+C:\Users\rlaxo\Documents\GitHub\crazy_layer\user\newuser\obj\Debug\newuser.Properties.Resources.resources
+C:\Users\rlaxo\Documents\GitHub\crazy_layer\user\newuser\obj\Debug\newuser.csproj.GenerateResource.Cache
