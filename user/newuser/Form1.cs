@@ -9,9 +9,9 @@ namespace newuser
     public partial class Form1 : Form
     {
         int[,] arr = new int[15, 15] {
-            { 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
-            { 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
-            { 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1 },
+            { 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
+            { 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0 },
+            { 0, 0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1 },
             { 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1 },
             { 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1 },
             { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
@@ -93,8 +93,8 @@ namespace newuser
         private void Form1_Load(object sender, EventArgs e)
         {
             System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
-            inputdata data = new inputdata();
-            data.key = Keys.Space;
+            inputdata data = new inputdata();//list 배열에 동적으로 inputdata타입인 data를 초기화 후 추가함
+            data.key = Keys.Space;//각각의 data는 키값과 상태변수를 가지고있음
             data.stat = 0;
             list.Add(data);
 
@@ -118,17 +118,17 @@ namespace newuser
             data.stat = 0;
             list.Add(data);
 
-            hero myhero = new hero(this);
-            timer1.Interval = 50;
+            hero myhero = new hero(this);//hero클래스의 객체로 myhero선언 인자값은 이벤트를 받기위한 form1(this)
+            timer1.Interval = 50;//물풍선 타이머를 설정할 옵션들
             timer1.Start();
             timer1.Tick += new EventHandler(timer1_Tick);
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)//타이머가 다 될 경우
         {
             for (int i = 0; i < list.Count; i++)
             {
-                inputdata temp = list[i] as inputdata;
+                inputdata temp = list[i] as inputdata;//각각의 키값과 상태를 저장할 temp객체
                 inputdata temp1 = list[1] as inputdata;
                 inputdata temp2 = list[2] as inputdata;
                 inputdata temp3 = list[3] as inputdata;
@@ -181,7 +181,7 @@ namespace newuser
             }
         }
 
-        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        private void Form1_KeyUp(object sender, KeyEventArgs e)//키를 누른후 뗄 경우 키값의 상태를 눌리지 않음으로 전환
         {
             if (e.KeyCode == Keys.Space)
             {
@@ -223,8 +223,6 @@ namespace newuser
     public class hero
     {
         public static PictureBox pb_hero;//사용자 캐릭터
-        public static Control Parent;//?
-        public static Thread th_key_handler;//?
 
         public int key;
         public int i_x;//내좌표
@@ -338,35 +336,34 @@ namespace newuser
         System.Windows.Forms.Timer timer_A;
         public bubble(Control fuck)
         {
-            bp_bubble = new PictureBox();
+            //bp_bubble = new PictureBox();
             pb_bubble = new PictureBox();
 
             timer_A = new System.Windows.Forms.Timer();
             timer_A.Interval = 2000;
             timer_A.Tick += new EventHandler(timer_A_Tick);
 
-            bp_bubble.Location = new System.Drawing.Point(100, 100);
-            bp_bubble.Image = Properties.Resources.ezgif_1448237685;
-            bp_bubble.Size = new System.Drawing.Size(60, 60);
-            bp_bubble.Margin = new System.Windows.Forms.Padding(0);
-            bp_bubble.SizeMode = PictureBoxSizeMode.StretchImage;
-            bp_bubble.Visible = true;
+            //bp_bubble.Location = new System.Drawing.Point(100, 100);
+            //bp_bubble.Image = Properties.Resources.bubble;
+            //bp_bubble.Size = new System.Drawing.Size(60, 60);
+            //bp_bubble.Margin = new System.Windows.Forms.Padding(0);
+            //bp_bubble.SizeMode = PictureBoxSizeMode.StretchImage;
+            //bp_bubble.Visible = true;
 
 
             pb_bubble.Location = new Point(100, 100);
-            pb_bubble.Image = global::newuser.Properties.Resources.ezgif_1448237685;
+            pb_bubble.Image = global::newuser.Properties.Resources.bubble;
             pb_bubble.Size = new System.Drawing.Size(60, 60);
             pb_bubble.Margin = new System.Windows.Forms.Padding(0);
             pb_bubble.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             pb_bubble.Visible = true;
-
-            bp_bubble.Controls.Add(pb_bubble);
+            
+            //bp_bubble.Controls.Add(pb_bubble);
             timer_A.Start();
 
         }
         public void timer_A_Tick(object sender, EventArgs e)
         {
-            //bp_bubble.Visible = false;
             //물풍선갯수 감소 (i_cur_bubble
             //터지는 이펙트ㄱ
             //터지는것기준으로 양옆 i_max_bubble만큼 픽쳐박스생성
