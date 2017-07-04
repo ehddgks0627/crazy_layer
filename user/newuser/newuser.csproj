@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>newuser</RootNamespace>
     <AssemblyName>newuser</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -97,6 +98,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\김동한%28옆%292 - 복사본.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\그림5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\그림4.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\그림2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KakaoTalk_20161112_190233785.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
