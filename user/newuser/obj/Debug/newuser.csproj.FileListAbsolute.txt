@@ -16,3 +16,12 @@ C:\Users\Sunrin\Downloads\user\newuser\obj\Debug\newuser.csprojResolveAssemblyRe
 C:\Users\Sunrin\Downloads\user\newuser\obj\Debug\newuser.Form1.resources
 C:\Users\Sunrin\Downloads\user\newuser\obj\Debug\newuser.Properties.Resources.resources
 C:\Users\Sunrin\Downloads\user\newuser\obj\Debug\newuser.csproj.GenerateResource.Cache
+C:\Users\rlaxo\OneDrive\Documents\private session\user\newuser\bin\Debug\newuser.exe.config
+C:\Users\rlaxo\OneDrive\Documents\private session\user\newuser\obj\Debug\newuser.exe
+C:\Users\rlaxo\OneDrive\Documents\private session\user\newuser\obj\Debug\newuser.pdb
+C:\Users\rlaxo\OneDrive\Documents\private session\user\newuser\bin\Debug\newuser.exe
+C:\Users\rlaxo\OneDrive\Documents\private session\user\newuser\bin\Debug\newuser.pdb
+C:\Users\rlaxo\OneDrive\Documents\private session\user\newuser\obj\Debug\newuser.csprojResolveAssemblyReference.cache
+C:\Users\rlaxo\OneDrive\Documents\private session\user\newuser\obj\Debug\newuser.Form1.resources
+C:\Users\rlaxo\OneDrive\Documents\private session\user\newuser\obj\Debug\newuser.Properties.Resources.resources
+C:\Users\rlaxo\OneDrive\Documents\private session\user\newuser\obj\Debug\newuser.csproj.GenerateResource.Cache
