@@ -25,3 +25,12 @@ C:\Users\rlaxo\OneDrive\Documents\private session\user\newuser\obj\Debug\newuser
 C:\Users\rlaxo\OneDrive\Documents\private session\user\newuser\obj\Debug\newuser.Form1.resources
 C:\Users\rlaxo\OneDrive\Documents\private session\user\newuser\obj\Debug\newuser.Properties.Resources.resources
 C:\Users\rlaxo\OneDrive\Documents\private session\user\newuser\obj\Debug\newuser.csproj.GenerateResource.Cache
+C:\Users\waitle\OneDrive\Documents\2nd-grade-sunrin\club activity\crazy_layer\user\newuser\bin\Debug\newuser.exe.config
+C:\Users\waitle\OneDrive\Documents\2nd-grade-sunrin\club activity\crazy_layer\user\newuser\obj\Debug\newuser.exe
+C:\Users\waitle\OneDrive\Documents\2nd-grade-sunrin\club activity\crazy_layer\user\newuser\obj\Debug\newuser.pdb
+C:\Users\waitle\OneDrive\Documents\2nd-grade-sunrin\club activity\crazy_layer\user\newuser\bin\Debug\newuser.exe
+C:\Users\waitle\OneDrive\Documents\2nd-grade-sunrin\club activity\crazy_layer\user\newuser\bin\Debug\newuser.pdb
+C:\Users\waitle\OneDrive\Documents\2nd-grade-sunrin\club activity\crazy_layer\user\newuser\obj\Debug\newuser.csprojResolveAssemblyReference.cache
+C:\Users\waitle\OneDrive\Documents\2nd-grade-sunrin\club activity\crazy_layer\user\newuser\obj\Debug\newuser.Form1.resources
+C:\Users\waitle\OneDrive\Documents\2nd-grade-sunrin\club activity\crazy_layer\user\newuser\obj\Debug\newuser.Properties.Resources.resources
+C:\Users\waitle\OneDrive\Documents\2nd-grade-sunrin\club activity\crazy_layer\user\newuser\obj\Debug\newuser.csproj.GenerateResource.Cache
