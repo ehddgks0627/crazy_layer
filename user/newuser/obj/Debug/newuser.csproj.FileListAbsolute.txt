@@ -34,3 +34,5 @@ C:\Users\waitle\OneDrive\Documents\2nd-grade-sunrin\club activity\crazy_layer\us
 C:\Users\waitle\OneDrive\Documents\2nd-grade-sunrin\club activity\crazy_layer\user\newuser\obj\Debug\newuser.Form1.resources
 C:\Users\waitle\OneDrive\Documents\2nd-grade-sunrin\club activity\crazy_layer\user\newuser\obj\Debug\newuser.Properties.Resources.resources
 C:\Users\waitle\OneDrive\Documents\2nd-grade-sunrin\club activity\crazy_layer\user\newuser\obj\Debug\newuser.csproj.GenerateResource.Cache
+C:\Users\rlaxo\OneDrive\Documents\2nd-grade-sunrin\club activity\crazy_layer\user\newuser\obj\Debug\newuser.csproj.CoreCompileInputs.cache
+C:\Users\waitle\OneDrive\Documents\2nd-grade-sunrin\club activity\crazy_layer\user\newuser\obj\Debug\newuser.csproj.CoreCompileInputs.cache
